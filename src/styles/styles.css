@@ -1,0 +1,40 @@
+.card3 {
+    font-weight: bold;
+    text-align: right;
+    color: #006f6f00;
+
+    height: auto;
+    box-shadow: 0 1px 5px #000000bb;
+    border-radius: 4.5rem;
+    background-size: cover;
+    position: relative;
+    transition: transform 300ms ease-out, box-shadow 300ms ease-out, color 300ms ease;
+    transform: rotate3d(0);
+    overflow: hidden; /* Para asegurar que el glow no sobresalga de los bordes redondeados */
+  }
+  
+  .card3:hover {
+    transform: scale(1.05); /* Ligeramente más grande para dar sensación de elevación */
+    box-shadow: 0 8px 25px 5px rgba(0, 0, 0, 0.2); /* Sombra más suave y extendida */
+    color: #1e2022; /* Cambio sutil de color para mayor interactividad */
+  }
+  
+  .card3:before {
+    content: '';
+    position: absolute;
+    width: 120%; /* Mayor que el elemento para un efecto de glow más amplio */
+    height: 120%; 
+    top: -10%; /* Posicionamiento para cubrir toda la tarjeta */
+    left: -10%;
+    background-image: radial-gradient(circle, rgba(255, 255, 255, 0.8), transparent 70%);
+    opacity: 0; /* Inicialmente invisible */
+    transition: opacity 300ms ease-out, transform 300ms ease-out;
+    transform: scale(0);
+    pointer-events: none; /* Evita interferencia con eventos de mouse en el card */
+  }
+  
+  .card3:hover:before {
+    opacity: 1; /* Visible al pasar el cursor */
+    transform: scale(1); /* Vuelve al tamaño original para el efecto de glow */
+  }
+  
