@@ -98,14 +98,19 @@ const projects = (await getCollection('work'))
 				<div class="gallery">
 					<Grid variant="small">
 						{
-							[   'JS Frontend: React, Angular, Next, Astro', 
-								'Inglés: B2', 
-								'CSS: Tailwind, SASS, Bootstrap', 
-								'BD DATA: MySQL, Mongo - Power BI', 
-								'Proto: Figma, Affinity Designer',
-								'Formation Brand: Título de tu Marca - Descripción breve'].map((brand) => (
+							[
+								{ title: 'JS Frontend', description: 'React, Angular, Next, Astro' },
+								{ title: 'Inglés', description: 'B2' },
+								{ title: 'CSS', description: 'Tailwind, SASS, Bootstrap' },
+								{ title: 'BD DATA', description: 'MySQL, Mongo - Power BI' },
+								{ title: 'Proto', description: 'Figma, Affinity Designer' },
+								{ title: 'Formation Brand', description: 'Título de tu Marca - Descripción breve' }
+							].map((brand) => (
 								<li class="mention-card">
-									<p>{brand}</p>
+									<p>
+										<strong>{brand.title}</strong><br />
+										{brand.description}
+									</p>
 								</li>
 							))
 						}
