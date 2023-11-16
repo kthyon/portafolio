@@ -10,13 +10,14 @@ interface Props {
 
 const {
 	title = 'Cristian Alvarado',
-	description = 'Portafolio Cristian Alvarado',
+	description = 'Ing. Software Portafolio',
 } = Astro.props;
 ---
 
 <meta charset="UTF-8" />
 <meta name="description" property="og:description" content={description} />
 <meta name="viewport" content="width=device-width" />
+<meta property="og:image" content="https://kthyon.github.io/portafolio/assets/portrait.jpg">
 <meta name="generator" content={Astro.generator} />
 <title>{title}</title>
 
