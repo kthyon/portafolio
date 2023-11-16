@@ -33,9 +33,15 @@ const projects = (await getCollection('work'))
 			<header class="hero">
 				<Hero
 					title="Hola, soy Cristian Alvarado"
-					tagline="Ingeniero de software, Frontend, Informático de Pereira, Risaralda."
+					tagline={
+						<>
+						  Ingeniero de software, Frontend, Informático de{" "}
+						  <a href="https://maps.app.goo.gl/iLTDQjemn7mkMHHr7" target="_blank" rel="noopener noreferrer">[Pereira, Risaralda.]</a>
+						</>
+					  }
 					align="start"
 				>
+	
 					<div class="roles">
 						<Pill><Icon icon="code" size="1.33em" /> Developer</Pill>
 						<Pill><Icon icon="pencil-line" size="1.33em" /> Software Designer </Pill>
