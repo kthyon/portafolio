@@ -6,6 +6,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import ContactCTA from '../components/ContactCTA.astro';
 import PortfolioPreview from '../components/PortfolioPreview.astro';
 import Hero from '../components/Hero.astro';
+import Icon from '../components/Icon.astro';
 import Grid from '../components/Grid.astro';
 
 const projects = (await getCollection('work')).sort(
@@ -16,7 +17,7 @@ const projects = (await getCollection('work')).sort(
 <BaseLayout
 	title="Work | Cristian Alvarado"
 	description="Learn about Cristian Alvarado's most recent projects"
-	favicon = "favicon.svg"
+	favicon='../favicon.svg'
 
 >
 	<div class="stack gap-20">
