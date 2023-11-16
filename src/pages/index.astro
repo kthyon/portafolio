@@ -32,13 +32,9 @@ const projects = (await getCollection('work'))
 		<div class="wrapper stack gap-8 lg:gap-20">
 			<header class="hero">
 				<Hero
-  title="Hola, soy Cristian Alvarado"
-  align="start"
->
-  Ingeniero de software, Frontend, Informático de 
-  <a href="https://maps.app.goo.gl/iLTDQjemn7mkMHHr7" target="_blank" rel="noopener noreferrer">
-    Pereira, Risaralda
-  </a>
+					title="Hola, soy Cristian Alvarado"
+					align="start"
+                >Ingeniero de software, Frontend, Informático de <a href="https://maps.app.goo.gl/iLTDQjemn7mkMHHr7" target="_blank" rel="noopener noreferrer">Pereira, Risaralda</a>
   <div class="roles">
     <Pill><Icon icon="code" size="1.33em" /> Developer</Pill>
     <Pill><Icon icon="pencil-line" size="1.33em" /> Software Designer </Pill>
@@ -117,6 +113,9 @@ const projects = (await getCollection('work'))
 </BaseLayout>
 
 <style>
+	a{
+		text-decoration: none;
+	}
 	.hero {
 		display: flex;
 		flex-direction: column;
