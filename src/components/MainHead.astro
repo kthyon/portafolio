@@ -6,11 +6,13 @@ import '../styles/styles.css';
 interface Props {
 	title?: string | undefined;
 	description?: string | undefined;
+	favicon?: string | undefined;
 }
 
 const {
 	title = 'Cristian Alvarado',
 	description = 'Ing. Software Portafolio',
+	favicon = 'favicon.svg',
 } = Astro.props;
 ---
 
@@ -24,7 +26,7 @@ const {
 <meta name="generator" content={Astro.generator} />
 <title>{title}</title>
 
-<link rel="icon" type="image/svg+xml" href="favicon.svg" />
+<link rel="icon" type="image/svg+xml" href={favicon} />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link
