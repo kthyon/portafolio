@@ -1,7 +1,7 @@
 .card3 {
     font-weight: bold;
     text-align: right;
-    color: #006f6f00;
+    color: #12ffff00;
 
     height: auto;
     box-shadow: 0 1px 5px #000000bb;
@@ -26,7 +26,7 @@
     height: 120%; 
     top: -10%; /* Posicionamiento para cubrir toda la tarjeta */
     left: -10%;
-    background-image: radial-gradient(circle, rgba(255, 255, 255, 0.8), transparent 70%);
+    background-image: radial-gradient(circle, rgba(255, 255, 255, 0), transparent 70%);
     opacity: 0; /* Inicialmente invisible */
     transition: opacity 300ms ease-out, transform 300ms ease-out;
     transform: scale(0);
