@@ -16,10 +16,10 @@
 	--gray-999_40: hsla(var(--gray-999-basis), 0.4);
 	--gray-999: #ffffff;
 
-	--accent-light: #61acf6;
-	--accent-regular: #177fff;
-	--accent-dark: #002e56;
-	--accent-overlay: hsla(220, 89%, 67%, 0.33);
+	--accent-light: rgb(221, 221, 221);
+	--accent-regular: #007bff;
+	--accent-dark: rgb(31, 118, 189);
+	--accent-overlay:#d1d1d1;
 	--accent-subtle-overlay: var(--accent-overlay);
 	--accent-text-over: var(--gray-999);
 
@@ -38,7 +38,7 @@
 	);
 	--gradient-accent-orange: linear-gradient(
 		150deg,
-		#177bff,
+		#a4bee0,
 		var(--accent-regular),
 		var(--accent-dark)
 	);
@@ -89,10 +89,10 @@
 	--gray-999: #090b11;
 
 	--accent-light: #002156;
-	--accent-regular: #0050a0;
-	--accent-dark: #6186f6;
+	--accent-regular: #2f383fad;
+	--accent-dark: #43b4ff;
 	--accent-overlay: hsla(214, 89%, 67%, 0.33);
-	--accent-subtle-overlay: hsla(214, 81%, 36%, 0.33);
+	--accent-subtle-overlay: hsla(214, 81%, 36%, 0.171);
 	--accent-text-over: var(--gray-0);
 
 	--link-color: var(--accent-dark);
@@ -143,7 +143,19 @@ img {
 }
 
 a {
+	width:fit-content;
 	color: var(--link-color);
+}
+
+.linka{
+ text-decoration: none;
+ color: var(--gray-200);
+ background:linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(235, 235, 235, 0.274) 95%);
+ padding: 2px 9px 5px;
+ margin-left: 5px;
+ font-size: 12px;
+ border-radius: 12px;
+ border: solid 1px var(--gray-200);
 }
 
 h1,
