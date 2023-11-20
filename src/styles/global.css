@@ -160,6 +160,12 @@ a {
  border: solid 1px var(--gray-200);
 }
 
+
+
+.parJustify{
+	text-align: justify;
+    text-justify: inter-word;
+}
 h1,
 h2,
 h3,
