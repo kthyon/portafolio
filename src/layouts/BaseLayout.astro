@@ -20,7 +20,7 @@ const { title, description, favicon } = Astro.props;
 	<head>
 		<MainHead title={title} description={description} favicon={favicon} />
 	</head>
-	<body>
+	<body >
 		<div class="stack backgrounds">
 			<Nav />
 			<slot />
@@ -31,6 +31,8 @@ const { title, description, favicon } = Astro.props;
 			// Add “loaded” class once the document has completely loaded.
 			addEventListener('load', () => document.documentElement.classList.add('loaded'));
 		</script>
+
+
 
 		<style>
 			:root {

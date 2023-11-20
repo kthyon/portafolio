@@ -119,6 +119,7 @@ html,
 body {
 	height: 100%;
 	overflow-x: hidden;
+
 }
 
 body {
@@ -128,6 +129,7 @@ body {
 	-webkit-font-smoothing: antialiased;
 	line-height: 1.5;
 }
+
 
 *,
 *::after,
