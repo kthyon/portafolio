@@ -50,7 +50,7 @@ const projects = (await getCollection('work'))
 
 
 				
-					<img 
+					<img class="floating"
 					alt="Cristian Alvarado"
 					width="450"
 					height="auto"
@@ -148,8 +148,28 @@ const projects = (await getCollection('work'))
 		aspect-ratio: 3 / 4;
 		object-fit: cover;
 		object-position: top;
+		transform: scale(1.2);
+	    animation: pulse 3s infinite;
 		
 	}
+
+	@keyframes pulse {
+	0% {
+		transform: scale(0.95);
+		
+	}
+
+	70% {
+		transform: scale(1);
+		
+	}
+
+	100% {
+		transform: scale(0.95);
+		
+	}
+}
+
 
 	@media (min-width: 50em) {
 		.hero {
