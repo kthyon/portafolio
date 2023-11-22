@@ -14,7 +14,7 @@ tags:
 
 ## Concepto
 
-> La solución POS se centra en ser operativa modular y fácil de mejorar (software para seres humanos).
+> La solución POS se centra en ser operativa modular y fácil de mejorar (software de adminstración para seres humanos).
 
 Haciendo la diferencia, siguiendo una filosofía de simplicidad y funcionalidad hacen que el producto sea estético, técnico y funcional <a href="https://www.facebook.com/AdminPOSNET/" target="_blank">Posnet</a>.
 
