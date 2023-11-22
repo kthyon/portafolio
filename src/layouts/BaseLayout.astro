@@ -20,7 +20,8 @@ const { title, description, favicon } = Astro.props;
 	<head>
 		<MainHead title={title} description={description} favicon={favicon} />
 	</head>
-	<body >
+	<body>
+		<div class="cursor-glow"></div>
 		<div class="stack backgrounds">
 			<Nav />
 			<slot />
@@ -30,6 +31,16 @@ const { title, description, favicon } = Astro.props;
 		<script>
 			// Add “loaded” class once the document has completely loaded.
 			addEventListener('load', () => document.documentElement.classList.add('loaded'));
+
+
+			const cursorGlow = document.querySelector('.cursor-glow') as HTMLElement;
+					document.addEventListener('mousemove', e => {
+						if (cursorGlow) {
+							cursorGlow.style.display = 'block';
+							cursorGlow.style.left = e.pageX + 'px';
+							cursorGlow.style.top = e.pageY + 'px';
+						}
+					});
 		</script>
 
 
@@ -116,6 +127,28 @@ const { title, description, favicon } = Astro.props;
 					--bg-gradient-size: none;
 				}
 			}
+
+			.cursor-glow {
+				width: 380px;
+				height: 380px;
+				border-radius: 50%;
+				background: radial-gradient(circle at center, 
+							rgba(0, 213, 255, 0.066), 
+							rgba(255, 255, 255, 0.03), 
+							rgba(255, 255, 255, 0.01), 
+							rgba(255, 255, 255, 0.005),
+							rgba(255, 255, 255, 0) 70%);
+
+
+				position: fixed;
+				pointer-events: none;
+				z-index: 10000;
+				transform: translate(-50%, -50%);
+				display: none; /* Oculto inicialmente */
+			}
+
 		</style>
+
+		
 	</body>
 </html>
