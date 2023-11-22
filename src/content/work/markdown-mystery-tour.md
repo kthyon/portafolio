@@ -1,14 +1,14 @@
 ---
-title: Markdown Mystery Tour
+title: Software POS modular
 publishDate: 2020-03-02 00:00:00
 img: /portafolio/assets/stock-1.jpg
-img_alt: Iridescent ripples of a bright blue and pink liquid
+img_alt: Respresentación de Posnet y tecnología MYSQL y Laravel PHP
 description: |
-  We designed a whodunnit-style game to introduce Markdown formatting. Suspense — suspicion — syntax!
+ Desarrollo de Software POS modular para la administración de comercios e integración con facturación
 tags:
-  - Design
-  - Dev
-  - User Testing
+  - Diseño
+  - Desarrollo
+  - Facturación
 ---
 
 ## Level-two heading
