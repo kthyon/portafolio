@@ -41,3 +41,6 @@ $card3.addEventListener("mouseleave", () => {
     $card3.style.transform = "";
     $card3.querySelector(".glow").style.backgroundImage = "";
 });
+
+
+
