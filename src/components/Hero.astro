@@ -31,34 +31,46 @@ const { align = 'center', tagline, title } = Astro.props;
 	.title {
   font-size: var(--text-3xl);
   color: var(--gray-0);
-  width: 0;
   position: relative;
   overflow: hidden;
   white-space: nowrap;
   border-right: 3px solid var(--gray-0); /* Cursor visible */
   animation: typewriter 4s steps(30) 1s forwards, 
-             blinkCursor 500ms steps(30) 5s, /* Parpadeo durante 5 segundos */
-             hideCursor 500ms 10s forwards; /* Desaparición del cursor después de 10s */
+             blinkCursor 1s infinite 5s, /* Parpadeo continuo después de 5s */
+             hideCursor 500ms 11s forwards; /* Desaparición del cursor después del brillo */
 }
 
 .title::after {
   content: '';
   position: absolute;
   top: 0;
-  left: 100%; /* Inicia a la derecha del texto */
+  left: 0; /* Ajustado para comenzar desde el inicio del texto */
   width: 100%;
   height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.5), transparent); /* Brillo más suave */
-  animation: textShine 2s 9s forwards; /* Comienza después de 9s, dura 2s */
+  background: linear-gradient(
+    90deg, 
+    transparent, 
+	
+    rgba(0, 255, 234, 0.141), /* Verde turquesa */
+    rgba(43, 200, 252, 0.27), /* Azul neón */
+    rgba(126, 66, 255, 0.141), /* Morado neón */
+	rgba(208, 141, 255, 0.204), /* Morado neón */
+	rgba(0, 240, 236, 0.204), /* Morado neón */
+    transparent
+  ); /* Degradado de brillo suave */
+  animation: textShine 2s 6s forwards; /* Comienza después de 8s, dura 2s */
+  pointer-events: none; /* Evita que el pseudo-elemento bloquee el texto */
 }
 
+
 @keyframes typewriter {
+  from { width: 0; }
   to { width: 100%; }
 }
 
 @keyframes blinkCursor {
-  0%, 100% { border-right-color: var(--gray-0); }
-  50% { border-right-color: transparent; }
+  0%, 50%, 100% { border-right-color: rgb(255, 255, 255); }
+  25%, 75% { border-right-color: transparent; }
 }
 
 @keyframes hideCursor {
@@ -66,9 +78,12 @@ const { align = 'center', tagline, title } = Astro.props;
 }
 
 @keyframes textShine {
-  from { left: 100%; }
-  to { left: -100%; } /* Mueve el brillo de derecha a izquierda */
+  from { left: -100%; }
+  to { left: 100%; } /* Mueve el brillo de izquierda a derecha */
 }
+
+
+
 
 
 
