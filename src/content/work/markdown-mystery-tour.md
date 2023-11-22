@@ -12,20 +12,20 @@ tags:
   - MySQL
 ---
 
-## Level-two heading
+## Concepto
 
-> La solución se centra en ser operativa modular y fácil de mejorar (software para seres humanos).
+> La solución POS se centra en ser operativa modular y fácil de mejorar (software para seres humanos).
 
-Haciendo la diferencia, siguiendo una filosofía de simplicidad y funcionalidad hacen que el producto sea estético, técnico y funcional.
+Haciendo la diferencia, siguiendo una filosofía de simplicidad y funcionalidad hacen que el producto sea estético, técnico y funcional <a href="https://www.facebook.com/AdminPOSNET/" target="_blank">Posnet</a>.
 
 Conectado con las necesidades de los usuarios.
 No importa cual sea el sector comercial, el objetivo es que cuente con las mejores alternativas en infraestructura y software para que eleve su productividad al máximo.
 
-### Level-three heading
+### Alcance
 
 solución POSnet permite ejecutar diferentes módulos en los contextos que sean necesarios, un local pequeño o una empresa con muchas franquicias POSNET se adapta a su core de negocio, generando gestión de productos, administrador de stock, sugerencias de compra y todo el proceso de facturación y gestión de clientes.
 
-#### Level-four heading
+#### Reseña
 
 - solución implementada en nube o local.
 - Solucion de software implementada en bases de datos relacionales con MySQL.
