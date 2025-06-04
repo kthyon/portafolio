@@ -29,8 +29,8 @@ const projects = (await getCollection('work'))
 
 <BaseLayout >
 	<div class="stack gap-20 lg:gap-48" >
-		<div class="wrapper stack gap-8 lg:gap-20">
-			<header class="hero">
+                <div class="wrapper stack gap-8 lg:gap-20">
+                        <header class="hero reveal">
 				<Hero
 					title="Hola! ,soy Cristian"
 					align="start"
@@ -51,7 +51,7 @@ const projects = (await getCollection('work'))
 
 
 				
-					<img class="floating"
+                                        <img class="floating reveal"
 					alt="Cristian Alvarado"
 					width="450"
 					height="auto"
@@ -65,8 +65,8 @@ const projects = (await getCollection('work'))
 			<Skills />
 		</div>
 
-		<main class="wrapper stack gap-20 lg:gap-48">
-			<section class="section with-background with-cta">
+                <main class="wrapper stack gap-20 lg:gap-48">
+                        <section class="section with-background with-cta reveal">
 				<header class="section-header stack gap-2 lg:gap-4">
 					<h3>Un poco de lo que hago</h3>
 					<p>Mi intensión se enfoca en co-crear experiencias que despierten la curiosidad y faciliten tareas mezclando la ingeniería y el diseño.</p>
@@ -92,7 +92,7 @@ const projects = (await getCollection('work'))
 				</div>
 			</section>
 
-			<section class="section with-background bg-variant">
+                        <section class="section with-background bg-variant reveal">
 				<header class="section-header stack gap-2 lg:gap-4">
 					<h3>Stack</h3>
 					<p>
@@ -113,7 +113,7 @@ const projects = (await getCollection('work'))
 								{ title: 'Proto', description: 'Figma, Affinity Designer' },
 								{ title: 'Habilidades blandas', description: 'Metodologias ágiles (Scrum))' }
 							].map((brand) => (
-								<li class="mention-card">
+                                                                <li class="mention-card reveal">
 									<p>
 										<strong>{brand.title}</strong><br />
 										{brand.description}
