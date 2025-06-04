@@ -1,5 +1,7 @@
-const $card3 = document.getElementById("card3");
-let bounds;
+window.addEventListener('DOMContentLoaded', () => {
+  // Efecto interactivo para card3
+  const $card3 = document.getElementById('card3');
+  let bounds;
 
 function rotateToMouse(e) {
     const mouseX = e.clientX;
@@ -42,5 +44,15 @@ $card3.addEventListener("mouseleave", () => {
     $card3.querySelector(".glow").style.backgroundImage = "";
 });
 
+  // Animaciones reveal en scroll
+  const observer = new IntersectionObserver((entries, obs) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        obs.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
 
-
+  document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
+});

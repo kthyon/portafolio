@@ -73,6 +73,19 @@
 	--theme-transition: 0.2s ease-in-out;
 }
 
+/* ------------------------------------------------------- */
+/* Animaciones Reveal */
+.reveal {
+    opacity: 0;
+    transform: translateY(2rem);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
 :root.theme-dark {
 	--gray-0: #ffffff;
 	--gray-50: #f3f4f7;
