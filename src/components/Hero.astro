@@ -8,104 +8,69 @@ interface Props {
 const { align = 'center', tagline, title } = Astro.props;
 ---
 
-<div class:list={['hero stack gap-4', align]}>
-	<div class="stack gap-2" >
-		<h1 class="title">{title}</h1>
-		{tagline && <p class="tagline">{tagline}</p>}
+<div class:list={[
+	'flex flex-col gap-6 text-lg md:text-xl',
+	align === 'center' ? 'text-center' : 'text-left'
+]}>
+	<div class="flex flex-col gap-4">
+		<h1 class="relative overflow-hidden whitespace-nowrap border-r-2 border-gray-900 dark:border-white max-w-[37ch] mx-auto md:text-5xl animate-typewriter">
+			{title}
+		</h1>
+		{tagline && <p class="max-w-[37ch] mx-auto text-gray-600 dark:text-gray-300">{tagline}</p>}
 	</div>
-	<slot />
+	<div class="flex flex-wrap gap-4 justify-center md:justify-start">
+		<slot />
+	</div>
 </div>
 
 <style>
-	
-	.hero {
-		font-size: var(--text-lg);
-		text-align: center;
+	@keyframes typewriter {
+		from { width: 0; }
+		to { width: 100%; }
 	}
 
-	.title,
-	.tagline {
-		max-width: 37ch;
-		margin-inline: auto;
+	@keyframes blinkCursor {
+		0%, 50%, 100% { border-right-color: rgb(255, 255, 255); }
+		25%, 75% { border-right-color: transparent; }
 	}
 
-	.title {
-  font-size: var(--text-3xl);
-  color: var(--gray-0);
-  position: relative;
-  overflow: hidden;
-  white-space: nowrap;
-  border-right: 3px solid var(--gray-0); /* Cursor visible */
-  animation: typewriter 4s steps(30, end) 1s forwards, 
-             blinkCursor 1s infinite 5s, /* Parpadeo continuo después de 5s */
-             hideCursor 500ms 11s forwards; /* Desaparición del cursor después del brillo */
-}
+	@keyframes hideCursor {
+		to { border-right-color: transparent; }
+	}
 
-.title::before {
-  content: '';
-  position: absolute;
-  border-radius: 15px;
-  top: 0;
-  left: 0; /* Inicia desde el inicio del texto */
-  z-index: -1; /* Pone el brillo detrás del texto */
-  width: 100%; /* Ajustado para cubrir el texto */
-  height: 100%;
-  background: linear-gradient(
-    150deg, 
-    transparent, 
-    rgba(71, 255, 187, 0.05), /* Verde suave */
-    rgba(252, 245, 43, 0.07), /* Amarillo suave */
-    rgba(255, 219, 182, 0.05), /* Naranja suave */
-	rgba(71, 255, 187, 0.05), /* Verde suave */
-    rgba(252, 245, 43, 0.07), /* Amarillo suave */
-    rgba(255, 219, 182, 0.05), /* Naranja suave */
-    transparent
-  ); /* Degradado de brillo suave y difuminado */
-  animation: textShine 3s 6s forwards; /* Comienza después de 6s, dura 3s */
-  pointer-events: none; /* Evita que el pseudo-elemento bloquee el texto */
-}
+	@keyframes textShine {
+		0%, 100% { left: -100%; }
+		50% { left: 100%; }
+	}
 
+	.animate-typewriter {
+		animation: 
+			typewriter 4s steps(30, end) 1s forwards,
+			blinkCursor 1s infinite 5s,
+			hideCursor 500ms 11s forwards;
+	}
 
-@keyframes typewriter {
-  from { width: 0; }
-  to { width: 100%; }
-}
-
-@keyframes blinkCursor {
-  0%, 50%, 100% { border-right-color: rgb(255, 255, 255); }
-  25%, 75% { border-right-color: transparent; }
-}
-
-@keyframes hideCursor {
-  to { border-right-color: transparent; }
-}
-
-@keyframes textShine {
-  0%, 100% { left: -100%; }
-  50% { left: 100%; } /* Brillo se mueve de izquierda a derecha y viceversa */
-}
-
-
-
-
-
-
-	@media (min-width: 50em) {
-		.hero {
-			font-size: var(--text-xl);
-		}
-
-		.start {
-			text-align: start;
-		}
-
-		.start .title,
-		.start .tagline {
-			margin-inline: unset;
-		}
-
-		.title {
-			font-size: var(--text-5xl);
-		}
+	.animate-typewriter::before {
+		content: '';
+		position: absolute;
+		border-radius: 15px;
+		top: 0;
+		left: 0;
+		z-index: -1;
+		width: 100%;
+		height: 100%;
+		background: linear-gradient(
+			150deg,
+			transparent,
+			rgba(71, 255, 187, 0.05),
+			rgba(252, 245, 43, 0.07),
+			rgba(255, 219, 182, 0.05),
+			rgba(71, 255, 187, 0.05),
+			rgba(252, 245, 43, 0.07),
+			rgba(255, 219, 182, 0.05),
+			transparent
+		);
+		animation: textShine 3s 6s forwards;
+		pointer-events: none;
 	}
 </style>

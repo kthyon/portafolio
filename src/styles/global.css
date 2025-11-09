@@ -1,3 +1,31 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+	html {
+		@apply scroll-smooth;
+	}
+	body {
+		@apply bg-white dark:bg-dark text-gray-900 dark:text-white;
+	}
+}
+
+@layer components {
+	.container {
+		@apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+	}
+	.btn {
+		@apply px-4 py-2 rounded-lg font-medium transition-colors duration-200;
+	}
+	.btn-primary {
+		@apply bg-primary text-white hover:bg-primary/90;
+	}
+	.btn-secondary {
+		@apply bg-secondary text-white hover:bg-secondary/90;
+	}
+}
+
 /* Global variables */
 :root {
 	/* Colors */
@@ -119,17 +147,13 @@ html,
 body {
 	height: 100%;
 	overflow-x: hidden;
-
 }
 
 body {
-	background-color: var(--gray-999);
-	color: var(--gray-200);
 	font-family: var(--font-body);
 	-webkit-font-smoothing: antialiased;
 	line-height: 1.5;
 }
-
 
 *,
 *::after,
@@ -139,7 +163,6 @@ body {
 }
 
 img {
-
 	max-width: 100%;
 	height: auto;
 }
@@ -150,21 +173,19 @@ a {
 }
 
 .linka{
- text-decoration: none;
- color: var(--gray-200);
- background:linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(235, 235, 235, 0.274) 95%);
- padding: 2px 9px 3px;
- margin-left: 5px;
- font-size: 12px;
- border-radius: 12px;
- border: solid 1px var(--gray-200);
+	text-decoration: none;
+	color: var(--gray-200);
+	background:linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(235, 235, 235, 0.274) 95%);
+	padding: 2px 9px 3px;
+	margin-left: 5px;
+	font-size: 12px;
+	border-radius: 12px;
+	border: solid 1px var(--gray-200);
 }
-
-
 
 .parJustify{
 	text-align: justify;
-    text-justify: inter-word;
+	text-justify: inter-word;
 }
 h1,
 h2,

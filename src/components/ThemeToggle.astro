@@ -77,14 +77,23 @@ import Icon from './Icon.astro';
 			/** Set the theme to dark/light mode. */
 			const setTheme = (dark: boolean) => {
 				document.documentElement.classList[dark ? 'add' : 'remove']('theme-dark');
+				document.documentElement.classList[dark ? 'add' : 'remove']('dark');
 				button.setAttribute('aria-pressed', String(dark));
+				localStorage.setItem('theme', dark ? 'dark' : 'light');
 			};
 
 			// Toggle the theme when a user clicks the button.
 			button.addEventListener('click', () => setTheme(!this.isDark()));
 
-			// Initialize button state to reflect current theme.
-			setTheme(this.isDark());
+			// Initialize theme from localStorage or system preference
+			const savedTheme = localStorage.getItem('theme');
+			if (savedTheme) {
+				setTheme(savedTheme === 'dark');
+			} else {
+				// Check system preference
+				const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+				setTheme(prefersDark);
+			}
 		}
 
 		isDark() {
@@ -92,4 +101,17 @@ import Icon from './Icon.astro';
 		}
 	}
 	customElements.define('theme-toggle', ThemeToggle);
+</script>
+
+<script is:inline>
+	// Prevent flash of wrong theme
+	(function() {
+		const savedTheme = localStorage.getItem('theme');
+		if (savedTheme) {
+			document.documentElement.classList.add(savedTheme === 'dark' ? 'theme-dark dark' : '');
+		} else {
+			const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+			document.documentElement.classList.add(prefersDark ? 'theme-dark dark' : '');
+		}
+	})();
 </script>
