@@ -9,6 +9,9 @@ const defaultDescription = "Portfolio de Cris Alvarado, Senior Software Engineer
 const url = "https://crisalvarado-ingeniero.com/";
 
 const { title = defaultTitle, description = defaultDescription } = Astro.props;
+const baseUrl = import.meta.env.BASE_URL.endsWith('/')
+	? import.meta.env.BASE_URL
+	: `${import.meta.env.BASE_URL}/`;
 
 // Schema Markup for AI and SEO (JSON-LD)
 const schema = {
@@ -56,7 +59,7 @@ const schema = {
 		<meta charset="UTF-8" />
 		<meta name="description" content={description} />
 		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="icon" type="image/svg+xml" href={`${baseUrl}favicon.svg`} />
 		<link rel="canonical" href={url} />
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
@@ -98,8 +101,8 @@ const schema = {
 
 <style is:global>
 	:root {
-		--accent: 76, 141, 255;
-		--cyan: 99, 230, 255;
+		--accent: 204, 255, 0;
+		--cyan: 204, 255, 0;
 		--coral: 255, 122, 89;
 		--lilac: 157, 183, 255;
 	}
@@ -110,7 +113,7 @@ const schema = {
 	body {
 		min-height: 100vh;
 		background:
-			radial-gradient(circle at top left, rgba(76,141,255,0.08), transparent 28%),
+			radial-gradient(circle at top left, rgba(204,255,0,0.06), transparent 28%),
 			radial-gradient(circle at 72% 88%, rgba(255,122,89,0.04), transparent 24%),
 			linear-gradient(180deg, #070707 0%, #030303 100%);
 	}
@@ -170,6 +173,6 @@ const schema = {
 		border-radius: 4px;
 	}
 	::-webkit-scrollbar-thumb:hover {
-		background: #4c8dff;
+		background: #ccff00;
 	}
 </style>

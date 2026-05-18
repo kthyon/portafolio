@@ -29,7 +29,7 @@ subtitle('Software Engineer');
 
 // Contact info
 doc.font('Helvetica').fontSize(10).fillColor('#666666')
-    .text('Pereira, Risaralda | 311 625 31 76 | crosalvardo@gmail.com | github.com/kthyon | kthyon.github.io/portfolio', { align: 'center' })
+    .text('Pereira, Risaralda | crosalvardo@gmail.com | github.com/kthyon | kthyon.github.io/portafolio', { align: 'center' })
     .moveDown(2);
 
 // Summary

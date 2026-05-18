@@ -10,6 +10,10 @@ import {
 import { ArrowRight } from 'lucide-react';
 import { useSiteConfig } from '../data/site';
 
+const baseUrl = import.meta.env.BASE_URL.endsWith('/')
+    ? import.meta.env.BASE_URL
+    : `${import.meta.env.BASE_URL}/`;
+
 function Portrait() {
     const ref = useRef<HTMLDivElement>(null);
     const x = useMotionValue(0);
@@ -54,7 +58,7 @@ function Portrait() {
             />
 
             <motion.img
-                src="/avatar.webp"
+                src={`${baseUrl}avatar.webp`}
                 alt="Cris Alvarado"
                 className="absolute left-1/2 top-0 h-full w-auto max-w-none -translate-x-1/2 object-contain object-top [filter:brightness(1.01)_contrast(1.08)_saturate(1.03)]"
                 style={{
@@ -169,7 +173,7 @@ export default function Hero() {
                         </a>
 
                         <a
-                            href="/CV_Cris_Alvarado.pdf"
+                            href={`${baseUrl}CV_Cris_Alvarado.pdf`}
                             target="_blank"
                             rel="noopener noreferrer"
                             className="inline-block border-b border-white/15 py-2 font-medium text-white/65 transition-all hover:border-white/40 hover:text-white"

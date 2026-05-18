@@ -3,6 +3,10 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, ArrowRight, Globe, Github } from 'lucide-react';
 import { useSiteConfig } from '../data/site';
 
+const baseUrl = import.meta.env.BASE_URL.endsWith('/')
+    ? import.meta.env.BASE_URL
+    : `${import.meta.env.BASE_URL}/`;
+
 export default function Navbar() {
     const [scrolled, setScrolled] = useState(false);
     const [isOpen, setIsOpen] = useState(false);
@@ -24,7 +28,7 @@ export default function Navbar() {
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="flex items-center justify-between">
                     {/* Logo */}
-                    <a href="/" className="flex items-center gap-3 group">
+                    <a href={baseUrl} className="flex items-center gap-3 group">
                         <div className="relative flex h-11 w-11 items-center justify-center">
                             <svg viewBox="0 0 48 48" className="h-11 w-11" aria-hidden="true">
                                 <circle cx="24" cy="24" r="20.5" fill="none" stroke="rgba(76,141,255,0.5)" strokeWidth="1.5" />
