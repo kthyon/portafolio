@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Database, Cpu, Bot, GitMerge, Shield, Zap, Users } from 'lucide-react';
+import { Database, Cpu, Bot, GitMerge, Shield, Users, CalendarRange, Globe2, GraduationCap } from 'lucide-react';
 
 const es = {
     metadata: {
@@ -100,10 +100,10 @@ const es = {
     metrics: {
         title: "Impacto",
         items: [
-            { value: "10+", label: "Años de Experiencia", sublabel: "En sistemas de alta escala", icon: Shield },
-            { value: "200M+", label: "Usuarios en Producción", sublabel: "Mayor plataforma tech de LatAm", icon: Users },
-            { value: "15+", label: "MCPs, Agents & Skills", sublabel: "Deployados en producción", icon: Cpu },
-            { value: "99.9%", label: "Disponibilidad SLA", sublabel: "Sistemas críticos en ML", icon: Zap }
+            { value: "10+", label: "Años construyendo software", sublabel: "Backend, producto y sistemas de alta escala", icon: CalendarRange },
+            { value: "200M+", label: "Usuarios en la plataforma", sublabel: "Sistemas operando en el ecosistema de Mercado Libre", icon: Users },
+            { value: "3", label: "Países en colaboración", sublabel: "Trabajo con equipos de Brasil, Argentina y México", icon: Globe2 },
+            { value: "2", label: "Roles docentes", sublabel: "Formación en IA e ingeniería de software", icon: GraduationCap }
         ]
     },
     experience: {
@@ -251,10 +251,10 @@ const en = {
     metrics: {
         title: "Impact",
         items: [
-            { value: "10+", label: "Years of Experience", sublabel: "High-scale systems", icon: Shield },
-            { value: "200M+", label: "Users in Production", sublabel: "Largest tech platform in LatAm", icon: Users },
-            { value: "15+", label: "MCPs, Agents & Skills", sublabel: "Deployed in production", icon: Cpu },
-            { value: "99.9%", label: "Availability SLA", sublabel: "Critical ML systems", icon: Zap }
+            { value: "10+", label: "Years building software", sublabel: "Backend, product, and high-scale systems", icon: CalendarRange },
+            { value: "200M+", label: "Users on the platform", sublabel: "Systems operating within Mercado Libre's ecosystem", icon: Users },
+            { value: "3", label: "Countries in collaboration", sublabel: "Work with teams across Brazil, Argentina, and Mexico", icon: Globe2 },
+            { value: "2", label: "Teaching roles", sublabel: "Training in AI and software engineering", icon: GraduationCap }
         ]
     },
     experience: {

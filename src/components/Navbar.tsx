@@ -7,6 +7,13 @@ const baseUrl = import.meta.env.BASE_URL.endsWith('/')
     ? import.meta.env.BASE_URL
     : `${import.meta.env.BASE_URL}/`;
 
+const resolveNavHref = (href: string) => {
+    if (href.startsWith('http://') || href.startsWith('https://')) return href;
+    if (href.startsWith('/#')) return `${baseUrl}${href.slice(1)}`;
+    if (href.startsWith('/')) return `${baseUrl}${href.slice(1)}`;
+    return href;
+};
+
 export default function Navbar() {
     const [scrolled, setScrolled] = useState(false);
     const [isOpen, setIsOpen] = useState(false);
@@ -31,7 +38,7 @@ export default function Navbar() {
                     <a href={baseUrl} className="flex items-center gap-3 group">
                         <div className="relative flex h-11 w-11 items-center justify-center">
                             <svg viewBox="0 0 48 48" className="h-11 w-11" aria-hidden="true">
-                                <circle cx="24" cy="24" r="20.5" fill="none" stroke="rgba(76,141,255,0.5)" strokeWidth="1.5" />
+                                <circle cx="24" cy="24" r="20.5" fill="none" stroke="rgba(162,232,114,0.5)" strokeWidth="1.5" />
                                 <path d="M16 28.5V19.5H26.5" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" />
                                 <path d="M31.5 19.5L36 28.5M29.2 25H34.1" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" />
                             </svg>
@@ -47,7 +54,7 @@ export default function Navbar() {
                         {links.map((link) => (
                             <a
                                 key={link.name}
-                                href={link.href}
+                                href={resolveNavHref(link.href)}
                                 className="text-sm font-medium text-gray-300 hover:text-white transition-colors relative group"
                             >
                                 {link.name}
@@ -115,7 +122,7 @@ export default function Navbar() {
                             {links.map((link) => (
                                 <a
                                     key={link.name}
-                                    href={link.href}
+                                    href={resolveNavHref(link.href)}
                                     className="block text-gray-300 hover:text-neon transition-colors"
                                     onClick={() => setIsOpen(false)}
                                 >

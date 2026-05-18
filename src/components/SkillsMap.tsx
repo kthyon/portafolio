@@ -26,7 +26,7 @@ const categoryColors: Record<string, string> = {
     frontend: '#ff00ff', // Magenta
     backend: '#00ffff', // Cyan
     infra: '#3b82f6',   // Blue
-    ai: '#ccff00',      // Neon Green
+    ai: '#a2e872',      // Accent Green
     core: '#f97316',    // Orange
     design: '#a855f7',  // Purple
     boss: '#FF0055'     // Red Boss
@@ -151,7 +151,10 @@ export default function SkillsMap() {
         const updatePlayerX = (clientX: number) => {
             const rect = canvas.getBoundingClientRect();
             const x = clientX - rect.left;
-            stateRef.current.player.x = x - stateRef.current.player.width / 2;
+            stateRef.current.player.x = Math.max(
+                0,
+                Math.min(canvas.width - stateRef.current.player.width, x - stateRef.current.player.width / 2)
+            );
         };
 
         const handleMouseMove = (e: MouseEvent) => {
@@ -184,17 +187,21 @@ export default function SkillsMap() {
         canvas.addEventListener('mousemove', handleMouseMove);
         canvas.addEventListener('mousedown', handleMouseDown);
         canvas.addEventListener('touchmove', handleTouchMove, { passive: false });
-        canvas.addEventListener('touchstart', (e) => {
+        const handleTouchStart = (e: TouchEvent) => {
             handleTouchMove(e);
             if (gameState === 'playing') fireProjectile();
-        }, { passive: false });
+        };
+        canvas.addEventListener('touchstart', handleTouchStart, { passive: false });
 
         const resize = () => {
             if (!containerRef.current) return;
             canvas.width = containerRef.current.clientWidth;
             canvas.height = containerRef.current.clientHeight;
+            stateRef.current.player.x = Math.max(0, Math.min(canvas.width - stateRef.current.player.width, stateRef.current.player.x));
+            stateRef.current.player.y = canvas.height - 50;
         };
-        window.addEventListener('resize', resize);
+        const resizeObserver = new ResizeObserver(resize);
+        resizeObserver.observe(containerRef.current);
         resize();
 
         const createExplosion = (x: number, y: number, baseColor: string, isBig = false) => {
@@ -359,7 +366,7 @@ export default function SkillsMap() {
                             if (Math.random() < fireChance) {
                                 state.enemyProjectiles.push({
                                     x: invader.x + invader.width / 2, y: invader.y + invader.height,
-                                    width: 4, height: 12, vx: 0, vy: (7 + state.level) * diff, color: categoryColors[invader.category] || '#ccff00'
+                                    width: 4, height: 12, vx: 0, vy: (7 + state.level) * diff, color: categoryColors[invader.category] || '#a2e872'
                                 });
                             }
                         }
@@ -398,7 +405,7 @@ export default function SkillsMap() {
                             if (invader.hp <= 0) {
                                 invader.isAlive = false;
                                 state.score += invader.isBoss ? (10000 * diff) : (200 * diff); 
-                                const color = categoryColors[invader.category] || '#ccff00';
+                                const color = categoryColors[invader.category] || '#a2e872';
                                 createExplosion(invader.x + invader.width / 2, invader.y + invader.height / 2, color, invader.isBoss);
                                 
                                 if (!invader.isBoss) {
@@ -442,7 +449,7 @@ export default function SkillsMap() {
 
                 state.invaders.forEach(invader => {
                     if (invader.isAlive) {
-                        const color = categoryColors[invader.category] || '#ccff00';
+                        const color = categoryColors[invader.category] || '#a2e872';
                         const pixelSize = invader.isBoss ? (width < 400 ? 3 : 6) : (width < 400 ? 2 : 3);
                         const sprite = invader.isBoss ? (isBossFrame1 ? bossSpriteFrame1 : bossSpriteFrame2) : (isFrame1 ? invaderSpriteFrame1 : invaderSpriteFrame2);
                         const spriteWidth = sprite[0].length * pixelSize;
@@ -484,7 +491,7 @@ export default function SkillsMap() {
                     const playerPixelSize = 6;
                     const pSpriteWidth = 5 * playerPixelSize;
                     const pSpriteX = state.player.x + state.player.width/2 - pSpriteWidth/2;
-                    drawPixelSprite(ctx, playerSprite, pSpriteX, state.player.y, playerPixelSize, isStunned ? '#ff0055' : '#ccff00');
+                    drawPixelSprite(ctx, playerSprite, pSpriteX, state.player.y, playerPixelSize, isStunned ? '#ff0055' : '#a2e872');
                 }
 
                 const bossInvader = state.invaders.find(i => i.isBoss && i.isAlive);
@@ -536,10 +543,11 @@ export default function SkillsMap() {
             if (requestRef.current) cancelAnimationFrame(requestRef.current);
             window.removeEventListener('keydown', handleKeyDown);
             window.removeEventListener('keyup', handleKeyUp);
-            window.removeEventListener('resize', resize);
             canvas.removeEventListener('mousemove', handleMouseMove);
             canvas.removeEventListener('mousedown', handleMouseDown);
             canvas.removeEventListener('touchmove', handleTouchMove);
+            canvas.removeEventListener('touchstart', handleTouchStart);
+            resizeObserver.disconnect();
         };
     }, [gameState]);
 
@@ -566,9 +574,9 @@ export default function SkillsMap() {
                     {/* Game Container */}
                     <div 
                         ref={containerRef}
-                        className="flex-[2] h-[50vh] sm:h-[60vh] max-h-[700px] min-h-[320px] sm:min-h-[450px] border border-dark-600 rounded-[2rem] bg-dark-950 overflow-hidden relative shadow-[0_0_50px_rgba(0,0,0,0.5)] cursor-crosshair"
+                        className="flex-[2] h-[420px] sm:h-[60vh] max-h-[700px] min-h-[420px] sm:min-h-[450px] border border-dark-600 rounded-[2rem] bg-dark-950 overflow-hidden relative shadow-[0_0_50px_rgba(0,0,0,0.5)] cursor-crosshair"
                     >
-                        <canvas ref={canvasRef} className="block touch-none" />
+                        <canvas ref={canvasRef} className="block h-full w-full touch-none" />
 
                         {gameState === 'playing' && currentLevel <= 3 && (
                             <div className="absolute top-4 left-4 text-neon font-mono text-sm font-bold opacity-70">
@@ -634,7 +642,7 @@ export default function SkillsMap() {
                         {gameState === 'won' && (
                             <div className="absolute inset-0 bg-dark-950/70 flex flex-col items-center justify-center text-center p-4 sm:p-8 border-4 border-neon/50">
                                 <div className="animate-bounce">
-                                    <h3 className="text-neon text-4xl sm:text-6xl md:text-7xl mb-4 sm:mb-6 tracking-[0.05em] sm:tracking-[0.1em] uppercase" style={{ fontFamily: '"Courier New", monospace', fontWeight: '900', textShadow: '4px 4px 0px #334400, 0 0 20px #ccff00' }}>
+                                    <h3 className="text-neon text-4xl sm:text-6xl md:text-7xl mb-4 sm:mb-6 tracking-[0.05em] sm:tracking-[0.1em] uppercase" style={{ fontFamily: '"Courier New", monospace', fontWeight: '900', textShadow: '4px 4px 0px #334400, 0 0 20px #a2e872' }}>
                                         YOU WINNER
                                     </h3>
                                 </div>
@@ -666,7 +674,7 @@ export default function SkillsMap() {
                         <div className="flex flex-wrap gap-2 mb-8">
                             {skillsList.map(skill => {
                                 const isUnlocked = unlockedSkills.includes(skill.name);
-                                const color = categoryColors[skill.category] || '#ccff00';
+                                const color = categoryColors[skill.category] || '#a2e872';
                                 
                                 return (
                                     <div 

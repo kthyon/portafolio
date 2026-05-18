@@ -44,7 +44,7 @@ export default function Experience() {
                             transition={{ duration: 0.6, delay: index * 0.2 }}
                             className="mb-12 relative pl-8 md:pl-12"
                         >
-                            <span className="absolute -left-[9px] top-2 w-4 h-4 rounded-full bg-dark-900 border-2 border-neon shadow-[0_0_10px_rgba(76,141,255,0.5)]" />
+                            <span className="absolute -left-[9px] top-2 w-4 h-4 rounded-full bg-dark-900 border-2 border-neon shadow-[0_0_10px_rgba(162,232,114,0.5)]" />
                             
                             <div className="flex flex-col md:flex-row md:items-center justify-between mb-4">
                                 <div>
