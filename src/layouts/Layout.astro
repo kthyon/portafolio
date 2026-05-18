@@ -1,0 +1,175 @@
+---
+interface Props {
+	title?: string;
+	description?: string;
+}
+
+const defaultTitle = "Cristian Alvarado | Ingeniero de Software";
+const defaultDescription = "Portfolio de Cris Alvarado, Senior Software Engineer en Mercado Libre especializado en Arquitectura Cloud, Sistemas Distribuidos y Ecosistemas de IA Agentic.";
+const url = "https://crisalvarado-ingeniero.com/";
+
+const { title = defaultTitle, description = defaultDescription } = Astro.props;
+
+// Schema Markup for AI and SEO (JSON-LD)
+const schema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Person",
+      "name": "Cris Alvarado",
+      "jobTitle": "Senior Software Engineer",
+      "worksFor": {
+        "@type": "Organization",
+        "name": "Mercado Libre"
+      },
+      "url": url,
+      "sameAs": [
+        "https://www.linkedin.com/in/crisalvarado-ingeniero/"
+      ],
+      "knowsAbout": [
+        "Cloud Native Architecture",
+        "Distributed Systems",
+        "Go",
+        "Rust",
+        "Python",
+        "React",
+        "Agentic AI Ecosystems",
+        "LLMs",
+        "Kubernetes",
+        "AWS",
+        "System Design"
+      ]
+    },
+    {
+      "@type": "ProfilePage",
+      "name": title,
+      "description": description,
+      "url": url
+    }
+  ]
+};
+---
+
+<!doctype html>
+<html lang="es">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="description" content={description} />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="canonical" href={url} />
+		<meta name="generator" content={Astro.generator} />
+		<title>{title}</title>
+
+		<!-- Open Graph / Facebook -->
+		<meta property="og:type" content="profile" />
+		<meta property="og:url" content={url} />
+		<meta property="og:title" content={title} />
+		<meta property="og:description" content={description} />
+		<meta property="og:image" content={`${url}avatar.png`} />
+
+		<!-- Twitter -->
+		<meta property="twitter:card" content="summary_large_image" />
+		<meta property="twitter:url" content={url} />
+		<meta property="twitter:title" content={title} />
+		<meta property="twitter:description" content={description} />
+		<meta property="twitter:image" content={`${url}avatar.png`} />
+
+		<!-- JSON-LD (AIOps & SEO) -->
+		<script type="application/ld+json" set:html={JSON.stringify(schema)} />
+
+		<!-- Google Fonts -->
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;700&family=Michroma&display=swap"
+			rel="stylesheet"
+		/>
+	</head>
+	<body
+		class="bg-dark-900 text-white font-sans antialiased overflow-x-hidden selection:bg-neon selection:text-dark-900 relative min-h-screen"
+	>
+		<!-- Grain / Noise Overlay to prevent banding/pixelation -->
+		<div class="fixed inset-0 z-[100] opacity-[0.03] pointer-events-none bg-[url('https://grainy-gradients.vercel.app/noise.svg')]"></div>
+
+		<slot />
+	</body>
+</html>
+
+<style is:global>
+	:root {
+		--accent: 76, 141, 255;
+		--cyan: 99, 230, 255;
+		--coral: 255, 122, 89;
+		--lilac: 157, 183, 255;
+	}
+	html {
+		scroll-behavior: smooth;
+		background: #070707;
+	}
+	body {
+		min-height: 100vh;
+		background:
+			radial-gradient(circle at top left, rgba(76,141,255,0.08), transparent 28%),
+			radial-gradient(circle at 72% 88%, rgba(255,122,89,0.04), transparent 24%),
+			linear-gradient(180deg, #070707 0%, #030303 100%);
+	}
+	body::before {
+		content: "";
+		position: fixed;
+		inset: 0;
+		pointer-events: none;
+		background:
+			linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+			linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+		background-size: 54px 54px;
+		mask-image: radial-gradient(circle at center, black, transparent 82%);
+		opacity: .35;
+	}
+	@keyframes skills-rail {
+		from {
+			transform: translateX(0);
+		}
+		to {
+			transform: translateX(-50%);
+		}
+	}
+	.glass-surface {
+		background: linear-gradient(145deg, rgba(255,255,255,0.09), rgba(255,255,255,0.035));
+		border: 1px solid rgba(255,255,255,0.14);
+		box-shadow:
+			inset 0 1px 0 rgba(255,255,255,0.08),
+			0 18px 60px rgba(0,0,0,0.24);
+		backdrop-filter: blur(18px) saturate(140%);
+		-webkit-backdrop-filter: blur(18px) saturate(140%);
+	}
+	.glass-soft {
+		background: linear-gradient(145deg, rgba(255,255,255,0.06), rgba(255,255,255,0.025));
+		border: 1px solid rgba(255,255,255,0.1);
+		box-shadow: inset 0 1px 0 rgba(255,255,255,0.06);
+		backdrop-filter: blur(14px) saturate(135%);
+		-webkit-backdrop-filter: blur(14px) saturate(135%);
+	}
+	.glass-chip {
+		background: rgba(255,255,255,0.055);
+		border: 1px solid rgba(255,255,255,0.12);
+		box-shadow: inset 0 1px 0 rgba(255,255,255,0.08);
+		backdrop-filter: blur(12px) saturate(135%);
+		-webkit-backdrop-filter: blur(12px) saturate(135%);
+	}
+	
+	/* Custom scrollbar */
+	::-webkit-scrollbar {
+		width: 8px;
+	}
+	::-webkit-scrollbar-track {
+		background: #070707;
+	}
+	::-webkit-scrollbar-thumb {
+		background: #2a2a2a;
+		border-radius: 4px;
+	}
+	::-webkit-scrollbar-thumb:hover {
+		background: #4c8dff;
+	}
+</style>

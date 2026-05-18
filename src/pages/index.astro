@@ -1,0 +1,22 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Hero from "../components/Hero";
+import SkillsMarquee from "../components/SkillsMarquee";
+import BentoGrid from "../components/BentoGrid";
+import Metrics from "../components/Metrics";
+import Experience from "../components/Experience";
+import SkillsMap from "../components/SkillsMap";
+import Navbar from "../components/Navbar";
+---
+
+<Layout title="Cristian Alvarado | Ingeniero de Software">
+    <Navbar client:load />
+    <main class="relative">
+        <Hero client:load />
+        <SkillsMarquee client:visible />
+        <Experience client:visible />
+        <BentoGrid client:visible />
+        <SkillsMap client:visible />
+        <Metrics client:visible />
+    </main>
+</Layout>
