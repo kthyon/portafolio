@@ -14,7 +14,7 @@ const baseUrl = import.meta.env.BASE_URL.endsWith('/')
     ? import.meta.env.BASE_URL
     : `${import.meta.env.BASE_URL}/`;
 
-function Portrait() {
+function Portrait({ scrollYProgress }: { scrollYProgress: any }) {
     const ref = useRef<HTMLDivElement>(null);
     const x = useMotionValue(0);
     const y = useMotionValue(0);
@@ -27,6 +27,13 @@ function Portrait() {
     const glowX = useTransform(mouseX, [-0.5, 0.5], ['78%', '22%']);
     const glowY = useTransform(mouseY, [-0.5, 0.5], ['75%', '25%']);
     const glare = useMotionTemplate`radial-gradient(circle at ${glowX} ${glowY}, rgba(0,0,0,0.18), transparent 45%)`;
+    const imageY = useTransform(scrollYProgress, [0, 1], ['0%', '-12%']);
+    const imageScale = useTransform(scrollYProgress, [0, 1], [1, 1.075]);
+    const imageOpacity = useTransform(scrollYProgress, [0, 0.78, 1], [1, 1, 0.72]);
+    const haloY = useTransform(scrollYProgress, [0, 1], ['6%', '24%']);
+    const haloScale = useTransform(scrollYProgress, [0, 1], [1, 1.22]);
+    const foregroundY = useTransform(scrollYProgress, [0, 1], ['0%', '-18%']);
+    const foregroundOpacity = useTransform(scrollYProgress, [0, 0.65, 1], [0.18, 0.32, 0]);
 
     const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
         if (!ref.current) return;
@@ -51,10 +58,11 @@ function Portrait() {
             <motion.div
                 style={{
                     x: useTransform(mouseX, [-0.5, 0.5], [-10, 10]),
-                    y: useTransform(mouseY, [-0.5, 0.5], [-8, 8]),
+                    y: haloY,
+                    scale: haloScale,
                     transform: 'translateZ(8px)',
                 }}
-                className="absolute inset-x-12 bottom-0 h-[72%] rounded-full bg-[radial-gradient(circle_at_50%_32%,rgba(255,255,255,0.12),rgba(255,255,255,0.04)_28%,rgba(0,0,0,0.16)_52%,transparent_76%)] blur-3xl"
+                className="absolute inset-x-8 bottom-0 h-[76%] rounded-full bg-[radial-gradient(circle_at_50%_32%,rgba(162,232,114,0.16),rgba(255,255,255,0.08)_28%,rgba(0,0,0,0.2)_52%,transparent_78%)] blur-3xl"
             />
 
             <motion.img
@@ -63,7 +71,9 @@ function Portrait() {
                 className="absolute left-1/2 top-0 h-full w-auto max-w-none -translate-x-1/2 object-contain object-top [filter:brightness(1.01)_contrast(1.08)_saturate(1.03)]"
                 style={{
                     x: useTransform(mouseX, [-0.5, 0.5], [-6, 6]),
-                    y: useTransform(mouseY, [-0.5, 0.5], [-4, 4]),
+                    y: imageY,
+                    scale: imageScale,
+                    opacity: imageOpacity,
                     transform: 'translateZ(72px)',
                     WebkitMaskImage:
                         'radial-gradient(120% 72% at 50% 18%, black 58%, transparent 100%), radial-gradient(105% 46% at 50% 100%, transparent 0%, transparent 28%, black 60%)',
@@ -77,6 +87,8 @@ function Portrait() {
             <motion.div
                 style={{
                     background: glare,
+                    y: foregroundY,
+                    opacity: foregroundOpacity,
                     transform: 'translateZ(100px)',
                     WebkitMaskImage:
                         'radial-gradient(120% 72% at 50% 18%, black 58%, transparent 100%), radial-gradient(105% 46% at 50% 100%, transparent 0%, transparent 28%, black 60%)',
@@ -86,6 +98,15 @@ function Portrait() {
                     maskComposite: 'intersect',
                 }}
                 className="absolute inset-0 pointer-events-none"
+            />
+
+            <motion.div
+                style={{
+                    y: foregroundY,
+                    opacity: foregroundOpacity,
+                    transform: 'translateZ(132px)',
+                }}
+                className="pointer-events-none absolute left-1/2 top-[18%] h-[58%] w-[78%] -translate-x-1/2 rounded-full border border-neon/20 blur-[1px]"
             />
         </motion.div>
     );
@@ -104,7 +125,8 @@ export default function Hero() {
     const yBackground = useTransform(scrollYProgress, [0, 1], ['0%', '70%']);
     const yText = useTransform(scrollYProgress, [0, 1], ['0%', '22%']);
     const yTags = useTransform(scrollYProgress, [0, 1], ['0%', '32%']);
-    const yPortrait = useTransform(scrollYProgress, [0, 1], ['0%', '42%']);
+    const yPortrait = useTransform(scrollYProgress, [0, 1], ['0%', '18%']);
+    const portraitX = useTransform(scrollYProgress, [0, 1], ['0%', '-9%']);
 
     return (
         <section
@@ -163,12 +185,10 @@ export default function Hero() {
 
                     <div className="flex flex-wrap items-center gap-4">
                         <a
-                            href="https://www.linkedin.com/in/crisalvarado-ingeniero/"
-                            target="_blank"
-                            rel="noopener noreferrer"
+                            href="#experience"
                             className="group inline-flex items-center justify-center gap-2 border-b border-neon py-2 font-bold text-white"
                         >
-                            Initialize Project
+                            {hero.primaryCta}
                             <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
                         </a>
 
@@ -180,6 +200,17 @@ export default function Hero() {
                         >
                             {hero.secondaryCta}
                         </a>
+                    </div>
+
+                    <div className="mt-8 flex flex-wrap gap-2.5">
+                        {hero.hiringSignals.map((signal) => (
+                            <span
+                                key={signal}
+                                className="glass-chip rounded-full px-3 py-1.5 text-[11px] font-mono uppercase tracking-[0.16em] text-white/70"
+                            >
+                                {signal}
+                            </span>
+                        ))}
                     </div>
 
                     <motion.div
@@ -198,13 +229,13 @@ export default function Hero() {
                 </motion.div>
 
                 <motion.div
-                    style={{ y: yPortrait }}
+                    style={{ y: yPortrait, x: portraitX }}
                     initial={{ opacity: 0, scale: 0.96 }}
                     animate={{ opacity: 1, scale: 1 }}
                     transition={{ duration: 1, delay: 0.15 }}
                     className="relative z-20 flex h-[540px] items-center justify-center lg:-ml-[36.5rem] lg:h-[720px]"
                 >
-                    <Portrait />
+                    <Portrait scrollYProgress={scrollYProgress} />
                 </motion.div>
             </div>
         </section>

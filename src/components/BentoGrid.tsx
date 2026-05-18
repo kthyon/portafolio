@@ -9,21 +9,24 @@ const BentoCard = ({ children, className, title, icon: Icon, delay = 0, variant 
     const y = useTransform(scrollYProgress, [0, 1], [0, yOffsets[index % 3] || 0]);
 
     return (
-        <motion.div style={{ y }} className={`${className} min-h-[220px] sm:min-h-[260px]`}>
+        <motion.div style={{ y }} className={`${className} min-h-0 sm:min-h-[260px]`}>
             <motion.div
                 initial={{ opacity: 0, y: 24 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay }}
-                className={`h-full flex flex-col relative rounded-[2rem] p-6 sm:p-8 overflow-hidden group transition-all duration-300 hover:-translate-y-1 ${
+                className={`h-full flex flex-col relative rounded-[2rem] p-5 sm:p-8 overflow-hidden group transition-all duration-300 hover:-translate-y-1 ${
                     isNeon
                         ? 'bg-neon text-dark-900'
                         : 'glass-surface hover:border-white/25'
                 }`}
             >
+                <div className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100">
+                    <div className="absolute -left-1/3 top-0 h-full w-1/3 rotate-12 bg-gradient-to-r from-transparent via-white/10 to-transparent blur-sm transition-transform duration-700 group-hover:translate-x-[420%]" />
+                </div>
                 {/* Icon container */}
                 {Icon && (
-                    <div className={`mb-6 w-11 h-11 rounded-2xl flex items-center justify-center shrink-0 transition-all duration-300 ${
+                    <div className={`mb-4 sm:mb-6 w-10 h-10 sm:w-11 sm:h-11 rounded-2xl flex items-center justify-center shrink-0 transition-all duration-300 ${
                         isNeon
                             ? 'bg-dark-900/10 border border-dark-900/10'
                             : 'glass-chip group-hover:bg-neon/10 group-hover:border-neon/25'
@@ -33,7 +36,7 @@ const BentoCard = ({ children, className, title, icon: Icon, delay = 0, variant 
                 )}
 
                 {/* Title + description */}
-                <div className="flex-1">
+                <div className="sm:flex-1">
                     <h3 className={`font-display font-bold mb-3 leading-tight ${
                         isNeon ? 'text-dark-900 text-xl' : 'text-white text-lg'
                     }`}>
@@ -48,7 +51,7 @@ const BentoCard = ({ children, className, title, icon: Icon, delay = 0, variant 
 
                 {/* Bottom arrow */}
                 {!isNeon && (
-                    <div className="mt-6 flex items-center gap-1 text-neon text-[10px] font-bold tracking-[0.2em] uppercase opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+                    <div className="mt-4 sm:mt-6 hidden sm:flex items-center gap-1 text-neon text-[10px] font-bold tracking-[0.2em] uppercase opacity-0 group-hover:opacity-100 transition-opacity duration-200">
                         Explorar <ArrowUpRight className="w-3 h-3" />
                     </div>
                 )}

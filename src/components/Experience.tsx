@@ -14,6 +14,7 @@ export default function Experience() {
 
     const y = useTransform(scrollYProgress, [0, 1], ["20%", "-20%"]);
     const opacity = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0, 1, 1, 0]);
+    const lineScale = useTransform(scrollYProgress, [0.08, 0.85], [0, 1]);
 
     if (!experience) return null;
 
@@ -36,6 +37,11 @@ export default function Experience() {
 
                 <ol className="relative ml-3 sm:ml-6">
                     <span className="absolute bottom-5 left-[15px] top-5 w-px bg-white/10" aria-hidden="true" />
+                    <motion.span
+                        className="absolute left-[15px] top-5 w-px origin-top bg-gradient-to-b from-neon via-neon/45 to-transparent"
+                        style={{ bottom: 20, scaleY: lineScale }}
+                        aria-hidden="true"
+                    />
                     {experience.jobs.map((job: any, index: number) => (
                         <motion.li
                             key={index}

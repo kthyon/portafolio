@@ -1,17 +1,31 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 import { useSiteConfig } from '../data/site';
 
-const AdvantageItem = ({ value, label, sublabel, icon: Icon }: any) => (
-    <div className="glass-surface flex flex-col p-8 rounded-[2rem] hover:border-neon transition-colors relative overflow-hidden">
-        <div className="flex items-center justify-between mb-6">
-            <span className="text-4xl md:text-5xl font-display font-bold font-outline text-transparent bg-clip-text bg-gradient-to-br from-white to-gray-500" style={{ WebkitTextStroke: '1px rgba(255,255,255,0.3)' }}>
+const AdvantageItem = ({ value, label, sublabel, icon: Icon, index }: any) => (
+    <motion.div
+        initial={{ opacity: 0, y: 28, filter: 'blur(10px)' }}
+        whileInView={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+        viewport={{ once: true, margin: '-80px' }}
+        transition={{ duration: 0.65, delay: index * 0.08, ease: 'easeOut' }}
+        className="glass-surface flex min-h-[210px] flex-col justify-between p-7 pr-16 rounded-[2rem] hover:border-neon transition-colors relative overflow-hidden group"
+    >
+        <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/25 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+        {Icon && (
+            <span className="glass-chip absolute right-6 bottom-6 flex h-10 w-10 shrink-0 items-center justify-center rounded-2xl">
+                <Icon className="h-5 w-5 text-neon" />
+            </span>
+        )}
+        <div className="mb-6">
+            <span className="block text-4xl md:text-[2.65rem] xl:text-[2.75rem] font-display font-bold leading-none text-white">
                 {value}
             </span>
-            {Icon && <Icon className="w-6 h-6 text-neon" />}
         </div>
-        <span className="text-white text-lg font-display font-bold mb-2 block">{label}</span>
-        <span className="text-gray-400 text-sm leading-snug">{sublabel}</span>
-    </div>
+        <div>
+            <span className="text-white text-base lg:text-lg font-display font-bold mb-2 block leading-tight">{label}</span>
+            <span className="text-gray-400 text-sm leading-relaxed">{sublabel}</span>
+        </div>
+    </motion.div>
 );
 
 export default function Metrics() {
@@ -31,6 +45,7 @@ export default function Metrics() {
                             label={item.label}
                             sublabel={item.sublabel}
                             icon={item.icon}
+                            index={index}
                         />
                     ))}
                 </div>

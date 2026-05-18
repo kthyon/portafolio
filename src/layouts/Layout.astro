@@ -5,8 +5,8 @@ interface Props {
 }
 
 const defaultTitle = "Cristian Alvarado | Ingeniero de Software";
-const defaultDescription = "Portfolio de Cris Alvarado, Senior Software Engineer en Mercado Libre especializado en Arquitectura Cloud, Sistemas Distribuidos y Ecosistemas de IA Agentic.";
-const url = "https://crisalvarado-ingeniero.com/";
+const defaultDescription = "Portfolio de Cris Alvarado, Staff Software Engineer especializado en sistemas distribuidos, herramientas de IA en producción y platform engineering.";
+const url = "https://kthyon.github.io/portafolio/";
 
 const { title = defaultTitle, description = defaultDescription } = Astro.props;
 const baseUrl = import.meta.env.BASE_URL.endsWith('/')
@@ -20,26 +20,29 @@ const schema = {
     {
       "@type": "Person",
       "name": "Cris Alvarado",
-      "jobTitle": "Senior Software Engineer",
+      "jobTitle": "Staff Software Engineer",
       "worksFor": {
         "@type": "Organization",
         "name": "Mercado Libre"
       },
       "url": url,
       "sameAs": [
-        "https://www.linkedin.com/in/crisalvarado-ingeniero/"
+        "https://www.linkedin.com/in/crisalvarado-ingeniero/",
+        "https://github.com/kthyon"
       ],
       "knowsAbout": [
-        "Cloud Native Architecture",
         "Distributed Systems",
+        "Production AI Systems",
+        "MCP Servers",
+        "AI Agents",
+        "Platform Engineering",
+        "Cloud Native Architecture",
         "Go",
-        "Rust",
         "Python",
-        "React",
-        "Agentic AI Ecosystems",
-        "LLMs",
         "Kubernetes",
         "AWS",
+        "Terraform",
+        "Observability",
         "System Design"
       ]
     },
@@ -128,6 +131,31 @@ const schema = {
 		background-size: 54px 54px;
 		mask-image: radial-gradient(circle at center, black, transparent 82%);
 		opacity: .35;
+	}
+	body::after {
+		content: "";
+		position: fixed;
+		inset: 0;
+		pointer-events: none;
+		z-index: 99;
+		background: linear-gradient(180deg, transparent, rgba(162,232,114,0.035), transparent);
+		height: 28vh;
+		animation: page-scan 9s linear infinite;
+		opacity: .35;
+	}
+	@keyframes page-scan {
+		from {
+			transform: translateY(-35vh);
+		}
+		to {
+			transform: translateY(120vh);
+		}
+	}
+	@media (prefers-reduced-motion: reduce) {
+		body::after {
+			animation: none;
+			display: none;
+		}
 	}
 	@keyframes skills-rail {
 		from {

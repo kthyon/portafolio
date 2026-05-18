@@ -9,7 +9,7 @@ const es = {
     navbar: {
         logoText: "CRIS ALVARADO",
         logoInitials: "CA",
-        github: "https://github.com/",
+        github: "https://github.com/kthyon",
         links: [
             { name: 'Expertise', href: '/#services' },
             { name: 'Impacto', href: '/#advantages' },
@@ -21,8 +21,13 @@ const es = {
     about: {
         title: "Acerca de Mí",
         role: "Staff Software Engineer · Sistemas Distribuidos · IA en Producción",
-        description: "Más de 10 años construyendo software para entornos de alta escala, con experiencia reciente en sistemas distribuidos y herramientas de IA llevadas a producción.",
-        background: "Soy Staff Software Engineer en Mercado Libre, donde trabajo en sistemas que sirven a más de 200 millones de usuarios en producción. Mi experiencia se concentra en backend, sistemas distribuidos y herramientas de IA para ingeniería: he desarrollado MCP servers en producción, agentes autónomos con memoria persistente y Skills para Claude Code que automatizan flujos de trabajo técnicos. También soy docente universitario, una práctica que refuerza mi capacidad de explicar decisiones complejas, acompañar a otros ingenieros y trabajar con equipos de distintos niveles.",
+        sections: {
+            profile: "Perfil técnico",
+            workingStyle: "Cómo trabajo",
+            practiceAreas: "Áreas de práctica"
+        },
+        description: "Diseño sistemas backend y herramientas de IA que deben funcionar en producción, escalar con confianza y ser comprensibles para los equipos que los operan.",
+        background: "Soy Staff Software Engineer en Mercado Libre, trabajando en el ecosistema de Mercado Pago dentro de un entorno fintech y marketplace de escala regional. Mi foco está en sistemas distribuidos, backend de alta concurrencia y tooling de IA aplicado a flujos reales de ingeniería, incluyendo MCP servers, agentes y automatizaciones técnicas. Me interesa especialmente el punto donde arquitectura, operación y developer experience se encuentran: sistemas que no solo funcionan, sino que pueden evolucionar con claridad.",
         skills: {
             technical: [
                 { title: "Sistemas de IA en Producción", description: "MCP servers, agentes y automatizaciones de IA integradas con flujos reales de ingeniería." },
@@ -33,9 +38,9 @@ const es = {
                 { title: "Observabilidad", description: "Monitoreo distribuido, trazabilidad y definición de SLOs/SLAs." }
             ],
             soft: [
-                { title: "Liderazgo Técnico", description: "Participación en decisiones de arquitectura y acompañamiento técnico de equipos." },
-                { title: "Comunicación", description: "Explicación clara de temas técnicos a perfiles técnicos y no técnicos." },
-                { title: "Mentoría", description: "Experiencia docente y acompañamiento a ingenieros en crecimiento." }
+                { title: "Arquitectura con contexto", description: "Tomo decisiones técnicas conectando confiabilidad, operación y necesidades del producto." },
+                { title: "Colaboración distribuida", description: "Trabajo con equipos de distintos países e idiomas manteniendo claridad técnica y alineación." },
+                { title: "Comunicación técnica", description: "La docencia y la mentoría fortalecen mi forma de explicar decisiones complejas y acompañar a otros ingenieros." }
             ]
         }
     },
@@ -47,8 +52,9 @@ const es = {
             subtitle: "AI SYSTEMS · DISTRIBUTED SYSTEMS · PLATFORM ENGINEERING"
         },
         description: "Construyo sistemas distribuidos y herramientas de IA que operan en producción a gran escala.",
-        primaryCta: "Ver Expertise",
+        primaryCta: "Ver experiencia",
         secondaryCta: "Descargar CV",
+        hiringSignals: ['Abierto a roles remotos', 'Experiencia con equipos distribuidos', 'Senior / Staff scope'],
         trustIndicators: ['MCP Servers · Producción', 'AI Agents & Skills', 'Mercado Libre Scale', 'Distributed Systems']
     },
     bentoGrid: {
@@ -101,9 +107,9 @@ const es = {
         title: "Impacto",
         items: [
             { value: "10+", label: "Años construyendo software", sublabel: "Backend, producto y sistemas de alta escala", icon: CalendarRange },
-            { value: "200M+", label: "Usuarios en la plataforma", sublabel: "Sistemas operando en el ecosistema de Mercado Libre", icon: Users },
-            { value: "3", label: "Países en colaboración", sublabel: "Trabajo con equipos de Brasil, Argentina y México", icon: Globe2 },
-            { value: "2", label: "Roles docentes", sublabel: "Formación en IA e ingeniería de software", icon: GraduationCap }
+            { value: "200M+", label: "Fintech + marketplace", sublabel: "Ecosistema Mercado Libre / Mercado Pago", icon: Users },
+            { value: "LATAM", label: "Equipos distribuidos", sublabel: "Colaboración regional y multilingüe", icon: Globe2 },
+            { value: "2K", label: "Horas formando talento", sublabel: "Docencia, mentoría e IA aplicada", icon: GraduationCap }
         ]
     },
     experience: {
@@ -160,7 +166,7 @@ const en = {
     navbar: {
         logoText: "CRIS ALVARADO",
         logoInitials: "CA",
-        github: "https://github.com/",
+        github: "https://github.com/kthyon",
         links: [
             { name: 'Expertise', href: '/#services' },
             { name: 'Impact', href: '/#advantages' },
@@ -172,8 +178,13 @@ const en = {
     about: {
         title: "About Me",
         role: "Staff Software Engineer · Distributed Systems · Production AI",
-        description: "10+ years building software for high-scale environments, with recent experience in distributed systems and AI tooling shipped to production.",
-        background: "I'm a Staff Software Engineer at Mercado Libre, where I work on systems serving more than 200 million users in production. My experience centers on backend engineering, distributed systems, and AI tooling for engineers: I have built production MCP servers, autonomous agents with persistent memory, and Claude Code Skills that automate technical workflows. I also teach at the university level, which strengthens my ability to explain complex decisions, support other engineers, and work across teams with different levels of technical depth.",
+        sections: {
+            profile: "Technical profile",
+            workingStyle: "How I work",
+            practiceAreas: "Practice areas"
+        },
+        description: "I design backend systems and AI tooling that must work in production, scale with confidence, and remain understandable to the teams operating them.",
+        background: "I'm a Staff Software Engineer at Mercado Libre, working in the Mercado Pago ecosystem within a regional-scale fintech and marketplace environment. My focus is distributed systems, high-concurrency backend engineering, and AI tooling applied to real engineering workflows, including MCP servers, agents, and technical automations. I'm especially interested in the point where architecture, operations, and developer experience meet: systems that not only work, but can evolve with clarity.",
         skills: {
             technical: [
                 { title: "Production AI Systems", description: "MCP servers, agents, and AI automations integrated into real engineering workflows." },
@@ -184,9 +195,9 @@ const en = {
                 { title: "Observability", description: "Distributed monitoring, tracing, and SLO/SLA definition." }
             ],
             soft: [
-                { title: "Technical Leadership", description: "Contributing to architecture decisions and supporting teams through technical guidance." },
-                { title: "Communication", description: "Explaining technical topics clearly to both technical and non-technical audiences." },
-                { title: "Mentoring", description: "Teaching experience and support for engineers in growth." }
+                { title: "Architecture with context", description: "I connect reliability, operations, and product needs when making technical decisions." },
+                { title: "Distributed collaboration", description: "I work across countries and languages while keeping technical alignment clear." },
+                { title: "Technical communication", description: "Teaching and mentoring strengthen how I explain complex decisions and support other engineers." }
             ]
         }
     },
@@ -198,8 +209,9 @@ const en = {
             subtitle: "AI SYSTEMS · DISTRIBUTED SYSTEMS · PLATFORM ENGINEERING"
         },
         description: "Building distributed systems and AI tooling that operate in production at large scale.",
-        primaryCta: "View Expertise",
+        primaryCta: "View experience",
         secondaryCta: "Download CV",
+        hiringSignals: ['Open to remote roles', 'Distributed-team experience', 'Senior / Staff scope'],
         trustIndicators: ['MCP Servers · Production', 'AI Agents & Skills', 'Mercado Libre Scale', 'Distributed Systems']
     },
     bentoGrid: {
@@ -252,9 +264,9 @@ const en = {
         title: "Impact",
         items: [
             { value: "10+", label: "Years building software", sublabel: "Backend, product, and high-scale systems", icon: CalendarRange },
-            { value: "200M+", label: "Users on the platform", sublabel: "Systems operating within Mercado Libre's ecosystem", icon: Users },
-            { value: "3", label: "Countries in collaboration", sublabel: "Work with teams across Brazil, Argentina, and Mexico", icon: Globe2 },
-            { value: "2", label: "Teaching roles", sublabel: "Training in AI and software engineering", icon: GraduationCap }
+            { value: "200M+", label: "Fintech + marketplace", sublabel: "Mercado Libre / Mercado Pago ecosystem", icon: Users },
+            { value: "LATAM", label: "Distributed teams", sublabel: "Regional, multilingual collaboration", icon: Globe2 },
+            { value: "2K", label: "Hours training talent", sublabel: "Teaching, mentoring, and applied AI", icon: GraduationCap }
         ]
     },
     experience: {
