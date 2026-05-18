@@ -19,9 +19,9 @@ export default function Metrics() {
     const { title, items } = config.metrics;
 
     return (
-        <section className="py-32 px-4 border-t border-white/5" id="advantages">
+        <section className="py-20 sm:py-28 lg:py-32 px-4 border-t border-white/5" id="advantages">
             <div className="max-w-7xl mx-auto">
-                <h2 className="text-3xl font-display font-bold text-white mb-16">{title}</h2>
+                <h2 className="text-3xl font-display font-bold text-white mb-10 sm:mb-16">{title}</h2>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
                     {items.map((item, index) => (

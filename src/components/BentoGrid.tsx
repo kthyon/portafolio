@@ -9,13 +9,13 @@ const BentoCard = ({ children, className, title, icon: Icon, delay = 0, variant 
     const y = useTransform(scrollYProgress, [0, 1], [0, yOffsets[index % 3] || 0]);
 
     return (
-        <motion.div style={{ y }} className={`${className} min-h-[260px]`}>
+        <motion.div style={{ y }} className={`${className} min-h-[220px] sm:min-h-[260px]`}>
             <motion.div
                 initial={{ opacity: 0, y: 24 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay }}
-                className={`h-full flex flex-col relative rounded-[2rem] p-8 overflow-hidden group transition-all duration-300 hover:-translate-y-1 ${
+                className={`h-full flex flex-col relative rounded-[2rem] p-6 sm:p-8 overflow-hidden group transition-all duration-300 hover:-translate-y-1 ${
                     isNeon
                         ? 'bg-neon text-dark-900'
                         : 'glass-surface hover:border-white/25'
@@ -58,10 +58,6 @@ const BentoCard = ({ children, className, title, icon: Icon, delay = 0, variant 
                     <div className="absolute inset-0 bg-gradient-to-br from-neon/[0.03] via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none" />
                 )}
 
-                {/* Neon corner accent */}
-                {isNeon && (
-                    <div className="absolute bottom-0 right-0 w-32 h-32 bg-dark-900/10 pointer-events-none" />
-                )}
             </motion.div>
         </motion.div>
     );
@@ -77,13 +73,13 @@ export default function BentoGrid() {
     });
 
     return (
-        <section ref={ref} className="py-32 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto" id="services">
-            <div className="mb-16">
+        <section ref={ref} className="py-20 sm:py-28 lg:py-32 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto" id="services">
+            <div className="mb-10 sm:mb-16">
                 <div className="flex items-center gap-3 mb-6">
                     <div className="h-px bg-neon w-10" />
                     <span className="text-neon font-display text-xs tracking-[0.25em] uppercase">{title}</span>
                 </div>
-                <h2 className="text-3xl md:text-5xl font-display font-bold text-white max-w-3xl">{subtitle}</h2>
+                <h2 className="text-2xl sm:text-3xl md:text-5xl font-display font-bold leading-tight text-white max-w-3xl">{subtitle}</h2>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">

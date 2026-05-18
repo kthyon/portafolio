@@ -552,7 +552,7 @@ export default function SkillsMap() {
     }, [gameState]);
 
     return (
-        <section className="py-24 px-4 sm:px-6 lg:px-8 bg-dark-950 relative overflow-hidden font-sans border-t border-dark-800">
+        <section className="py-20 sm:py-24 px-4 sm:px-6 lg:px-8 bg-dark-950 relative overflow-hidden font-sans border-t border-dark-800">
             <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-neon/5 via-dark-900/10 to-dark-950 pointer-events-none" />
 
             <div className="max-w-7xl mx-auto mb-8 relative z-10 text-center">
