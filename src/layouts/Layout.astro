@@ -4,6 +4,8 @@ interface Props {
 	description?: string;
 }
 
+import ProfileBot from "../components/ProfileBot";
+
 const defaultTitle = "Cristian Alvarado | Ingeniero de Software";
 const defaultDescription = "Portfolio de Cris Alvarado, Staff Software Engineer especializado en sistemas distribuidos, herramientas de IA en producción y platform engineering.";
 const url = "https://kthyon.github.io/portafolio/";
@@ -64,6 +66,8 @@ const schema = {
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href={`${baseUrl}favicon.svg`} />
 		<link rel="canonical" href={url} />
+		<link rel="sitemap" type="application/xml" href={`${baseUrl}sitemap.xml`} />
+		<link rel="alternate" type="text/markdown" title="AI-readable profile" href={`${baseUrl}llms.txt`} />
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
 
@@ -99,6 +103,7 @@ const schema = {
 		<div class="fixed inset-0 z-[100] opacity-[0.03] pointer-events-none bg-[url('https://grainy-gradients.vercel.app/noise.svg')]"></div>
 
 		<slot />
+		<ProfileBot client:idle />
 	</body>
 </html>
 

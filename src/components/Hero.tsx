@@ -193,9 +193,7 @@ export default function Hero() {
                         </a>
 
                         <a
-                            href={`${baseUrl}CV_Cris_Alvarado.pdf`}
-                            target="_blank"
-                            rel="noopener noreferrer"
+                            href={`${baseUrl}about`}
                             className="inline-block border-b border-white/15 py-2 font-medium text-white/65 transition-all hover:border-white/40 hover:text-white"
                         >
                             {hero.secondaryCta}

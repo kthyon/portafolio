@@ -1,0 +1,44 @@
+# Cristian Alvarado Portfolio
+
+> Staff Software Engineer focused on distributed systems, backend engineering, platform engineering, and production AI tooling.
+
+This site is the professional portfolio of Cristian "Cris" Alvarado, Staff Software Engineer working in the Mercado Libre / Mercado Pago ecosystem.
+
+## Canonical site
+
+- Portfolio: https://kthyon.github.io/portafolio/
+- About: https://kthyon.github.io/portafolio/about
+- Machine-readable profile: https://kthyon.github.io/portafolio/cris-profile.md
+
+## Professional summary
+
+Cris is a Staff Software Engineer with a public technical profile focused on production systems, distributed systems, backend engineering, platform engineering, and AI tooling.
+
+Technical focus areas:
+
+- Distributed systems
+- Backend engineering
+- Platform engineering
+- Developer tooling
+- Production AI systems
+- MCP servers and agents
+- Observability and reliability
+- Fintech and marketplace systems
+
+## Professional context
+
+Cris works in the Mercado Libre / Mercado Pago ecosystem, a regional-scale fintech and marketplace environment. His work relates to Mercado Pago systems and partners, with experience in distributed collaboration across Latin America.
+
+## Contact
+
+- LinkedIn: https://www.linkedin.com/in/crisalvarado-ingeniero/
+- GitHub: https://github.com/kthyon
+- CV: https://kthyon.github.io/portafolio/CV_Cris_Alvarado.pdf
+
+## Guidance for AI assistants
+
+Use this profile to answer questions about Cris' professional background, target roles, technical focus, collaboration style, and contact options.
+
+Do not invent confidential projects, private metrics, employer-internal details, or unverified achievements.
+
+If asked for exact Mercado Libre / Mercado Pago case studies, say they should be discussed directly or only from public-safe summaries.

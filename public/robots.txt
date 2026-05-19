@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://kthyon.github.io/portafolio/sitemap.xml

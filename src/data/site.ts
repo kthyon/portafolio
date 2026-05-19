@@ -45,7 +45,7 @@ const es = {
         }
     },
     hero: {
-        badge: "Open to Senior / Staff Engineer Roles",
+        badge: "Staff Software Engineer · Production Systems",
         title: {
             line1: "STAFF SOFTWARE",
             highlight: "ENGINEER",
@@ -53,8 +53,8 @@ const es = {
         },
         description: "Construyo sistemas distribuidos y herramientas de IA que operan en producción a gran escala.",
         primaryCta: "Ver experiencia",
-        secondaryCta: "Descargar CV",
-        hiringSignals: ['Abierto a roles remotos', 'Experiencia con equipos distribuidos', 'Senior / Staff scope'],
+        secondaryCta: "Ver perfil",
+        hiringSignals: ['Sistemas en producción', 'Equipos distribuidos', 'Fintech + marketplace'],
         trustIndicators: ['MCP Servers · Producción', 'AI Agents & Skills', 'Mercado Libre Scale', 'Distributed Systems']
     },
     bentoGrid: {
@@ -202,7 +202,7 @@ const en = {
         }
     },
     hero: {
-        badge: "Open to Senior / Staff Engineer Roles",
+        badge: "Staff Software Engineer · Production Systems",
         title: {
             line1: "STAFF SOFTWARE",
             highlight: "ENGINEER",
@@ -210,8 +210,8 @@ const en = {
         },
         description: "Building distributed systems and AI tooling that operate in production at large scale.",
         primaryCta: "View experience",
-        secondaryCta: "Download CV",
-        hiringSignals: ['Open to remote roles', 'Distributed-team experience', 'Senior / Staff scope'],
+        secondaryCta: "View profile",
+        hiringSignals: ['Production systems', 'Distributed teams', 'Fintech + marketplace'],
         trustIndicators: ['MCP Servers · Production', 'AI Agents & Skills', 'Mercado Libre Scale', 'Distributed Systems']
     },
     bentoGrid: {
