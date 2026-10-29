@@ -3,6 +3,7 @@ import {motion} from 'framer-motion';
 import {ArrowDown, ArrowRight, ArrowUpRight, Code2, Cpu, GraduationCap, MapPin, Users} from 'lucide-react';
 import {useSiteConfig} from '../data/site';
 import {baseUrl, localHref} from './links';
+import ParticleField from './ParticleField';
 
 function SkillCard({title,description}:{title:string;description:string}) {
  return <motion.div initial={false} whileHover={{y:-3}} className="glass-soft p-6 rounded-[1.6rem] hover:border-neon/35 transition-colors">
@@ -13,7 +14,7 @@ function SkillCard({title,description}:{title:string;description:string}) {
 export default function About({initialLanguage='en'}:{initialLanguage?:'en'|'es'}){
  const {config,lang}=useSiteConfig(initialLanguage);const a=config.about;
  return <article className="pt-32 sm:pt-40 pb-20 px-5 sm:px-8 overflow-hidden"><div className="max-w-7xl mx-auto">
-  <header className="relative grid lg:grid-cols-[1fr_270px] gap-10 lg:gap-16 items-center mb-16 lg:mb-24">
+  <header className="relative grid lg:grid-cols-[1fr_360px] gap-10 lg:gap-16 items-center mb-16 lg:mb-24">
    <div className="pointer-events-none absolute -top-20 -left-24 w-80 h-80 bg-neon/5 rounded-full blur-3xl" aria-hidden="true"/>
    <div className="relative"><p className="eyebrow mb-6">{config.navbar.links[2].name} · Cristian Alvarado</p>
     <h1 className="text-4xl sm:text-5xl xl:text-6xl font-display font-bold leading-[1.2] tracking-tight mb-7">{a.title}</h1>
@@ -22,16 +23,12 @@ export default function About({initialLanguage='en'}:{initialLanguage?:'en'|'es'
     <div className="flex flex-wrap gap-3 mt-7 text-xs text-gray-300"><span className="glass-chip rounded-full px-4 py-2 inline-flex items-center gap-2"><MapPin size={14} className="text-neon"/>{a.location}</span><span className="glass-chip rounded-full px-4 py-2">{a.language}</span></div>
     <div className="flex flex-wrap gap-3 mt-8"><a className="primary-link" href="#engineering-cases">{a.caseTitle}<ArrowDown size={16}/></a><a className="secondary-link" href={`${baseUrl}CV_Cris_Alvarado.pdf`} download>{config.contact.resume}<ArrowUpRight size={16}/></a></div>
    </div>
-   <div className="hidden lg:block relative p-3 glass-surface rounded-[2.5rem] rotate-2 hover:rotate-0 transition-transform duration-500">
-    <div className="absolute -inset-5 rounded-[3rem] border border-neon/10 -rotate-6 pointer-events-none"/>
-    <img src={`${baseUrl}avatar.webp`} width="510" height="680" alt="Cristian Alvarado, Software Engineer" className="rounded-[1.8rem] w-full aspect-[3/4] object-cover"/>
-    <p className="text-xs font-mono text-neon px-3 pt-4 pb-2">Software Engineer · Mercado Libre</p>
-   </div>
+   <ParticleField initialLanguage={lang}/>
   </header>
 
   <div className="grid lg:grid-cols-12 gap-10 lg:gap-14 mb-20">
    <div className="lg:col-span-7 space-y-10">
-    <section><h2 className="text-2xl font-display font-bold mb-6 flex items-center gap-3"><Cpu className="text-neon shrink-0" size={23}/>{a.sections.profile}</h2><div className="glass-surface p-7 sm:p-9 rounded-[2rem]"><p className="text-gray-300 leading-[1.9]">{a.background}</p></div></section>
+    <section><h2 className="text-2xl font-display font-bold mb-6 flex items-center gap-3"><Cpu className="text-neon shrink-0" size={23}/>{a.sections.profile}</h2><div className="glass-surface p-7 sm:p-9 rounded-[2rem] space-y-5">{a.background.split('\n\n').map(paragraph=><p key={paragraph} className="text-gray-300 leading-[1.9]">{paragraph}</p>)}</div></section>
     <section><h2 className="text-2xl font-display font-bold mb-6 flex items-center gap-3"><Users className="text-neon shrink-0" size={23}/>{a.sections.workingStyle}</h2><div className="grid sm:grid-cols-2 gap-4">{a.skills.soft.map(s=><SkillCard key={s.title} {...s}/>)}</div></section>
    </div>
    <section className="lg:col-span-5"><h2 className="text-2xl font-display font-bold mb-6 flex items-center gap-3"><Code2 className="text-neon shrink-0" size={23}/>{a.sections.practiceAreas}</h2><div className="space-y-4">{a.skills.technical.map(s=><SkillCard key={s.title} {...s}/>)}</div></section>

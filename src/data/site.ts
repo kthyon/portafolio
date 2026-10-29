@@ -57,8 +57,8 @@ const en = {
       "workingStyle": "How I work",
       "practiceAreas": "Areas of practice"
     },
-    "description": "I turn operational friction into tools people can use, from enterprise workflows to interactive learning.",
-    "background": "I’m Cristian Alvarado, a Software Engineer at Mercado Libre working on Mercado Pago solutions across Latin America. I build AI agents, MCP servers, reusable skills and workflow automation alongside backend and product engineering. My experience includes internal user onboarding with Jira and Slack, and collaborative work on Mercado Pago landing pages and Developers sites. I also teach Machine Learning and Deep Learning at Universidad Tecnológica de Pereira (UTP), where I created Nexo to connect concepts, interactive exploration and practical Python exercises.",
+    "description": "I build software and AI tools for product and engineering teams.",
+    "background": "At Mercado Libre, I develop software for Mercado Pago across Latin America. My work spans backend services, web interfaces and tools that automate internal team workflows.\n\nI have built AI agents, MCP servers and reusable components that integrate tools and services into engineering workflows. I have also collaborated with the team on Mercado Pago landing pages and Developers sites.\n\nI teach Machine Learning and Deep Learning at Universidad Tecnológica de Pereira. To support my classes, I created Nexo, a tool that combines interactive explanations with practical Python exercises.",
     "skills": {
       "technical": [
         {
@@ -575,8 +575,8 @@ const es = {
       "workingStyle": "Cómo trabajo",
       "practiceAreas": "Áreas de práctica"
     },
-    "description": "Convierto fricciones operativas en herramientas útiles: desde flujos empresariales hasta aprendizaje interactivo.",
-    "background": "Soy Cristian Alvarado, Software Engineer en Mercado Libre, y trabajo en soluciones de Mercado Pago para Latinoamérica. Construyo agentes de IA, servidores MCP, skills reutilizables y automatizaciones, junto con desarrollo backend y de producto. Mi experiencia incluye altas de usuarios internos con Jira y Slack, y colaboración en las landing pages y sitios de Developers de Mercado Pago. También enseño Machine Learning y Deep Learning en la Universidad Tecnológica de Pereira (UTP), donde creé Nexo para conectar conceptos, exploración interactiva y ejercicios prácticos en Python.",
+    "description": "Desarrollo software y herramientas de IA para equipos de producto e ingeniería.",
+    "background": "En Mercado Libre desarrollo software para Mercado Pago en Latinoamérica. Mi trabajo abarca servicios backend, interfaces web y herramientas que automatizan procesos para equipos internos.\n\nHe construido agentes de IA, servidores MCP y componentes reutilizables para integrar herramientas y servicios en los flujos de ingeniería. También he colaborado con el equipo en las landing pages y los sitios de Developers de Mercado Pago.\n\nAdemás, enseño Machine Learning y Deep Learning en la Universidad Tecnológica de Pereira. Para apoyar mis clases creé Nexo, una herramienta que combina explicaciones interactivas con ejercicios prácticos en Python.",
     "skills": {
       "technical": [
         {

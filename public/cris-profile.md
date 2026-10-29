@@ -1,6 +1,10 @@
 # Cristian Alvarado — Software Engineer
 
-I’m Cristian Alvarado, a Software Engineer at Mercado Libre working on Mercado Pago solutions across Latin America. I build AI agents, MCP servers, reusable skills and workflow automation alongside backend and product engineering. My experience includes internal user onboarding with Jira and Slack, and collaborative work on Mercado Pago landing pages and Developers sites. I also teach Machine Learning and Deep Learning at Universidad Tecnológica de Pereira (UTP), where I created Nexo to connect concepts, interactive exploration and practical Python exercises.
+At Mercado Libre, I develop software for Mercado Pago across Latin America. My work spans backend services, web interfaces and tools that automate internal team workflows.
+
+I have built AI agents, MCP servers and reusable components that integrate tools and services into engineering workflows. I have also collaborated with the team on Mercado Pago landing pages and Developers sites.
+
+I teach Machine Learning and Deep Learning at Universidad Tecnológica de Pereira. To support my classes, I created Nexo, a tool that combines interactive explanations with practical Python exercises.
 
 ## Location and languages
 Pereira, Colombia · Remote from Colombia. Spanish · English B2 (upper-intermediate English).

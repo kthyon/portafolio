@@ -47,6 +47,10 @@ for(const lang of ['en','es'])for(const suffix of ['','about/','work/nexo/','lab
  assert.ok(html.includes('ProfileBot'),route+': profile assistant retained');
  if(suffix==='')assert.match(html,/Skills Invaders|Skills <span[^>]*>Invaders/);
  if(suffix==='about/'){
+  const about=html.match(/<article\b[\s\S]*?<\/article>/)?.[0];
+  assert.ok(about?.includes('<canvas'),route+': abstract particle graphic');
+  assert.doesNotMatch(about,/<img\b/,route+': portrait replaced');
+  for(const paragraph of (lang==='en'?en:es).about.background.split('\n\n'))assert.ok(html.includes(paragraph),route+': complete introduction');
   for(const token of ['Jira','Slack','Developers','2022-12-14','Nexo','B2'])assert.ok(html.includes(token),route+': visible fact '+token);
   const headings=[...html.matchAll(/<h([1-6])\b/g)].map(m=>Number(m[1]));
   headings.forEach((level,i)=>assert.ok(i===0||level<=headings[i-1]+1,route+': heading hierarchy'));
