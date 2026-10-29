@@ -6,7 +6,7 @@
     "dev": "astro dev",
     "start": "astro dev",
     "build": "node scripts/generate_profile.mjs && astro check && astro build",
-    "check:content": "node scripts/check_content.mjs",
+    "check:content": "node scripts/check_content.mjs && node scripts/check_diagram.mjs",
     "preview": "astro preview",
     "astro": "astro",
     "build:cv": "node scripts/generate_cv.js"

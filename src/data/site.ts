@@ -308,9 +308,9 @@ const en = {
     "cards": [
       {
         "id": "ai-tooling",
-        "category": "Mercado Pago · Applied AI",
-        "title": "AI tooling for engineering",
-        "summary": "Agents, MCP servers and reusable skills connected to technical workflows.",
+        "category": "Applied AI · Developer tooling",
+        "title": "AI workflow integration",
+        "summary": "Agents, MCP servers and reusable skills connecting tools, services and engineering workflows.",
         "scope": "Applied AI and developer tooling in the Mercado Pago engineering environment.",
         "contribution": [
           "Build agents, MCP integrations, reusable skills and workflow automation.",
@@ -331,9 +331,9 @@ const en = {
       },
       {
         "id": "user-onboarding",
-        "category": "Mercado Pago · Workflow automation",
-        "title": "Connecting internal user onboarding across LATAM",
-        "summary": "Onboarding specific users into internal applications required connecting requests, communication and application access.",
+        "category": "Enterprise integrations",
+        "title": "Cross-system user provisioning",
+        "summary": "Automation connecting Jira requests, Slack communication and internal application onboarding across Latin America.",
         "scope": "A connected operational flow for handling those user provisioning requests across the tools involved.",
         "contribution": [
           "I built an automation that connects Jira requests, Slack and internal application onboarding for users across Latin America."
@@ -353,9 +353,9 @@ const en = {
       },
       {
         "id": "developer-experiences",
-        "category": "Mercado Pago · Collaborative delivery",
-        "title": "Web experiences for Mercado Pago and Developers",
-        "summary": "Product and developer audiences need clear web entry points into a regional payments ecosystem.",
+        "category": "Backend · Developer experience",
+        "title": "Fintech product engineering",
+        "summary": "Backend and interface development, including collaborative work on Mercado Pago and Developers web experiences.",
         "scope": "Contributions to the web experiences delivered by the team for product and developer audiences.",
         "contribution": [
           "I collaborated with the team on Mercado Pago landing pages and Developers sites, contributing to their web implementation."
@@ -819,9 +819,9 @@ const es = {
     "cards": [
       {
         "id": "ai-tooling",
-        "category": "Mercado Pago · IA aplicada",
-        "title": "Herramientas de IA para ingeniería",
-        "summary": "Agentes, servidores MCP y skills reutilizables conectados con flujos técnicos.",
+        "category": "IA aplicada · Developer tooling",
+        "title": "Integración de agentes y herramientas",
+        "summary": "Agentes, servidores MCP y skills para coordinar herramientas y servicios dentro de los flujos de ingeniería.",
         "scope": "IA aplicada y herramientas para desarrolladores en el entorno de ingeniería de Mercado Pago.",
         "contribution": [
           "Construyo agentes, integraciones MCP, skills reutilizables y automatización de flujos.",
@@ -842,9 +842,9 @@ const es = {
       },
       {
         "id": "user-onboarding",
-        "category": "Mercado Pago · Automatización de flujos",
-        "title": "Altas de usuarios internos conectadas en LATAM",
-        "summary": "Dar de alta usuarios específicos en aplicaciones internas requería conectar solicitudes, comunicación y acceso a las aplicaciones.",
+        "category": "Integraciones empresariales",
+        "title": "Orquestación de altas internas",
+        "summary": "Automatización que conecta solicitudes en Jira, comunicación en Slack y altas en aplicaciones internas para Latinoamérica.",
         "scope": "Un flujo operativo conectado para gestionar estas solicitudes de alta entre las herramientas involucradas.",
         "contribution": [
           "Construí una automatización que conecta solicitudes de Jira, Slack y las altas en aplicaciones internas para usuarios de Latinoamérica."
@@ -864,9 +864,9 @@ const es = {
       },
       {
         "id": "developer-experiences",
-        "category": "Mercado Pago · Desarrollo colaborativo",
-        "title": "Experiencias web para Mercado Pago y Developers",
-        "summary": "Los públicos de producto y de desarrollo necesitan puntos de entrada claros al ecosistema regional de pagos.",
+        "category": "Backend · Developer experience",
+        "title": "Ingeniería de producto en fintech",
+        "summary": "Desarrollo de backend e interfaces, con colaboración en las experiencias web de Mercado Pago y Developers.",
         "scope": "Aportes a las experiencias web entregadas por el equipo para los públicos de producto y de desarrollo.",
         "contribution": [
           "Colaboré con el equipo en las landing pages y los sitios de Developers de Mercado Pago, contribuyendo a su implementación web."

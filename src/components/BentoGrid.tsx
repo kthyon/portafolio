@@ -1,3 +1,4 @@
+import ScrollReveal from './ScrollReveal';
 import React, { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { ArrowUpRight, Cpu, Bot, GitMerge, Database, Shield } from 'lucide-react';
@@ -12,11 +13,7 @@ const BentoCard = ({ children, className, title, icon: Icon, delay = 0, variant 
 
     return (
         <motion.div style={{ y }} className={`${className} min-h-0 sm:min-h-[260px]`}>
-            <motion.div
-                initial={false}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay }}
+            <ScrollReveal preset="depth" delay={index*.055}
                 className={`h-full flex flex-col relative group transition-all duration-300 hover:-translate-y-1 ${
                     isNeon
                         ? 'folder-panel folder-neon text-dark-900'
@@ -60,7 +57,7 @@ const BentoCard = ({ children, className, title, icon: Icon, delay = 0, variant 
                     <div className="absolute inset-0 bg-gradient-to-br from-neon/[0.03] via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none" />
                 )}
 
-            </motion.div>
+            </ScrollReveal>
         </motion.div>
     );
 };
@@ -76,13 +73,13 @@ export default function BentoGrid({initialLanguage = 'en'}: {initialLanguage?: '
 
     return (
         <section ref={ref} className="py-20 sm:py-28 lg:py-32 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto" id="services">
-            <div className="mb-10 sm:mb-16">
+            <ScrollReveal preset="title" className="mb-10 sm:mb-16">
                 <div className="flex items-center gap-3 mb-6">
                     <div className="h-px bg-neon w-10" />
                     <span className="text-neon font-display text-xs tracking-[0.25em] uppercase">{title}</span>
                 </div>
                 <h2 className="text-2xl sm:text-3xl md:text-5xl font-display font-bold leading-tight text-white max-w-3xl">{subtitle}</h2>
-            </div>
+            </ScrollReveal>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                 {cards.map((card, index) => (
