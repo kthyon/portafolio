@@ -189,7 +189,8 @@ const schema={'@context':'https://schema.org','@graph':graph};
  .experience-node:last-child .career-copy { border: 0; padding-bottom: 0; }
  @keyframes career-float { 0%,100% {transform:translateY(0)} 50% {transform:translateY(-4px)} }
  @media(min-width:640px) { .folder-panel { padding: 4.5rem 2.25rem 2.25rem; } .folder-tab { left: 1.75rem; } .experience-node { padding-left: 6.5rem; padding-bottom: 4.5rem; } .career-node-orbit { width: 52px; height: 52px; } .career-track {left:25px;top:30px} .career-connector {left:52px;top:30px;width:36px} }
- @media(prefers-reduced-motion:reduce) { .career-node-orbit { animation: none !important; } .nexo-flow-pulse { display: none; } .nexo-floating-layer { transform: none !important; } .scroll-scene { opacity: 1 !important; transform: none !important; filter: none !important; } }
+  @media(max-width:639px) { .nexo-diagram-labels { font-size:18px; } }
+  @media(prefers-reduced-motion:reduce) { .career-node-orbit { animation: none !important; } .nexo-flow-pulse { display: none; } .nexo-floating-layer { transform: none !important; } .scroll-scene { opacity: 1 !important; transform: none !important; filter: none !important; } }
  section[id], article[id], footer[id] { scroll-margin-top: 7rem; }
  :focus-visible { outline: 2px solid #A2E872; outline-offset: 5px; }
  .skip-link { position: fixed; top: 1rem; left: 1rem; z-index: 200; background: #A2E872; color: #070707; padding: .8rem; transform: translateY(-200%); }
