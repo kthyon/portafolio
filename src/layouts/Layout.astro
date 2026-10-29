@@ -18,7 +18,7 @@ const {title,description}=metadata[lang][page];
 const image=root+(page==='nexo'?'projects/nexo-overview.png':'social-card.png');
 const imageWidth=page==='nexo'?'1440':'1200',imageHeight=page==='nexo'?'1000':'630';
 const personId=root+'#person', websiteId=root+'#website', nexoId=root+'work/nexo/#application';
-const person={'@type':'Person','@id':personId,name:'Cristian Alvarado',alternateName:'Cris Alvarado',jobTitle:'Software Engineer',url:root,image:root+'avatar.webp',worksFor:{'@type':'Organization',name:'Mercado Libre'},alumniOf:{'@type':'EducationalOrganization',name:config.about.education.institution},hasCredential:{'@type':'EducationalOccupationalCredential',name:config.about.education.name,credentialCategory:'Degree',recognizedBy:{'@type':'EducationalOrganization',name:config.about.education.institution}},sameAs:['https://www.linkedin.com/in/crisalvarado-ingeniero/','https://github.com/kthyon'],knowsAbout:['AI agents','Model Context Protocol','Developer tooling','Enterprise integrations','Backend engineering','Go','TypeScript','React','Machine Learning','Deep Learning'],knowsLanguage:[{'@type':'Language',name:'Spanish',alternateName:'es'},{'@type':'Language',name:'English',alternateName:'en'}]};
+const person={'@type':'Person','@id':personId,name:'Cristian Alvarado',alternateName:'Cris Alvarado',jobTitle:'Software Engineer',url:root,image:root+'portrait-cris-grain.webp',worksFor:{'@type':'Organization',name:'Mercado Libre'},alumniOf:{'@type':'EducationalOrganization',name:config.about.education.institution},hasCredential:{'@type':'EducationalOccupationalCredential',name:config.about.education.name,credentialCategory:'Degree',recognizedBy:{'@type':'EducationalOrganization',name:config.about.education.institution}},sameAs:['https://www.linkedin.com/in/crisalvarado-ingeniero/','https://github.com/kthyon'],knowsAbout:['AI agents','Model Context Protocol','Developer tooling','Enterprise integrations','Backend engineering','Go','TypeScript','React','Machine Learning','Deep Learning'],knowsLanguage:[{'@type':'Language',name:'Spanish',alternateName:'es'},{'@type':'Language',name:'English',alternateName:'en'}]};
 const website={'@type':'WebSite','@id':websiteId,name:'Cristian Alvarado - Engineering Portfolio',alternateName:'Cris Alvarado',url:root,inLanguage:['en','es'],publisher:{'@id':personId}};
 const webPage={'@type':page==='home'||page==='about'?'ProfilePage':'WebPage','@id':url+'#webpage',url,name:title,description,inLanguage:lang,isPartOf:{'@id':websiteId},mainEntity:{'@id':page==='nexo'?nexoId:personId},author:{'@id':personId}};
 const graph:any[]=[person,website,webPage];
@@ -67,9 +67,12 @@ const schema={'@context':'https://schema.org','@graph':graph};
 	body {
 		min-height: 100vh;
 		background:
-			radial-gradient(circle at top left, rgba(var(--brand-accent-rgb),0.045), transparent 28%),
-			radial-gradient(circle at 72% 88%, rgba(var(--brand-slate-rgb),0.05), transparent 24%),
+			url('/grain.svg'),
+			radial-gradient(circle at top left, rgba(var(--brand-accent-rgb),0.012), transparent 28%),
+			radial-gradient(circle at 72% 88%, rgba(var(--brand-slate-rgb),0.018), transparent 24%),
 			linear-gradient(180deg, var(--brand-background) 0%, var(--brand-deep) 100%);
+		background-size: 256px 256px, auto, auto, auto;
+		background-blend-mode: screen, normal, normal, normal;
 	}
 	body::before {
 		content: "";
@@ -81,7 +84,7 @@ const schema={'@context':'https://schema.org','@graph':graph};
 			linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
 		background-size: 54px 54px;
 		mask-image: radial-gradient(circle at center, black, transparent 82%);
-		opacity: .35;
+		opacity: .14;
 	}
 	body::after {
 		content: "";

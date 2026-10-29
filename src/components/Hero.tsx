@@ -62,13 +62,15 @@ function Portrait({ scrollYProgress }: { scrollYProgress: any }) {
                     scale: haloScale,
                     transform: 'translateZ(8px)',
                 }}
-                className="absolute inset-x-8 bottom-0 h-[76%] rounded-full bg-[radial-gradient(circle_at_50%_32%,rgba(211,215,218,0.16),rgba(255,255,255,0.08)_28%,rgba(0,0,0,0.2)_52%,transparent_78%)] blur-3xl"
+                className="absolute inset-x-8 bottom-0 h-[76%] rounded-full bg-[radial-gradient(circle_at_50%_32%,rgba(211,215,218,0.025),rgba(255,255,255,0.025)_28%,rgba(0,0,0,0.2)_52%,transparent_78%)] blur-3xl"
             />
 
             <motion.img
-                src={`${baseUrl}avatar.webp`}
-                alt="Cristian Alvarado" width={510} height={680} fetchPriority="high"
-                className="absolute left-1/2 top-0 h-full w-auto max-w-none -translate-x-1/2 object-contain object-top [filter:brightness(1.01)_contrast(1.08)_saturate(1.03)]"
+                src={`${baseUrl}portrait-cris-grain.webp`}
+                srcSet={`${baseUrl}portrait-cris-grain-960.webp 960w, ${baseUrl}portrait-cris-grain.webp 1600w`}
+                sizes="(max-width: 639px) 600px, (max-width: 1023px) 745px, 820px"
+                alt="Cristian Alvarado" width={1600} height={2400} fetchPriority="high"
+                className="portrait-grain absolute left-[20%] -top-[48%] h-[180%] w-auto max-w-none -translate-x-1/2 object-contain"
                 style={{
                     x: useTransform(mouseX, [-0.5, 0.5], [-6, 6]),
                     y: imageY,
@@ -76,10 +78,10 @@ function Portrait({ scrollYProgress }: { scrollYProgress: any }) {
                     opacity: imageOpacity,
                     transform: 'translateZ(72px)',
                     WebkitMaskImage:
-                        'radial-gradient(120% 72% at 50% 18%, black 58%, transparent 100%), radial-gradient(105% 46% at 50% 100%, transparent 0%, transparent 28%, black 60%)',
+                        'linear-gradient(90deg, transparent 0%, black 16%, black 82%, transparent 100%), linear-gradient(180deg, transparent 8%, black 22%, black 66%, transparent 84%)',
                     WebkitMaskComposite: 'source-in',
                     maskImage:
-                        'radial-gradient(120% 72% at 50% 18%, black 58%, transparent 100%), radial-gradient(105% 46% at 50% 100%, transparent 0%, transparent 28%, black 60%)',
+                        'linear-gradient(90deg, transparent 0%, black 16%, black 82%, transparent 100%), linear-gradient(180deg, transparent 8%, black 22%, black 66%, transparent 84%)',
                     maskComposite: 'intersect',
                 }}
             />
@@ -106,7 +108,7 @@ function Portrait({ scrollYProgress }: { scrollYProgress: any }) {
                     opacity: foregroundOpacity,
                     transform: 'translateZ(132px)',
                 }}
-                className="pointer-events-none absolute left-1/2 top-[18%] h-[58%] w-[78%] -translate-x-1/2 rounded-full border border-neon/20 blur-[1px]"
+                className="pointer-events-none absolute left-1/2 top-[18%] h-[58%] w-[78%] -translate-x-1/2 rounded-full border border-white/[0.025] blur-[1px]"
             />
         </motion.div>
     );
@@ -148,6 +150,7 @@ export default function Hero({initialLanguage = 'en'}: {initialLanguage?: 'en' |
                 </aside>
 
                 <motion.div
+                    className="relative z-30"
                     style={{ y: yText }}
                     initial={false}
                     animate={{ opacity: 1, x: 0 }}
