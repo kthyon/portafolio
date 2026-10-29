@@ -38,8 +38,8 @@ export const PORTS=Object.freeze({
 });
 // Each lead exits a visible face before descending. Risers stay outside device volumes.
 export const ROUTES=Object.freeze([
- {id:'records',from:'browser',to:'api',kind:'data',color:'#b6ef8d',points:/** @type {Point3[]} */([PORTS.uiApi,[100,-25,71],[100,-25,3],[100,94,3],[44,94,3],[44,94,23],PORTS.apiUi])},
- {id:'persistence',from:'api',to:'database',kind:'data',color:'#a6beff',points:/** @type {Point3[]} */([PORTS.apiDb,[120,50,23],[120,50,3],[120,-19,3],[201,-19,3],[201,-19,35],PORTS.dbApi])},
- {id:'notebooks',from:'browser',to:'notebook',kind:'external-link',color:'#a6beff',points:/** @type {Point3[]} */([PORTS.uiNotebook,[-105,19,71],[-105,19,3],[-100,19,3],[-100,156,3],[-100,156,10],PORTS.notebookUi])},
- {id:'local-state',from:'browser',to:'local',kind:'data',color:'#b6ef8d',points:/** @type {Point3[]} */([PORTS.uiLocal,[-32,19,71],[-32,19,3],[-32,166,3],[6,166,3],[6,166,8],PORTS.localUi])}
+ {id:'records',from:'browser',to:'api',kind:'data',color:'#D0D9DF',points:/** @type {Point3[]} */([PORTS.uiApi,[100,-25,71],[100,-25,3],[100,94,3],[44,94,3],[44,94,23],PORTS.apiUi])},
+ {id:'persistence',from:'api',to:'database',kind:'data',color:'#A6BECE',points:/** @type {Point3[]} */([PORTS.apiDb,[120,50,23],[120,50,3],[120,-19,3],[201,-19,3],[201,-19,35],PORTS.dbApi])},
+ {id:'notebooks',from:'browser',to:'notebook',kind:'external-link',color:'#A6BECE',points:/** @type {Point3[]} */([PORTS.uiNotebook,[-105,19,71],[-105,19,3],[-100,19,3],[-100,156,3],[-100,156,10],PORTS.notebookUi])},
+ {id:'local-state',from:'browser',to:'local',kind:'data',color:'#D0D9DF',points:/** @type {Point3[]} */([PORTS.uiLocal,[-32,19,71],[-32,19,3],[-32,166,3],[6,166,3],[6,166,8],PORTS.localUi])}
 ]);

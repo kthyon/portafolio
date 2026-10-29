@@ -43,7 +43,7 @@ export default function About({initialLanguage='en'}:{initialLanguage?:'en'|'es'
      <div><p className="eyebrow mb-5">0{i+1} / {c.category}</p><h3 className="text-2xl sm:text-3xl font-semibold leading-tight mb-6">{c.title}</h3><div className="meta-line mb-7 text-[11px] text-gray-400">{c.tags.map(t=><span key={t}>{t}</span>)}</div><a href={localHref(c.href,lang)} className="text-link">{c.link}<ArrowUpRight className="shrink-0" size={16}/></a></div>
      <dl className="space-y-5">{[[a.problemLabel,c.problem],[a.contributionLabel,c.contribution],[a.resultLabel,c.result]].map(([label,value])=><div key={label}><dt className="text-xs text-neon uppercase tracking-widest mb-2 font-mono">{label}</dt><dd className="text-gray-300 text-sm leading-[1.8]">{value}</dd></div>)}</dl>
     </div>
-    <ol className="relative grid sm:grid-cols-3 gap-5 mt-8 pt-6 border-t border-white/10">{c.flow.map((step,j)=><li key={step} className="text-xs text-gray-300 flex items-center justify-between gap-3 leading-relaxed"><span><span className="text-neon/70 mr-2 font-mono">{j+1}.</span>{step}</span>{j<2&&<ArrowRight size={14} className="text-neon/50 shrink-0" aria-hidden="true"/>}</li>)}</ol>
+    <ol className="relative grid sm:grid-cols-3 gap-5 mt-8 pt-6 border-t border-white/10">{c.flow.map((step,j)=><li key={step} className="text-xs text-gray-300 flex items-center justify-between gap-3 leading-relaxed"><span><span className="text-accent-light mr-2 font-mono">{j+1}.</span>{step}</span>{j<2&&<ArrowRight size={14} className="text-neon/50 shrink-0" aria-hidden="true"/>}</li>)}</ol>
    </ScrollReveal>)}</div>
   </section>
 

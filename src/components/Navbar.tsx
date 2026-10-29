@@ -41,7 +41,7 @@ export default function Navbar({initialLanguage = 'en', pagePath = ''}: {initial
                     <a href={languageBase(lang)} className="flex items-center gap-3 group">
                         <div className="relative flex h-11 w-11 items-center justify-center">
                             <svg viewBox="0 0 48 48" className="h-11 w-11" aria-hidden="true">
-                                <circle cx="24" cy="24" r="20.5" fill="none" stroke="rgba(162,232,114,0.5)" strokeWidth="1.5" />
+                                <circle cx="24" cy="24" r="20.5" fill="none" stroke="rgba(211,215,218,0.5)" strokeWidth="1.5" />
                                 <path d="M16 28.5V19.5H26.5" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" />
                                 <path d="M31.5 19.5L36 28.5M29.2 25H34.1" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" />
                             </svg>

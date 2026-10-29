@@ -1,3 +1,4 @@
+import {palette} from './src/data/palette.mjs';
 /** @type {import('tailwindcss').Config} */
 export default {
 	content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
@@ -5,15 +6,20 @@ export default {
 		extend: {
 			colors: {
 				dark: {
-					950: '#030303',
-					900: '#070707',
-					800: '#111111',
-					700: '#242424',
+					950: palette.deep,
+					900: palette.background,
+					800: palette.surface,
+					700: palette.raised,
+					600: '#4C5054',
 				},
-				neon: '#A2E872',
-				cyan: '#A2E872',
-				coral: '#FF7A59',
-				lilac: '#9DB7FF',
+				white: palette.ink,
+				gray: palette.gray,
+				accent: palette.accent,
+				'accent-light': palette.accentLight,
+				neon: palette.accent,
+				cyan: palette.slate,
+				coral: palette.rose,
+				lilac: '#AEB6BE',
 			},
 			fontFamily: {
 				sans: ['Inter', 'sans-serif'],

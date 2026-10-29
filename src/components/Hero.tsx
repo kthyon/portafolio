@@ -62,7 +62,7 @@ function Portrait({ scrollYProgress }: { scrollYProgress: any }) {
                     scale: haloScale,
                     transform: 'translateZ(8px)',
                 }}
-                className="absolute inset-x-8 bottom-0 h-[76%] rounded-full bg-[radial-gradient(circle_at_50%_32%,rgba(162,232,114,0.16),rgba(255,255,255,0.08)_28%,rgba(0,0,0,0.2)_52%,transparent_78%)] blur-3xl"
+                className="absolute inset-x-8 bottom-0 h-[76%] rounded-full bg-[radial-gradient(circle_at_50%_32%,rgba(211,215,218,0.16),rgba(255,255,255,0.08)_28%,rgba(0,0,0,0.2)_52%,transparent_78%)] blur-3xl"
             />
 
             <motion.img

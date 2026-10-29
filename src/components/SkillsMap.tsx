@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Play, RotateCcw, Gamepad2, MousePointerClick, Skull, Trophy } from 'lucide-react';
+import {palette} from '../data/palette.mjs';
 
 const skillsList = [
     // Level 1: Frontend & Design (Easy)
@@ -23,13 +24,13 @@ const skillsList = [
 ];
 
 const categoryColors: Record<string, string> = {
-    frontend: '#ff00ff', // Magenta
-    backend: '#00ffff', // Cyan
-    infra: '#3b82f6',   // Blue
-    ai: '#a2e872',      // Accent Green
-    core: '#f97316',    // Orange
-    design: '#a855f7',  // Purple
-    boss: '#FF0055'     // Red Boss
+    frontend: '#B3AEC5',
+    backend: palette.slateLight,
+    infra: palette.slate,
+    ai: palette.accent,
+    core: '#B8C1C8',
+    design: '#B1A6BA',
+    boss: '#D48D82'
 };
 
 type Invader = {
@@ -211,7 +212,7 @@ export default function SkillsMap() {
                     x, y,
                     vx: (Math.random() - 0.5) * (isBig ? 25 : 10), vy: (Math.random() - 0.5) * (isBig ? 25 : 10),
                     life: 1, maxLife: Math.random() * 20 + 10,
-                    color: i % 3 === 0 ? '#ffffff' : baseColor
+                    color: i % 3 === 0 ? '#F2F1EF' : baseColor
                 });
             }
         };
@@ -307,7 +308,7 @@ export default function SkillsMap() {
                             }
                             
                             state.enemyProjectiles.splice(i, 1);
-                            createExplosion(state.player.x + state.player.width/2, state.player.y + state.player.height/2, '#ffffff');
+                            createExplosion(state.player.x + state.player.width/2, state.player.y + state.player.height/2, '#F2F1EF');
                             break;
                         }
                     }
@@ -336,7 +337,7 @@ export default function SkillsMap() {
                                     if (attackType === 0) {
                                         [-3, 0, 3].forEach(vx => {
                                             state.enemyProjectiles.push({
-                                                x: centerX, y: bottomY, width: 6, height: 16, vx: vx * diff, vy: 8 * diff, color: '#ff0055'
+                                                x: centerX, y: bottomY, width: 6, height: 16, vx: vx * diff, vy: 8 * diff, color: '#D48D82'
                                             });
                                         });
                                     } else if (attackType === 1) {
@@ -346,13 +347,13 @@ export default function SkillsMap() {
                                         const speed = 12 * diff;
                                         state.enemyProjectiles.push({
                                             x: centerX, y: bottomY, width: 6, height: 16, 
-                                            vx: (dx/mag) * speed, vy: (dy/mag) * speed, color: '#ff0055'
+                                            vx: (dx/mag) * speed, vy: (dy/mag) * speed, color: '#D48D82'
                                         });
                                     } else {
                                         for(let i=0; i< (4 * diff); i++) {
                                             state.enemyProjectiles.push({
                                                 x: invader.x + Math.random() * invader.width, y: bottomY + Math.random()*20, 
-                                                width: 6, height: 16, vx: (Math.random()-0.5)*2*diff, vy: 10 * diff, color: '#ff0055'
+                                                width: 6, height: 16, vx: (Math.random()-0.5)*2*diff, vy: 10 * diff, color: '#D48D82'
                                             });
                                         }
                                     }
@@ -366,7 +367,7 @@ export default function SkillsMap() {
                             if (Math.random() < fireChance) {
                                 state.enemyProjectiles.push({
                                     x: invader.x + invader.width / 2, y: invader.y + invader.height,
-                                    width: 4, height: 12, vx: 0, vy: (7 + state.level) * diff, color: categoryColors[invader.category] || '#a2e872'
+                                    width: 4, height: 12, vx: 0, vy: (7 + state.level) * diff, color: categoryColors[invader.category] || '#D3D7DA'
                                 });
                             }
                         }
@@ -405,7 +406,7 @@ export default function SkillsMap() {
                             if (invader.hp <= 0) {
                                 invader.isAlive = false;
                                 state.score += invader.isBoss ? (10000 * diff) : (200 * diff); 
-                                const color = categoryColors[invader.category] || '#a2e872';
+                                const color = categoryColors[invader.category] || '#D3D7DA';
                                 createExplosion(invader.x + invader.width / 2, invader.y + invader.height / 2, color, invader.isBoss);
                                 
                                 if (!invader.isBoss) {
@@ -415,7 +416,7 @@ export default function SkillsMap() {
                                     });
                                 }
                             } else {
-                                createExplosion(p.x, p.y, '#ffffff'); 
+                                createExplosion(p.x, p.y, '#F2F1EF'); 
                             }
                         }
                     });
@@ -430,7 +431,7 @@ export default function SkillsMap() {
             state.particles = state.particles.filter(p => p.life < p.maxLife);
 
             // ---------------- DRAWING ---------------- //
-            ctx.fillStyle = 'rgba(10, 10, 15, 1)';
+            ctx.fillStyle = 'rgba(11, 11, 11, 1)';
             ctx.fillRect(0, 0, width, height);
 
             state.stars.forEach(star => {
@@ -438,7 +439,7 @@ export default function SkillsMap() {
                 ctx.fillRect(star.x, star.y, star.size, star.size);
             });
 
-            ctx.strokeStyle = 'rgba(204, 255, 0, 0.03)';
+            ctx.strokeStyle = 'rgba(211, 215, 218, 0.035)';
             ctx.lineWidth = 1;
             for(let i=0; i<width; i+=40) { ctx.beginPath(); ctx.moveTo(i, 0); ctx.lineTo(i, height); ctx.stroke(); }
             for(let i=0; i<height; i+=40) { ctx.beginPath(); ctx.moveTo(0, i); ctx.lineTo(width, i); ctx.stroke(); }
@@ -449,7 +450,7 @@ export default function SkillsMap() {
 
                 state.invaders.forEach(invader => {
                     if (invader.isAlive) {
-                        const color = categoryColors[invader.category] || '#a2e872';
+                        const color = categoryColors[invader.category] || '#D3D7DA';
                         const pixelSize = invader.isBoss ? (width < 400 ? 3 : 6) : (width < 400 ? 2 : 3);
                         const sprite = invader.isBoss ? (isBossFrame1 ? bossSpriteFrame1 : bossSpriteFrame2) : (isFrame1 ? invaderSpriteFrame1 : invaderSpriteFrame2);
                         const spriteWidth = sprite[0].length * pixelSize;
@@ -474,7 +475,7 @@ export default function SkillsMap() {
                     }
                 });
 
-                ctx.fillStyle = '#00ffff';
+                ctx.fillStyle = '#B1C2D5';
                 state.projectiles.forEach(p => {
                     ctx.fillRect(p.x, p.y, p.width, p.height / 2 - 2);
                     ctx.fillRect(p.x, p.y + p.height / 2 + 2, p.width, p.height / 2 - 2);
@@ -491,7 +492,7 @@ export default function SkillsMap() {
                     const playerPixelSize = 6;
                     const pSpriteWidth = 5 * playerPixelSize;
                     const pSpriteX = state.player.x + state.player.width/2 - pSpriteWidth/2;
-                    drawPixelSprite(ctx, playerSprite, pSpriteX, state.player.y, playerPixelSize, isStunned ? '#ff0055' : '#a2e872');
+                    drawPixelSprite(ctx, playerSprite, pSpriteX, state.player.y, playerPixelSize, isStunned ? '#D48D82' : '#D3D7DA');
                 }
 
                 const bossInvader = state.invaders.find(i => i.isBoss && i.isAlive);
@@ -500,13 +501,13 @@ export default function SkillsMap() {
                     const barX = width - 20 - barWidth;
                     ctx.fillStyle = 'rgba(0, 0, 0, 0.8)';
                     ctx.fillRect(barX, 50, barWidth, 12);
-                    ctx.strokeStyle = '#ff0055';
+                    ctx.strokeStyle = '#D48D82';
                     ctx.lineWidth = 2;
                     ctx.strokeRect(barX, 50, barWidth, 12);
-                    ctx.fillStyle = '#ff0055';
+                    ctx.fillStyle = '#D48D82';
                     ctx.fillRect(barX + 2, 52, (barWidth - 4) * (bossInvader.hp / bossInvader.maxHp), 8);
                     
-                    ctx.fillStyle = '#ffffff';
+                    ctx.fillStyle = '#F2F1EF';
                     ctx.font = 'bold 10px "Courier New", monospace';
                     ctx.textAlign = 'right';
                     ctx.textBaseline = 'top';
@@ -522,7 +523,7 @@ export default function SkillsMap() {
             ctx.globalAlpha = 1;
 
             if (gameState === 'playing') {
-                ctx.fillStyle = '#ffffff';
+                ctx.fillStyle = '#F2F1EF';
                 ctx.font = `bold ${width < 400 ? 12 : 16}px "Courier New", monospace`;
                 ctx.textAlign = 'right';
                 ctx.textBaseline = 'top';
@@ -530,7 +531,7 @@ export default function SkillsMap() {
 
                 const heartSize = 3;
                 for(let i=0; i<state.player.maxHp; i++) {
-                    drawPixelSprite(ctx, heartSprite, width - 20 - (state.player.maxHp * 20) + (i * 20), 30, heartSize, i < state.player.hp ? '#ff0055' : '#333333');
+                    drawPixelSprite(ctx, heartSprite, width - 20 - (state.player.maxHp * 20) + (i * 20), 30, heartSize, i < state.player.hp ? '#D48D82' : '#333333');
                 }
             }
 
@@ -642,7 +643,7 @@ export default function SkillsMap() {
                         {gameState === 'won' && (
                             <div className="absolute inset-0 bg-dark-950/70 flex flex-col items-center justify-center text-center p-4 sm:p-8 border-4 border-neon/50">
                                 <div className="animate-bounce">
-                                    <h3 className="text-neon text-4xl sm:text-6xl md:text-7xl mb-4 sm:mb-6 tracking-[0.05em] sm:tracking-[0.1em] uppercase" style={{ fontFamily: '"Courier New", monospace', fontWeight: '900', textShadow: '4px 4px 0px #334400, 0 0 20px #a2e872' }}>
+                                    <h3 className="text-neon text-4xl sm:text-6xl md:text-7xl mb-4 sm:mb-6 tracking-[0.05em] sm:tracking-[0.1em] uppercase" style={{ fontFamily: '"Courier New", monospace', fontWeight: '900', textShadow: '4px 4px 0px #373D42, 0 0 20px #D3D7DA' }}>
                                         YOU WINNER
                                     </h3>
                                 </div>
@@ -674,7 +675,7 @@ export default function SkillsMap() {
                         <div className="flex flex-wrap gap-2 mb-8">
                             {skillsList.map(skill => {
                                 const isUnlocked = unlockedSkills.includes(skill.name);
-                                const color = categoryColors[skill.category] || '#a2e872';
+                                const color = categoryColors[skill.category] || '#D3D7DA';
                                 
                                 return (
                                     <div 

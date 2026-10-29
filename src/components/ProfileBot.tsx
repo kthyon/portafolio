@@ -341,7 +341,7 @@ export default function ProfileBot({initialLanguage='en'}:{initialLanguage?:Lang
     return (
         <div className="fixed bottom-5 right-4 z-[120] sm:bottom-6 sm:right-6">
             {open && (
-                <section className="mb-4 w-[calc(100vw-2rem)] max-w-[410px] overflow-hidden rounded-[1.2rem] border border-white/14 bg-[#050605]/94 font-mono shadow-[0_24px_80px_rgba(0,0,0,0.58)] backdrop-blur-2xl">
+                <section className="mb-4 w-[calc(100vw-2rem)] max-w-[410px] overflow-hidden rounded-[1.2rem] border border-white/14 bg-[#181818]/94 font-mono shadow-[0_24px_80px_rgba(0,0,0,0.58)] backdrop-blur-2xl">
                     <div className="border-b border-white/10 px-4 py-3">
                         <div className="flex items-start justify-between gap-4">
                             <div className="min-w-0">
@@ -382,7 +382,7 @@ export default function ProfileBot({initialLanguage='en'}:{initialLanguage?:Lang
                     <div className="border-t border-white/10 p-4">
                         <details className="group mb-3 rounded-lg border border-white/10 bg-black/25">
                             <summary className="cursor-pointer list-none px-3 py-2 text-[11px] uppercase tracking-[0.18em] text-white/40 transition hover:text-neon">
-                                <span className="text-neon/70">$</span> {copy[lang].suggestionsLabel}
+                                <span className="text-accent-light">$</span> {copy[lang].suggestionsLabel}
                             </summary>
                             <div className="grid gap-1 border-t border-white/10 p-2">
                                 {copy[lang].quickPrompts.map((prompt) => (
@@ -425,7 +425,7 @@ export default function ProfileBot({initialLanguage='en'}:{initialLanguage?:Lang
 
             <button
                 onClick={() => setOpen((value) => !value)}
-                className="group flex items-center gap-3 rounded-[1rem] border border-neon/20 bg-[#050605]/88 px-3 py-3 font-mono text-sm font-bold text-white shadow-[0_18px_60px_rgba(0,0,0,0.42)] backdrop-blur-2xl transition hover:border-neon/50 hover:bg-white/[0.055]"
+                className="group flex items-center gap-3 rounded-[1rem] border border-neon/20 bg-[#181818]/88 px-3 py-3 font-mono text-sm font-bold text-white shadow-[0_18px_60px_rgba(0,0,0,0.42)] backdrop-blur-2xl transition hover:border-neon/50 hover:bg-white/[0.055]"
                 aria-label={copy[lang].launcher}
             >
                 <span className="flex h-9 w-9 items-center justify-center rounded-lg border border-neon/35 bg-neon/10 text-neon">
