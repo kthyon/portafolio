@@ -21,102 +21,151 @@ type KnowledgeNode = {
 
 const knowledgeGraph: KnowledgeNode[] = [
     {
-        id: 'positioning',
-        keywords: ['perfil', 'resumen', 'quien', 'who', 'about', 'summary'],
-        es: 'Cris es Staff Software Engineer con foco en backend, sistemas distribuidos, platform engineering y herramientas de IA aplicadas a flujos reales de ingeniería.',
-        en: 'Cris is a Staff Software Engineer focused on backend, distributed systems, platform engineering, and AI tooling applied to real engineering workflows.',
-        related: ['scale', 'work_style'],
+        "id": "positioning",
+        "keywords": [
+            "perfil",
+            "resumen",
+            "quien",
+            "who",
+            "about",
+            "summary",
+            "rol",
+            "role",
+            "senior",
+            "staff",
+            "focus",
+            "enfoque"
+        ],
+        "es": "Cristian Alvarado es Software Engineer en Mercado Libre. Su trabajo combina agentes de IA, MCP, herramientas para desarrolladores, automatización e ingeniería backend y de producto para Mercado Pago.",
+        "en": "Cristian Alvarado is a Software Engineer at Mercado Libre. His work combines AI agents, MCP, developer tools, workflow automation, and backend and product engineering for Mercado Pago."
     },
     {
-        id: 'remote',
-        keywords: ['remoto', 'remote', 'modalidad', 'location', 'ubicacion', 'distribuido'],
-        es: 'Cris trabaja bien en equipos distribuidos y tiene experiencia colaborando con equipos de Latinoamérica en distintos idiomas.',
-        en: 'Cris works well in distributed teams and has experience collaborating with teams across Latin America and languages.',
-        related: ['latam', 'role'],
+        "id": "location",
+        "keywords": [
+            "remote",
+            "remoto",
+            "location",
+            "ubicacion",
+            "ingles",
+            "english",
+            "idiomas",
+            "languages"
+        ],
+        "es": "Está en Pereira, Colombia, y considera trabajo remoto desde Colombia. Habla español y tiene inglés B2.",
+        "en": "He is based in Pereira, Colombia, and considers remote work from Colombia. He speaks Spanish and has B2 English."
     },
     {
-        id: 'role',
-        keywords: ['rol', 'role', 'scope', 'senior', 'staff', 'enfoque', 'focus'],
-        es: 'Su scope natural está en backend, sistemas distribuidos, platform engineering, developer tooling e IA aplicada a ingeniería.',
-        en: 'His natural scope is backend, distributed systems, platform engineering, developer tooling, and AI applied to engineering workflows.',
-        related: ['ownership', 'stack'],
+        "id": "automation",
+        "keywords": [
+            "jira",
+            "slack",
+            "automatizacion",
+            "automation",
+            "provisioning",
+            "onboarding",
+            "usuarios",
+            "users"
+        ],
+        "es": "Creó una automatización que conecta Jira, Slack y altas de usuarios específicos en aplicaciones internas para Latinoamérica.",
+        "en": "He created automation connecting Jira, Slack and specific user onboarding into internal applications across Latin America."
     },
     {
-        id: 'fintech',
-        keywords: ['fintech', 'mercado pago', 'mercadolibre', 'mercado libre', 'partners', 'marketplace'],
-        es: 'Su contexto actual está en Mercado Libre / Mercado Pago: un ecosistema fintech y marketplace regional, con trabajo relacionado con partners y sistemas de Mercado Pago.',
-        en: 'His current context is Mercado Libre / Mercado Pago: a regional fintech and marketplace ecosystem, with work related to Mercado Pago partners and systems.',
-        related: ['scale', 'distributed_systems'],
+        "id": "product",
+        "keywords": [
+            "frontend",
+            "front end",
+            "react",
+            "developers",
+            "landing",
+            "collaboration",
+            "colaboracion",
+            "fintech",
+            "mercado"
+        ],
+        "es": "Colaboró con el equipo en landing pages y sitios de Developers de Mercado Pago. Su experiencia general incluye React, TypeScript, Go, Node.js, Java, bases de datos y CI/CD.",
+        "en": "He collaborated with the team on Mercado Pago landing pages and Developers sites. His broader experience includes React, TypeScript, Go, Node.js, Java, databases and CI/CD."
     },
     {
-        id: 'scale',
-        keywords: ['escala', 'scale', '200m', 'usuarios', 'users', 'impacto', 'impact'],
-        es: 'Ha trabajado en un entorno de escala regional dentro del ecosistema Mercado Libre y Mercado Pago, donde la confiabilidad, la operación y la evolución técnica importan tanto como construir features.',
-        en: 'He has worked in a regional-scale environment within the Mercado Libre and Mercado Pago ecosystem, where reliability, operations, and technical evolution matter as much as feature delivery.',
-        related: ['distributed_systems', 'observability'],
+        "id": "agents",
+        "keywords": [
+            "mcp",
+            "agentes",
+            "agents",
+            "skills",
+            "ai tooling",
+            "ia",
+            "ai"
+        ],
+        "es": "Construye agentes de IA, servidores MCP, skills reutilizables y automatizaciones integradas con herramientas y flujos de ingeniería.",
+        "en": "He builds AI agents, MCP servers, reusable skills and automation integrated with engineering tools and workflows."
     },
     {
-        id: 'stack',
-        keywords: ['stack', 'tecnologia', 'tecnologías', 'technologies', 'go', 'python', 'kubernetes', 'aws', 'terraform'],
-        es: 'Su stack combina backend y plataforma: Go, Python, TypeScript, AWS, GCP, Kubernetes, Terraform, PostgreSQL, Kafka y herramientas modernas de IA como MCP servers y agentes.',
-        en: 'His stack combines backend and platform work: Go, Python, TypeScript, AWS, GCP, Kubernetes, Terraform, PostgreSQL, Kafka, and modern AI tooling such as MCP servers and agents.',
-        related: ['distributed_systems', 'ai_tooling'],
+        "id": "nexo",
+        "keywords": [
+            "nexo",
+            "architecture",
+            "arquitectura",
+            "reliability",
+            "concurrencia",
+            "concurrency",
+            "distribuidos",
+            "distributed",
+            "resiliencia",
+            "availability",
+            "disponibilidad"
+        ],
+        "es": "Nexo es la herramienta que creó para sus clases. Usa una interfaz JavaScript/Three.js, notebooks Python/Colab y una API autenticada con D1/SQLite. Separa identidad y roles en el servidor y conserva cambios locales pendientes para reintentar. Los guardados son instantáneas; no hay fusión automática de cambios simultáneos desde varios dispositivos. La web muestra el caso y capturas; la demostración se solicita por contacto.",
+        "en": "Nexo is the tool he created for teaching. It uses a JavaScript/Three.js interface, Python/Colab notebooks and an authenticated API with D1/SQLite. Server-side identity and role checks separate records, and pending local changes can be retried. Saves are snapshots; there is no automatic merging of simultaneous edits across devices. The portfolio shows the case and screenshots; demonstrations are available by contact."
     },
     {
-        id: 'ai_tooling',
-        keywords: ['ia', 'ai', 'mcp', 'agents', 'agentes', 'skills', 'tooling'],
-        es: 'Tiene experiencia reciente construyendo herramientas de IA para ingeniería: MCP servers, agentes, skills y automatizaciones integradas a flujos técnicos reales.',
-        en: 'He has recent experience building AI tooling for engineering: MCP servers, agents, skills, and automations integrated into real technical workflows.',
-        related: ['developer_experience', 'stack'],
+        "id": "teaching",
+        "keywords": [
+            "utp",
+            "teacher",
+            "teaching",
+            "profesor",
+            "docente",
+            "ml",
+            "deep learning",
+            "machine learning",
+            "education",
+            "educacion",
+            "ciaf",
+            "grado"
+        ],
+        "es": "Es Ingeniero de Software de CIAF, graduado el 14 de diciembre de 2022. Enseñó ML y Deep Learning en la UTP en 2025 y enseña de nuevo desde septiembre de 2026. Fue docente y conferencista en CIAF en 2023.",
+        "en": "He holds a Software Engineering degree from CIAF, awarded December 14, 2022. He taught ML and Deep Learning at UTP in 2025 and teaches again from September 2026. He was a CIAF instructor and speaker in 2023."
     },
     {
-        id: 'distributed_systems',
-        keywords: ['sistemas distribuidos', 'distributed', 'backend', 'concurrencia', 'resiliencia', 'reliability'],
-        es: 'Su experiencia técnica se concentra en backend de alta concurrencia, sistemas distribuidos, resiliencia y operación de servicios que deben mantenerse claros para los equipos que los evolucionan.',
-        en: 'His technical experience centers on high-concurrency backend systems, distributed systems, resilience, and services that must remain understandable for the teams evolving them.',
-        related: ['observability', 'work_style'],
+        "id": "work_style",
+        "keywords": [
+            "liderazgo",
+            "leadership",
+            "ownership",
+            "como trabaja",
+            "how works",
+            "communication",
+            "comunicacion",
+            "problemas",
+            "problems"
+        ],
+        "es": "Su experiencia combina colaboración de producto, automatización de procesos internos, desarrollo backend e interfaces, y docencia técnica. El caso de Nexo explica decisiones de arquitectura y limitaciones concretas.",
+        "en": "His experience combines product collaboration, internal workflow automation, backend and interface development, and technical teaching. The Nexo case explains concrete architecture decisions and limitations."
     },
     {
-        id: 'developer_experience',
-        keywords: ['developer experience', 'dx', 'herramientas', 'tools', 'automation', 'automatizacion', 'productividad'],
-        es: 'Le interesa reducir fricción para otros ingenieros mediante tooling, automatización y sistemas que hagan más claro el trabajo técnico.',
-        en: 'He is interested in reducing friction for other engineers through tooling, automation, and systems that make technical work clearer.',
-        related: ['ai_tooling', 'work_style'],
-    },
-    {
-        id: 'observability',
-        keywords: ['observabilidad', 'observability', 'slo', 'sla', 'operacion', 'operation', 'reliability'],
-        es: 'Su enfoque conecta arquitectura con operación: observabilidad, confiabilidad, trade-offs técnicos y sistemas que puedan sostenerse en producción.',
-        en: 'His approach connects architecture with operations: observability, reliability, technical trade-offs, and systems that can hold up in production.',
-        related: ['distributed_systems', 'ownership'],
-    },
-    {
-        id: 'leadership',
-        keywords: ['liderazgo', 'leadership', 'mentor', 'mentoria', 'docente', 'teaching', 'comunicacion'],
-        es: 'Tiene experiencia tomando decisiones técnicas, acompañando equipos y enseñando. Eso se nota en cómo comunica trade-offs entre arquitectura, operación y producto.',
-        en: 'He has experience making technical decisions, supporting teams, and teaching. That shows in how he communicates trade-offs across architecture, operations, and product needs.',
-        related: ['work_style', 'ownership'],
-    },
-    {
-        id: 'work_style',
-        keywords: ['como trabaja', 'how works', 'estilo', 'style', 'colaboracion', 'collaboration'],
-        es: 'Trabaja conectando contexto de producto, arquitectura y operación. Prefiere sistemas que no solo funcionen, sino que puedan ser entendidos, mantenidos y evolucionados por el equipo.',
-        en: 'He works by connecting product context, architecture, and operations. He prefers systems that not only work, but can be understood, maintained, and evolved by the team.',
-        related: ['leadership', 'developer_experience'],
-    },
-    {
-        id: 'ownership',
-        keywords: ['ownership', 'impacto', 'impact', 'responsabilidad', 'responsibility'],
-        es: 'Su perfil encaja bien con equipos que valoran ownership: entender el problema, tomar decisiones técnicas con criterio y cuidar la operación después de construir.',
-        en: 'His profile fits teams that value ownership: understanding the problem, making sound technical decisions, and caring about operations after building.',
-        related: ['role', 'observability'],
-    },
-    {
-        id: 'contact',
-        keywords: ['contacto', 'contact', 'linkedin', 'github', 'cv', 'resume', 'whatsapp'],
-        es: 'Puedes contactarlo por LinkedIn, revisar su GitHub o descargar el CV desde el sitio. Si necesitas una conversación directa, WhatsApp también está disponible.',
-        en: 'You can reach him on LinkedIn, review his GitHub, or download the CV from the site. If you need a direct conversation, WhatsApp is also available.',
-    },
+        "id": "contact",
+        "keywords": [
+            "contacto",
+            "contact",
+            "linkedin",
+            "github",
+            "cv",
+            "resume",
+            "demo"
+        ],
+        "es": "Puedes contactarlo por LinkedIn, explorar su GitHub y descargar el CV desde el sitio. Nexo se presenta mediante demostración guiada por contacto.",
+        "en": "You can contact him on LinkedIn, explore his GitHub and download the résumé from this site. Nexo is available as a guided demonstration by contact."
+    }
 ];
 
 const copy = {
@@ -140,7 +189,7 @@ const copy = {
         launcher: 'Preguntar por Cris',
         close: 'Cerrar bot',
         send: 'Enviar pregunta',
-        fallback: 'Ese detalle no está en mi perfil local. Para algo específico, lo mejor es preguntarme directamente por LinkedIn o WhatsApp.',
+        fallback: 'Ese detalle no está en mi perfil local. Para algo específico, lo mejor es preguntarme directamente por LinkedIn.',
     },
     en: {
         title: 'Cris profile',
@@ -162,7 +211,7 @@ const copy = {
         launcher: 'Ask about Cris',
         close: 'Close bot',
         send: 'Send question',
-        fallback: 'That detail is not in my local profile. For something specific, it is better to ask me directly on LinkedIn or WhatsApp.',
+        fallback: 'That detail is not in my local profile. For something specific, it is better to ask me directly on LinkedIn.',
     },
 };
 
@@ -174,8 +223,8 @@ function normalize(text: string) {
 }
 
 function getLang(): Lang {
-    if (typeof window === 'undefined') return 'es';
-    return (localStorage.getItem('lang') === 'en' ? 'en' : 'es') as Lang;
+    if (typeof window === 'undefined') return 'en';
+    return (document.documentElement.lang === 'es' ? 'es' : 'en') as Lang;
 }
 
 function scoreNode(question: string, node: KnowledgeNode) {
@@ -242,9 +291,9 @@ function renderMessage(content: string) {
     });
 }
 
-export default function ProfileBot() {
+export default function ProfileBot({initialLanguage='en'}:{initialLanguage?:Lang}) {
     const [open, setOpen] = useState(false);
-    const [lang, setLang] = useState<Lang>('es');
+    const [lang, setLang] = useState<Lang>(initialLanguage);
     const [input, setInput] = useState('');
     const [loading, setLoading] = useState(false);
     const [messages, setMessages] = useState<ChatMessage[]>([]);

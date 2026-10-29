@@ -67,7 +67,7 @@ function Portrait({ scrollYProgress }: { scrollYProgress: any }) {
 
             <motion.img
                 src={`${baseUrl}avatar.webp`}
-                alt="Cris Alvarado"
+                alt="Cristian Alvarado" width={510} height={680} fetchPriority="high"
                 className="absolute left-1/2 top-0 h-full w-auto max-w-none -translate-x-1/2 object-contain object-top [filter:brightness(1.01)_contrast(1.08)_saturate(1.03)]"
                 style={{
                     x: useTransform(mouseX, [-0.5, 0.5], [-6, 6]),
@@ -112,8 +112,8 @@ function Portrait({ scrollYProgress }: { scrollYProgress: any }) {
     );
 }
 
-export default function Hero() {
-    const { config } = useSiteConfig();
+export default function Hero({initialLanguage = 'en'}: {initialLanguage?: 'en' | 'es'}) {
+    const { config } = useSiteConfig(initialLanguage);
     const { hero } = config;
     const ref = useRef(null);
 
@@ -149,7 +149,7 @@ export default function Hero() {
 
                 <motion.div
                     style={{ y: yText }}
-                    initial={{ opacity: 0, x: -40 }}
+                    initial={false}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.8, ease: 'easeOut' }}
                 >
@@ -163,13 +163,13 @@ export default function Hero() {
                     <h1 className="relative z-20 mb-8 font-display text-4xl font-bold leading-[0.92] tracking-tight text-white sm:text-6xl lg:text-[4.2rem]">
                         <span className="relative inline-block">
                             <span className="relative z-10">{hero.title.line1}</span>
-                            <span className="pointer-events-none absolute inset-0 z-0 text-white/25 [clip-path:polygon(0_44%,100%_44%,100%_100%,0_100%)]">
+                            <span aria-hidden="true" className="pointer-events-none absolute inset-0 z-0 text-white/25 [clip-path:polygon(0_44%,100%_44%,100%_100%,0_100%)]">
                                 {hero.title.line1}
                             </span>
                         </span>{' '}
                         <span className="relative inline-block">
                             <span className="relative z-10 text-neon">{hero.title.highlight}</span>
-                            <span className="pointer-events-none absolute inset-0 z-30 text-neon [clip-path:polygon(0_0,100%_0,100%_42%,0_42%)]">
+                            <span aria-hidden="true" className="pointer-events-none absolute inset-0 z-30 text-neon [clip-path:polygon(0_0,100%_0,100%_42%,0_42%)]">
                                 {hero.title.highlight}
                             </span>
                         </span>
@@ -185,7 +185,7 @@ export default function Hero() {
 
                     <div className="flex flex-wrap items-center gap-4">
                         <a
-                            href="#experience"
+                            href="#work"
                             className="group inline-flex items-center justify-center gap-2 border-b border-neon py-2 font-bold text-white"
                         >
                             {hero.primaryCta}
@@ -193,7 +193,7 @@ export default function Hero() {
                         </a>
 
                         <a
-                            href={`${baseUrl}about`}
+                            href={`${baseUrl}CV_Cris_Alvarado.pdf`} download
                             className="inline-block border-b border-white/15 py-2 font-medium text-white/65 transition-all hover:border-white/40 hover:text-white"
                         >
                             {hero.secondaryCta}
@@ -228,7 +228,7 @@ export default function Hero() {
 
                 <motion.div
                     style={{ y: yPortrait, x: portraitX }}
-                    initial={{ opacity: 0, scale: 0.96 }}
+                    initial={false}
                     animate={{ opacity: 1, scale: 1 }}
                     transition={{ duration: 1, delay: 0.15 }}
                     className="relative z-20 flex h-[540px] items-center justify-center lg:-ml-[36.5rem] lg:h-[720px]"

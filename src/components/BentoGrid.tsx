@@ -1,9 +1,11 @@
 import React, { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
-import { ArrowUpRight } from 'lucide-react';
+import { ArrowUpRight, Cpu, Bot, GitMerge, Database, Shield } from 'lucide-react';
+import {localHref} from './links';
+const icons = [Cpu, Bot, GitMerge, Database, Shield];
 import { useSiteConfig } from '../data/site';
 
-const BentoCard = ({ children, className, title, icon: Icon, delay = 0, variant = "default", scrollYProgress, index }: any) => {
+const BentoCard = ({ children, className, title, icon: Icon, delay = 0, variant = "default", scrollYProgress, index, href, lang }: any) => {
     const isNeon = variant === 'neon';
     const yOffsets = [0, -30, -60];
     const y = useTransform(scrollYProgress, [0, 1], [0, yOffsets[index % 3] || 0]);
@@ -11,7 +13,7 @@ const BentoCard = ({ children, className, title, icon: Icon, delay = 0, variant 
     return (
         <motion.div style={{ y }} className={`${className} min-h-0 sm:min-h-[260px]`}>
             <motion.div
-                initial={{ opacity: 0, y: 24 }}
+                initial={false}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay }}
@@ -36,7 +38,7 @@ const BentoCard = ({ children, className, title, icon: Icon, delay = 0, variant 
                 )}
 
                 {/* Title + description */}
-                <div className="sm:flex-1">
+                <a href={href} className="sm:flex-1">
                     <h3 className={`font-display font-bold mb-3 leading-tight ${
                         isNeon ? 'text-dark-900 text-xl' : 'text-white text-lg'
                     }`}>
@@ -47,12 +49,12 @@ const BentoCard = ({ children, className, title, icon: Icon, delay = 0, variant 
                     }`}>
                         {children}
                     </p>
-                </div>
+                </a>
 
                 {/* Bottom arrow */}
                 {!isNeon && (
                     <div className="mt-4 sm:mt-6 hidden sm:flex items-center gap-1 text-neon text-[10px] font-bold tracking-[0.2em] uppercase opacity-0 group-hover:opacity-100 transition-opacity duration-200">
-                        Explorar <ArrowUpRight className="w-3 h-3" />
+                        {lang === 'en' ? 'Explore' : 'Explorar'} <ArrowUpRight className="w-3 h-3" />
                     </div>
                 )}
 
@@ -66,8 +68,8 @@ const BentoCard = ({ children, className, title, icon: Icon, delay = 0, variant 
     );
 };
 
-export default function BentoGrid() {
-    const { config } = useSiteConfig();
+export default function BentoGrid({initialLanguage = 'en'}: {initialLanguage?: 'en' | 'es'}) {
+    const { config, lang } = useSiteConfig(initialLanguage);
     const { title, subtitle, cards } = config.bentoGrid;
     const ref = useRef(null);
     const { scrollYProgress } = useScroll({
@@ -90,9 +92,11 @@ export default function BentoGrid() {
                     <BentoCard
                         key={index}
                         index={index}
+                        href={localHref(card.href,lang)}
+                        lang={lang}
                         scrollYProgress={scrollYProgress}
                         title={card.title}
-                        icon={card.icon}
+                        icon={icons[index]}
                         className={card.colSpan}
                         variant={card.variant}
                         delay={card.delay}

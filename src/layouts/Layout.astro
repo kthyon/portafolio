@@ -1,112 +1,57 @@
 ---
-interface Props {
-	title?: string;
-	description?: string;
-}
-
-import ProfileBot from "../components/ProfileBot";
-
-const defaultTitle = "Cristian Alvarado | Ingeniero de Software";
-const defaultDescription = "Portfolio de Cris Alvarado, Staff Software Engineer especializado en sistemas distribuidos, herramientas de IA en producción y platform engineering.";
-const url = "https://kthyon.github.io/portafolio/";
-
-const { title = defaultTitle, description = defaultDescription } = Astro.props;
-const baseUrl = import.meta.env.BASE_URL.endsWith('/')
-	? import.meta.env.BASE_URL
-	: `${import.meta.env.BASE_URL}/`;
-
-// Schema Markup for AI and SEO (JSON-LD)
-const schema = {
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "Person",
-      "name": "Cris Alvarado",
-      "jobTitle": "Staff Software Engineer",
-      "worksFor": {
-        "@type": "Organization",
-        "name": "Mercado Libre"
-      },
-      "url": url,
-      "sameAs": [
-        "https://www.linkedin.com/in/crisalvarado-ingeniero/",
-        "https://github.com/kthyon"
-      ],
-      "knowsAbout": [
-        "Distributed Systems",
-        "Production AI Systems",
-        "MCP Servers",
-        "AI Agents",
-        "Platform Engineering",
-        "Cloud Native Architecture",
-        "Go",
-        "Python",
-        "Kubernetes",
-        "AWS",
-        "Terraform",
-        "Observability",
-        "System Design"
-      ]
-    },
-    {
-      "@type": "ProfilePage",
-      "name": title,
-      "description": description,
-      "url": url
-    }
-  ]
+import {siteData} from '../data/site';
+interface Props {lang?: 'en'|'es';page?: 'home'|'about'|'nexo'|'lab'}
+const {lang='en',page='home'}=Astro.props;
+const config=siteData[lang];
+const origin='https://kthyon.github.io';
+const base='/portafolio/';
+const root=origin+base;
+const route=page==='home'?'':page==='nexo'?'work/nexo/':page+'/';
+const url=root+(lang==='es'?'es/':'')+route;
+const enUrl=root+route, esUrl=root+'es/'+route;
+const metadata={
+ en:{home:{title:'Cris Alvarado | Software Engineer, AI Systems & MCP',description:'Software Engineer at Mercado Libre building AI agents, MCP tools and distributed software for Mercado Pago. Creator of Nexo and ML/Deep Learning instructor.'},about:{title:'About Cristian Alvarado | Software Engineer at Mercado Libre',description:'Explore Cristian Alvarado’s experience in Mercado Pago software, AI agents, MCP, backend engineering and Machine Learning teaching at UTP.'},nexo:{title:'Nexo Case Study | ML Teaching Tool by Cristian Alvarado',description:'How Cristian Alvarado created Nexo for ML and Deep Learning classes: the problem, architecture, JavaScript, Three.js, Python, D1/SQLite and demo screenshots.'},lab:{title:'Skills Invaders | Creative Coding by Cristian Alvarado',description:'A browser game exploring canvas interactions and animation. A creative coding experiment by Cristian Alvarado, separate from his engineering portfolio.'}},
+ es:{home:{title:'Cris Alvarado | Ingeniero de Software, IA y MCP',description:'Software Engineer en Mercado Libre: agentes de IA, herramientas MCP y software distribuido para Mercado Pago. Creador de Nexo y docente de ML y Deep Learning.'},about:{title:'Cristian Alvarado | Trayectoria en Software e IA',description:'Conoce la experiencia de Cristian Alvarado en Mercado Pago, agentes de IA, MCP, desarrollo backend y docencia de Machine Learning en la UTP.'},nexo:{title:'Nexo | Herramienta Docente Creada por Cristian Alvarado',description:'Cómo Cristian Alvarado creó Nexo para sus clases de ML y Deep Learning: problema, arquitectura, JavaScript, Three.js, Python, D1/SQLite y capturas de demostración.'},lab:{title:'Skills Invaders | Programación Creativa de Cristian Alvarado',description:'Un juego de navegador para explorar interacciones y animación con canvas. Experimento creativo de Cristian Alvarado, separado de su portafolio profesional.'}}
 };
+const {title,description}=metadata[lang][page];
+const image=root+(page==='nexo'?'projects/nexo-overview.png':'social-card.png');
+const imageWidth=page==='nexo'?'1440':'1200',imageHeight=page==='nexo'?'1000':'630';
+const personId=root+'#person', websiteId=root+'#website', nexoId=root+'work/nexo/#application';
+const person={'@type':'Person','@id':personId,name:'Cristian Alvarado',alternateName:'Cris Alvarado',jobTitle:'Software Engineer',url:root,image:root+'avatar.webp',worksFor:{'@type':'Organization',name:'Mercado Libre'},alumniOf:{'@type':'EducationalOrganization',name:config.about.education.institution},hasCredential:{'@type':'EducationalOccupationalCredential',name:config.about.education.name,credentialCategory:'Degree',recognizedBy:{'@type':'EducationalOrganization',name:config.about.education.institution}},sameAs:['https://www.linkedin.com/in/crisalvarado-ingeniero/','https://github.com/kthyon'],knowsAbout:['AI agents','Model Context Protocol','Developer tooling','Enterprise integrations','Backend engineering','Go','TypeScript','React','Machine Learning','Deep Learning'],knowsLanguage:[{'@type':'Language',name:'Spanish',alternateName:'es'},{'@type':'Language',name:'English',alternateName:'en'}]};
+const website={'@type':'WebSite','@id':websiteId,name:'Cristian Alvarado - Engineering Portfolio',alternateName:'Cris Alvarado',url:root,inLanguage:['en','es'],publisher:{'@id':personId}};
+const webPage={'@type':page==='home'||page==='about'?'ProfilePage':'WebPage','@id':url+'#webpage',url,name:title,description,inLanguage:lang,isPartOf:{'@id':websiteId},mainEntity:{'@id':page==='nexo'?nexoId:personId},author:{'@id':personId}};
+const graph:any[]=[person,website,webPage];
+if(page==='nexo')graph.push({'@type':'SoftwareApplication','@id':nexoId,name:'Nexo',applicationCategory:'EducationalApplication',operatingSystem:'Web browser',creator:{'@id':personId},description:config.nexo.solution,featureList:config.nexo.tech,image:[root+'projects/nexo-overview.png',root+'projects/nexo-learning.png'],subjectOf:{'@id':url+'#webpage'}});
+if(page!=='home')graph.push({'@type':'BreadcrumbList',itemListElement:[{'@type':'ListItem',position:1,name:lang==='en'?'Home':'Inicio',item:lang==='es'?root+'es/':root},{'@type':'ListItem',position:2,name:page==='nexo'?'Nexo':page==='about'?(lang==='en'?'About':'Acerca de'):'Creative lab',item:url}]});
+const schema={'@context':'https://schema.org','@graph':graph};
 ---
-
 <!doctype html>
-<html lang="es">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="description" content={description} />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href={`${baseUrl}favicon.svg`} />
-		<link rel="canonical" href={url} />
-		<link rel="sitemap" type="application/xml" href={`${baseUrl}sitemap.xml`} />
-		<link rel="alternate" type="text/markdown" title="AI-readable profile" href={`${baseUrl}llms.txt`} />
-		<meta name="generator" content={Astro.generator} />
-		<title>{title}</title>
-
-		<!-- Open Graph / Facebook -->
-		<meta property="og:type" content="profile" />
-		<meta property="og:url" content={url} />
-		<meta property="og:title" content={title} />
-		<meta property="og:description" content={description} />
-		<meta property="og:image" content={`${url}avatar.png`} />
-
-		<!-- Twitter -->
-		<meta property="twitter:card" content="summary_large_image" />
-		<meta property="twitter:url" content={url} />
-		<meta property="twitter:title" content={title} />
-		<meta property="twitter:description" content={description} />
-		<meta property="twitter:image" content={`${url}avatar.png`} />
-
-		<!-- JSON-LD (AIOps & SEO) -->
-		<script type="application/ld+json" set:html={JSON.stringify(schema)} />
-
-		<!-- Google Fonts -->
-		<link rel="preconnect" href="https://fonts.googleapis.com" />
-		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-		<link
-			href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;700&family=Michroma&display=swap"
-			rel="stylesheet"
-		/>
-	</head>
-	<body
-		class="bg-dark-900 text-white font-sans antialiased overflow-x-hidden selection:bg-neon selection:text-dark-900 relative min-h-screen"
-	>
-		<!-- Grain / Noise Overlay to prevent banding/pixelation -->
-		<div class="fixed inset-0 z-[100] opacity-[0.03] pointer-events-none bg-[url('https://grainy-gradients.vercel.app/noise.svg')]"></div>
-
-		<slot />
-		<ProfileBot client:idle />
-	</body>
+<html lang={lang}>
+ <head>
+  <meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>{title}</title><meta name="description" content={description}/>
+  <meta name="author" content="Cristian Alvarado"/>
+  <meta name="robots" content="index, follow, max-image-preview:large"/>
+  <link rel="canonical" href={url}/>
+  <link rel="alternate" hreflang="en" href={enUrl}/><link rel="alternate" hreflang="es" href={esUrl}/><link rel="alternate" hreflang="x-default" href={enUrl}/>
+  <link rel="icon" href={`${base}favicon.svg`} type="image/svg+xml"/>
+  <link rel="sitemap" href={`${base}sitemap.xml`} type="application/xml"/>
+  <link rel="alternate" href={`${base}cris-profile.md`} type="text/markdown" title="Cristian Alvarado - factual profile"/>
+  <meta name="theme-color" content="#070707"/>
+  <meta property="og:type" content={page==='home'||page==='about'?'profile':'website'}/>
+  <meta property="og:site_name" content="Cris Alvarado - Engineering Portfolio"/>
+  <meta property="og:title" content={title}/><meta property="og:description" content={description}/><meta property="og:url" content={url}/>
+  <meta property="og:locale" content={lang==='es'?'es_CO':'en_US'}/><meta property="og:locale:alternate" content={lang==='es'?'en_US':'es_CO'}/>
+  <meta property="og:image" content={image}/><meta property="og:image:width" content={imageWidth}/><meta property="og:image:height" content={imageHeight}/><meta property="og:image:alt" content={page==='nexo'?config.nexo.overviewAlt:'Cristian Alvarado - Software Engineer, AI Systems and MCP'}/>
+  <meta name="twitter:card" content="summary_large_image"/><meta name="twitter:title" content={title}/><meta name="twitter:description" content={description}/><meta name="twitter:image" content={image}/><meta name="twitter:image:alt" content={page==='nexo'?config.nexo.overviewAlt:'Cristian Alvarado - Software Engineer'}/>
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(schema).replace(/</g,'\\u003c')}/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;700&family=Michroma&display=swap" rel="stylesheet"/>
+ </head>
+ <body class="bg-dark-900 text-white font-sans antialiased overflow-x-hidden selection:bg-neon selection:text-dark-900 relative min-h-screen">
+  <a class="skip-link" href="#main">{lang==='en'?'Skip to content':'Ir al contenido'}</a><slot/>
+ </body>
 </html>
-
 <style is:global>
 	:root {
 		--accent: 162, 232, 114;
@@ -208,4 +153,21 @@ const schema = {
 	::-webkit-scrollbar-thumb:hover {
 		background: #a2e872;
 	}
+</style>
+
+<style is:global>
+ .section-shell { padding: 5rem 1.25rem; }
+ .section-heading { font-size: clamp(1.65rem, 3vw, 2.75rem); line-height: 1.25; font-weight: 600; letter-spacing: -.025em; }
+ .eyebrow { color: #A2E872; font-size: .72rem; letter-spacing: .18em; text-transform: uppercase; font-family: 'JetBrains Mono', monospace; line-height: 1.7; }
+ .primary-link, .secondary-link { display: inline-flex; align-items: center; justify-content: center; gap: .6rem; padding: .85rem 1.2rem; border-radius: 999px; font-size: .875rem; font-weight: 600; transition: background .2s, border-color .2s; }
+ .primary-link { background: #A2E872; color: #070707; border: 1px solid #A2E872; }
+ .primary-link:hover { background: #c1f49f; }
+ .secondary-link { border: 1px solid #ffffff30; color: white; }
+ .secondary-link:hover { border-color: #A2E872; background: #ffffff08; }
+ section[id], article[id], footer[id] { scroll-margin-top: 7rem; }
+ :focus-visible { outline: 2px solid #A2E872; outline-offset: 5px; }
+ .skip-link { position: fixed; top: 1rem; left: 1rem; z-index: 200; background: #A2E872; color: #070707; padding: .8rem; transform: translateY(-200%); }
+ .skip-link:focus { transform: none; }
+ @media(min-width: 640px) { .section-shell { padding: 6rem 2rem; } }
+ @media(prefers-reduced-motion: reduce) { html {scroll-behavior:auto} *, *::before, *::after { animation-duration:.01ms !important; transition-duration:.01ms !important; } }
 </style>

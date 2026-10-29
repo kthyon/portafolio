@@ -2,22 +2,23 @@ import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, ArrowRight, Globe, Github } from 'lucide-react';
 import { useSiteConfig } from '../data/site';
+import { languageBase, localHref } from './links';
 
 const baseUrl = import.meta.env.BASE_URL.endsWith('/')
     ? import.meta.env.BASE_URL
     : `${import.meta.env.BASE_URL}/`;
 
-const resolveNavHref = (href: string) => {
+const resolveNavHref = (href: string, lang: 'en' | 'es') => {
     if (href.startsWith('http://') || href.startsWith('https://')) return href;
-    if (href.startsWith('/#')) return `${baseUrl}${href.slice(1)}`;
-    if (href.startsWith('/')) return `${baseUrl}${href.slice(1)}`;
+    if (href.startsWith('/#')) return localHref(href,lang);
+    if (href.startsWith('/')) return localHref(href,lang);
     return href;
 };
 
-export default function Navbar() {
+export default function Navbar({initialLanguage = 'en', pagePath = ''}: {initialLanguage?: 'en' | 'es', pagePath?: string}) {
     const [scrolled, setScrolled] = useState(false);
     const [isOpen, setIsOpen] = useState(false);
-    const { config, lang, toggleLanguage } = useSiteConfig();
+    const { config, lang } = useSiteConfig(initialLanguage);
 
     useEffect(() => {
         const handleScroll = () => setScrolled(window.scrollY > 20);
@@ -26,6 +27,8 @@ export default function Navbar() {
     }, []);
 
     const { logoText, logoInitials, github, links, ctaText } = config.navbar;
+    const route = pagePath;
+    const languageSwitchHref = lang === 'en' ? `${baseUrl}es/${route}` : `${baseUrl}${route}`;
 
     return (
         <header
@@ -35,7 +38,7 @@ export default function Navbar() {
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="flex items-center justify-between">
                     {/* Logo */}
-                    <a href={baseUrl} className="flex items-center gap-3 group">
+                    <a href={languageBase(lang)} className="flex items-center gap-3 group">
                         <div className="relative flex h-11 w-11 items-center justify-center">
                             <svg viewBox="0 0 48 48" className="h-11 w-11" aria-hidden="true">
                                 <circle cx="24" cy="24" r="20.5" fill="none" stroke="rgba(162,232,114,0.5)" strokeWidth="1.5" />
@@ -44,7 +47,7 @@ export default function Navbar() {
                             </svg>
                             <span className="sr-only">{logoInitials}</span>
                         </div>
-                        <span className="text-white font-display font-bold text-sm sm:text-lg tracking-[0.18em] group-hover:text-neon transition-colors">
+                        <span className="text-white font-display font-bold text-xs sm:text-lg tracking-[0.1em] sm:tracking-[0.18em] group-hover:text-neon transition-colors">
                             {logoText}
                         </span>
                     </a>
@@ -54,7 +57,7 @@ export default function Navbar() {
                         {links.map((link) => (
                             <a
                                 key={link.name}
-                                href={resolveNavHref(link.href)}
+                                href={resolveNavHref(link.href,lang)}
                                 className="text-sm font-medium text-gray-300 hover:text-white transition-colors relative group"
                             >
                                 {link.name}
@@ -70,18 +73,17 @@ export default function Navbar() {
                             target="_blank"
                             rel="noopener noreferrer"
                             className="text-gray-400 hover:text-white transition-colors"
-                            title="GitHub Profile"
+                            aria-label="GitHub" title="GitHub Profile"
                         >
                             <Github className="w-5 h-5" />
                         </a>
-                        <button 
-                            onClick={toggleLanguage} 
+                        <a href={languageSwitchHref} hrefLang={lang === 'en' ? 'es' : 'en'} 
                             className="flex items-center gap-2 text-gray-400 hover:text-neon transition-colors"
-                            title="Translate / Traducir"
+                            aria-label={lang === 'en' ? 'Cambiar a español' : 'Switch to English'} title="Translate / Traducir"
                         >
                             <Globe className="w-5 h-5" />
                             <span className="text-sm font-bold uppercase">{lang === 'es' ? 'EN' : 'ES'}</span>
-                        </button>
+                        </a>
                         <a href="https://www.linkedin.com/in/crisalvarado-ingeniero/" target="_blank" rel="noopener noreferrer" className="group/cta relative inline-flex items-center gap-3 overflow-hidden rounded-full border border-white/15 bg-white/[0.035] px-5 py-2.5 text-sm font-bold text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.08),0_14px_35px_rgba(0,0,0,0.28)] backdrop-blur-xl transition-all duration-300 hover:border-neon/45 hover:bg-white/[0.06]">
                             <span className="absolute inset-y-0 left-0 w-px bg-neon/70" />
                             <span>{ctaText}</span>
@@ -95,14 +97,14 @@ export default function Navbar() {
                             href={github}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="text-gray-400 hover:text-white transition-colors"
+                            className="text-gray-400 hover:text-white transition-colors" aria-label="GitHub"
                         >
                             <Github className="w-5 h-5" />
                         </a>
-                        <button onClick={toggleLanguage} className="text-gray-400 hover:text-neon">
+                        <a href={languageSwitchHref} hrefLang={lang === 'en' ? 'es' : 'en'} aria-label={lang === 'en' ? 'Cambiar a español' : 'Switch to English'} className="text-gray-400 hover:text-neon">
                             <span className="text-sm font-bold uppercase">{lang === 'es' ? 'EN' : 'ES'}</span>
-                        </button>
-                        <button onClick={() => setIsOpen(!isOpen)}>
+                        </a>
+                        <button aria-label={isOpen ? (lang === 'en' ? 'Close navigation' : 'Cerrar navegación') : (lang === 'en' ? 'Open navigation' : 'Abrir navegación')} aria-expanded={isOpen} aria-controls="mobile-navigation" onClick={() => setIsOpen(!isOpen)}>
                             {isOpen ? <X /> : <Menu />}
                         </button>
                     </div>
@@ -116,13 +118,13 @@ export default function Navbar() {
                         initial={{ opacity: 0, height: 0 }}
                         animate={{ opacity: 1, height: 'auto' }}
                         exit={{ opacity: 0, height: 0 }}
-                        className="md:hidden glass-surface border-b border-white/10"
+                        id="mobile-navigation" className="md:hidden glass-surface border-b border-white/10"
                     >
                         <div className="px-4 py-4 space-y-4">
                             {links.map((link) => (
                                 <a
                                     key={link.name}
-                                    href={resolveNavHref(link.href)}
+                                    href={resolveNavHref(link.href,lang)}
                                     className="block text-gray-300 hover:text-neon transition-colors"
                                     onClick={() => setIsOpen(false)}
                                 >

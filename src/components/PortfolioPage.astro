@@ -1,0 +1,25 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from './Navbar';
+import Hero from './Hero';
+import SelectedWork from './SelectedWork';
+import Experience from './Experience';
+import BentoGrid from './BentoGrid';
+import SkillsMarquee from './SkillsMarquee';
+import Metrics from './Metrics';
+import Contact from './Contact';
+import About from './About';
+import NexoCase from './NexoCase';
+import CreativeLab from './CreativeLab';
+import SkillsMap from './SkillsMap';
+import ProfileBot from './ProfileBot';
+interface Props {lang?: 'en'|'es'; page?: 'home'|'about'|'nexo'|'lab'}
+const {lang='en',page='home'}=Astro.props;
+const pagePath=page==='home'?'':page==='nexo'?'work/nexo/':page+'/';
+---
+<Layout lang={lang} page={page}><Navbar initialLanguage={lang} pagePath={pagePath} client:load/><main id="main">
+{page==='home' && <><Hero initialLanguage={lang} client:load/><SelectedWork initialLanguage={lang} client:load/><Experience initialLanguage={lang} client:load/><BentoGrid initialLanguage={lang} client:load/><SkillsMarquee initialLanguage={lang} client:load/><Metrics initialLanguage={lang} client:load/><SkillsMap client:visible/></>}
+{page==='about' && <About initialLanguage={lang} client:load/>}
+{page==='nexo' && <NexoCase initialLanguage={lang} client:load/>}
+{page==='lab' && <><CreativeLab initialLanguage={lang} client:load/><SkillsMap client:visible/></>}
+</main><Contact initialLanguage={lang} client:load/><ProfileBot initialLanguage={lang} client:idle/></Layout>

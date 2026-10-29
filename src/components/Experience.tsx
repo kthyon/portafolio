@@ -2,8 +2,8 @@ import React, { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { useSiteConfig } from '../data/site';
 
-export default function Experience() {
-    const { config } = useSiteConfig();
+export default function Experience({initialLanguage = 'en'}: {initialLanguage?: 'en' | 'es'}) {
+    const { config } = useSiteConfig(initialLanguage);
     const { experience } = config;
     const ref = useRef(null);
 
@@ -30,7 +30,7 @@ export default function Experience() {
             <div className="max-w-4xl mx-auto relative z-10">
                 <div className="flex items-center gap-4 mb-10 sm:mb-14">
                     <div className="h-px bg-neon w-12" />
-                    <h2 className="text-3xl md:text-5xl font-display font-bold text-white uppercase tracking-wider">
+                    <h2 className="section-heading text-white">
                         {experience.title}
                     </h2>
                 </div>
@@ -45,7 +45,7 @@ export default function Experience() {
                     {experience.jobs.map((job: any, index: number) => (
                         <motion.li
                             key={index}
-                            initial={{ opacity: 0, x: -50 }}
+                            initial={false}
                             whileInView={{ opacity: 1, x: 0 }}
                             viewport={{ once: true, margin: "-100px" }}
                             transition={{ duration: 0.6, delay: index * 0.2 }}

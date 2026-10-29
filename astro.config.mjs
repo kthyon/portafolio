@@ -6,5 +6,6 @@ import tailwind from '@astrojs/tailwind';
 export default defineConfig({
   site: 'https://kthyon.github.io',
   base: '/portafolio',
+  trailingSlash: 'always',
   integrations: [react(), tailwind()],
 });

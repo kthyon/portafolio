@@ -1,133 +1,20 @@
-import React, { useRef, useState } from 'react';
-import { motion, useScroll, useTransform } from 'framer-motion';
-
-const capabilityGroups = [
-    {
-        title: 'AI Systems',
-        caption: 'Agents, context, reasoning',
-        tone: 'text-cyan',
-        items: [
-            { name: 'MCP Servers', icon: 'anthropic' },
-            { name: 'AI Agents', icon: 'langchain' },
-            { name: 'Python', icon: 'python' },
-        ],
-    },
-    {
-        title: 'Distributed Backend',
-        caption: 'Concurrency, reliability, scale',
-        tone: 'text-white',
-        items: [
-            { name: 'Go', icon: 'go' },
-            { name: 'Rust', icon: 'rust' },
-            { name: 'Kafka', icon: 'apachekafka' },
-            { name: 'PostgreSQL', icon: 'postgresql' },
-        ],
-    },
-    {
-        title: 'Cloud & Platform',
-        caption: 'Infra, delivery, operations',
-        tone: 'text-neon',
-        items: [
-            { name: 'Kubernetes', icon: 'kubernetes' },
-            { name: 'Terraform', icon: 'terraform' },
-            { name: 'AWS', icon: 'amazonaws' },
-            { name: 'GCP', icon: 'googlecloud' },
-        ],
-    },
-    {
-        title: 'Product Surface',
-        caption: 'Interfaces engineers can trust',
-        tone: 'text-coral',
-        items: [
-            { name: 'TypeScript', icon: 'typescript' },
-            { name: 'React', icon: 'react' },
-            { name: 'Docker', icon: 'docker' },
-            { name: 'GitHub', icon: 'github' },
-        ],
-    },
-];
-
-export default function SkillsMarquee() {
-    const ref = useRef(null);
-    const [paused, setPaused] = useState(false);
-    const { scrollYProgress } = useScroll({
-        target: ref,
-        offset: ['start end', 'end start'],
-    });
-
-    const y = useTransform(scrollYProgress, [0, 1], [35, -20]);
-
-    return (
-        <motion.section
-            ref={ref}
-            style={{ y }}
-            className="relative border-y border-white/[0.06] py-10 sm:py-12"
-        >
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div className="mb-8">
-                    <p className="font-mono text-[11px] uppercase tracking-[0.3em] text-white/40 mb-3">
-                        Technology Stack
-                    </p>
-                    <h2 className="font-display text-2xl sm:text-3xl text-white">
-                        Tools organized by the problems they solve.
-                    </h2>
-                </div>
-
-                <div
-                    className="relative overflow-hidden"
-                    style={{
-                        WebkitMaskImage:
-                            'linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%)',
-                        maskImage:
-                            'linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%)',
-                    }}
-                >
-                    <div
-                        onMouseEnter={() => setPaused(true)}
-                        onMouseLeave={() => setPaused(false)}
-                        className="flex w-max gap-5"
-                        style={{
-                            animation: 'skills-rail 28s linear infinite',
-                            animationPlayState: paused ? 'paused' : 'running',
-                        }}
-                    >
-                        {[...capabilityGroups, ...capabilityGroups].map((group, index) => (
-                                <article
-                                    key={`${group.title}-${index}`}
-                                    className="glass-surface relative w-[360px] sm:w-[420px] lg:w-[460px] shrink-0 rounded-[2rem] p-6 sm:p-7"
-                                >
-                                    <div className="flex items-start justify-between gap-6 mb-8">
-                                        <div>
-                                            <h3 className={`font-display text-lg ${group.tone}`}>{group.title}</h3>
-                                            <p className="text-sm text-white/40 mt-2">{group.caption}</p>
-                                        </div>
-                                        <span className="font-mono text-[10px] tracking-[0.3em] text-white/25">
-                                            0{(index % capabilityGroups.length) + 1}
-                                        </span>
-                                    </div>
-
-                                    <div className="flex flex-wrap gap-3">
-                                        {group.items.map((item) => (
-                                            <div
-                                                key={item.name}
-                                                className="glass-chip group inline-flex items-center gap-3 rounded-full px-4 py-3 transition-all hover:border-white/25 hover:bg-white/[0.08]"
-                                            >
-                                                <img
-                                                    src={`https://cdn.simpleicons.org/${item.icon}/9ca3af`}
-                                                    alt={item.name}
-                                                    className="w-4 h-4 opacity-75 group-hover:opacity-100"
-                                                />
-                                                <span className="font-mono text-[11px] tracking-[0.16em] text-white/70">
-                                                    {item.name.toUpperCase()}
-                                                </span>
-                                            </div>
-                                        ))}
-                                    </div>
-                                </article>
-                        ))}
-                    </div>
-                </div>
-            </div>
-        </motion.section>
-    );
+import React,{useRef,useState} from 'react';
+import {motion,useScroll,useTransform} from 'framer-motion';
+import {ArrowUpRight,Bot,Cloud,Code2,GraduationCap,Pause,Play} from 'lucide-react';
+import {useSiteConfig} from '../data/site';
+import {localHref} from './links';
+const icons=[Bot,Code2,Cloud,GraduationCap];
+export default function SkillsMarquee({initialLanguage='en'}:{initialLanguage?:'en'|'es'}){
+ const {config,lang}=useSiteConfig(initialLanguage);const ref=useRef(null);const [paused,setPaused]=useState(false);const [hovering,setHovering]=useState(false);
+ const {scrollYProgress}=useScroll({target:ref,offset:['start end','end start']});const y=useTransform(scrollYProgress,[0,1],[35,-20]);
+ const groups=[...config.stack.groups,{title:lang==='en'?'ML & technical teaching':'ML y docencia técnica',items:'Machine Learning · Deep Learning · Python / Colab',href:'/work/nexo/',link:lang==='en'?'Explore Nexo':'Explorar Nexo'}];
+ return <motion.section ref={ref} style={{y}} className="relative border-y border-white/[0.06] py-12 sm:py-16">
+  <div className="max-w-7xl mx-auto px-5 sm:px-8"><div className="mb-8 flex items-end justify-between gap-6"><div><p className="eyebrow mb-4">{config.stack.title}</p><h2 className="section-heading max-w-3xl">{config.stack.subtitle}</h2></div><button type="button" aria-label={paused?(lang==='en'?'Resume technology animation':'Reanudar animación de tecnologías'):(lang==='en'?'Pause technology animation':'Pausar animación de tecnologías')} aria-pressed={paused} onClick={()=>setPaused(!paused)} className="glass-chip rounded-full p-3 text-neon shrink-0">{paused?<Play size={17}/>:<Pause size={17}/>}</button></div>
+   <div className="relative overflow-hidden" onMouseEnter={()=>setHovering(true)} onMouseLeave={()=>setHovering(false)} style={{WebkitMaskImage:'linear-gradient(to right,transparent,black 4%,black 96%,transparent)',maskImage:'linear-gradient(to right,transparent,black 4%,black 96%,transparent)'}}>
+    <div className="flex w-max gap-5 pr-5" style={{animation:'skills-rail 36s linear infinite',animationPlayState:paused||hovering?'paused':'running'}}>
+     {[...groups,...groups].map((g,i)=>{const Icon=icons[i%groups.length];const duplicate=i>=groups.length;return <article key={i} aria-hidden={duplicate?true:undefined} className="glass-surface relative w-[310px] sm:w-[420px] lg:w-[460px] shrink-0 rounded-[2rem] p-6 sm:p-7"><div className="flex justify-between items-start gap-5 mb-7"><div><Icon size={24} className="text-neon mb-5" aria-hidden="true"/><h3 className="text-lg font-display text-white leading-relaxed">{g.title}</h3></div><span className="font-mono text-[10px] text-white/30">0{i%groups.length+1}</span></div><div className="flex flex-wrap gap-2.5 mb-7">{g.items.split(' · ').map(item=><span key={item} className="glass-chip rounded-full px-3 py-2 text-xs text-gray-300">{item}</span>)}</div><a href={localHref(g.href,lang)} tabIndex={duplicate?-1:undefined} onFocus={()=>setHovering(true)} onBlur={()=>setHovering(false)} className="text-sm text-neon inline-flex items-center gap-2">{g.link}<ArrowUpRight size={15}/></a></article>})}
+    </div>
+   </div>
+  </div>
+ </motion.section>;
 }

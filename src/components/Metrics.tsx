@@ -1,10 +1,12 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { useSiteConfig } from '../data/site';
+import { Globe2, Workflow, GraduationCap, Code2 } from 'lucide-react';
+const icons = [Globe2, GraduationCap, Code2, Workflow];
 
 const AdvantageItem = ({ value, label, sublabel, icon: Icon, index }: any) => (
     <motion.div
-        initial={{ opacity: 0, y: 28, filter: 'blur(10px)' }}
+        initial={false}
         whileInView={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
         viewport={{ once: true, margin: '-80px' }}
         transition={{ duration: 0.65, delay: index * 0.08, ease: 'easeOut' }}
@@ -28,8 +30,8 @@ const AdvantageItem = ({ value, label, sublabel, icon: Icon, index }: any) => (
     </motion.div>
 );
 
-export default function Metrics() {
-    const { config } = useSiteConfig();
+export default function Metrics({initialLanguage = 'en'}: {initialLanguage?: 'en' | 'es'}) {
+    const { config } = useSiteConfig(initialLanguage);
     const { title, items } = config.metrics;
 
     return (
@@ -44,7 +46,7 @@ export default function Metrics() {
                             value={item.value}
                             label={item.label}
                             sublabel={item.sublabel}
-                            icon={item.icon}
+                            icon={icons[index]}
                             index={index}
                         />
                     ))}

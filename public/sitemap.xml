@@ -1,15 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>https://kthyon.github.io/portafolio/</loc>
-    <priority>1.0</priority>
-  </url>
-  <url>
-    <loc>https://kthyon.github.io/portafolio/about</loc>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://kthyon.github.io/portafolio/cris-profile.md</loc>
-    <priority>0.7</priority>
-  </url>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url><loc>https://kthyon.github.io/portafolio/</loc><xhtml:link rel="alternate" hreflang="en" href="https://kthyon.github.io/portafolio/"/><xhtml:link rel="alternate" hreflang="es" href="https://kthyon.github.io/portafolio/es/"/><xhtml:link rel="alternate" hreflang="x-default" href="https://kthyon.github.io/portafolio/"/></url>
+  <url><loc>https://kthyon.github.io/portafolio/es/</loc><xhtml:link rel="alternate" hreflang="en" href="https://kthyon.github.io/portafolio/"/><xhtml:link rel="alternate" hreflang="es" href="https://kthyon.github.io/portafolio/es/"/><xhtml:link rel="alternate" hreflang="x-default" href="https://kthyon.github.io/portafolio/"/></url>
+  <url><loc>https://kthyon.github.io/portafolio/about/</loc><xhtml:link rel="alternate" hreflang="en" href="https://kthyon.github.io/portafolio/about/"/><xhtml:link rel="alternate" hreflang="es" href="https://kthyon.github.io/portafolio/es/about/"/><xhtml:link rel="alternate" hreflang="x-default" href="https://kthyon.github.io/portafolio/about/"/></url>
+  <url><loc>https://kthyon.github.io/portafolio/es/about/</loc><xhtml:link rel="alternate" hreflang="en" href="https://kthyon.github.io/portafolio/about/"/><xhtml:link rel="alternate" hreflang="es" href="https://kthyon.github.io/portafolio/es/about/"/><xhtml:link rel="alternate" hreflang="x-default" href="https://kthyon.github.io/portafolio/about/"/></url>
+  <url><loc>https://kthyon.github.io/portafolio/work/nexo/</loc><xhtml:link rel="alternate" hreflang="en" href="https://kthyon.github.io/portafolio/work/nexo/"/><xhtml:link rel="alternate" hreflang="es" href="https://kthyon.github.io/portafolio/es/work/nexo/"/><xhtml:link rel="alternate" hreflang="x-default" href="https://kthyon.github.io/portafolio/work/nexo/"/></url>
+  <url><loc>https://kthyon.github.io/portafolio/es/work/nexo/</loc><xhtml:link rel="alternate" hreflang="en" href="https://kthyon.github.io/portafolio/work/nexo/"/><xhtml:link rel="alternate" hreflang="es" href="https://kthyon.github.io/portafolio/es/work/nexo/"/><xhtml:link rel="alternate" hreflang="x-default" href="https://kthyon.github.io/portafolio/work/nexo/"/></url>
+  <url><loc>https://kthyon.github.io/portafolio/lab/</loc><xhtml:link rel="alternate" hreflang="en" href="https://kthyon.github.io/portafolio/lab/"/><xhtml:link rel="alternate" hreflang="es" href="https://kthyon.github.io/portafolio/es/lab/"/><xhtml:link rel="alternate" hreflang="x-default" href="https://kthyon.github.io/portafolio/lab/"/></url>
+  <url><loc>https://kthyon.github.io/portafolio/es/lab/</loc><xhtml:link rel="alternate" hreflang="en" href="https://kthyon.github.io/portafolio/lab/"/><xhtml:link rel="alternate" hreflang="es" href="https://kthyon.github.io/portafolio/es/lab/"/><xhtml:link rel="alternate" hreflang="x-default" href="https://kthyon.github.io/portafolio/lab/"/></url>
 </urlset>
