@@ -28,23 +28,16 @@ const en = {
     "ctaText": "Let’s connect"
   },
   "hero": {
-    "badge": "Software Engineer at Mercado Libre",
+    "badge": "Mercado Libre · Mercado Pago",
     "title": {
       "line1": "SOFTWARE",
       "highlight": "ENGINEER",
-      "subtitle": "AI agents. Developer productivity. Backend engineering."
+      "subtitle": "Applied AI & Developer Tools"
     },
-    "description": "I build AI agents, MCP integrations and workflow automation for Mercado Pago. My work connects backend services and product interfaces with the tools teams use across Latin America.",
+    "description": "I build AI agents and MCP integrations for engineering teams across Latin America.",
     "primaryCta": "Explore my work",
     "secondaryCta": "Download résumé",
-    "hiringSignals": [
-      "Applied AI",
-      "Backend & platform",
-      "Fintech · Latin America"
-    ],
     "trustIndicators": [
-      "AI agents & reusable skills",
-      "MCP & workflow automation",
       "Go · TypeScript · React",
       "ML & Deep Learning instructor"
     ]
@@ -546,23 +539,16 @@ const es = {
     "ctaText": "Conectar"
   },
   "hero": {
-    "badge": "Software Engineer en Mercado Libre",
+    "badge": "Mercado Libre · Mercado Pago",
     "title": {
       "line1": "SOFTWARE",
       "highlight": "ENGINEER",
-      "subtitle": "Agentes de IA. Productividad de ingeniería. Backend."
+      "subtitle": "IA aplicada y herramientas para desarrolladores"
     },
-    "description": "Construyo agentes de IA, integraciones MCP y automatizaciones para Mercado Pago. Conecto servicios backend e interfaces de producto con las herramientas que usan los equipos en Latinoamérica.",
+    "description": "Desarrollo agentes de IA e integraciones MCP para equipos de ingeniería en Latinoamérica.",
     "primaryCta": "Explorar mi trabajo",
     "secondaryCta": "Descargar CV",
-    "hiringSignals": [
-      "IA aplicada",
-      "Backend y plataforma",
-      "Fintech · Latinoamérica"
-    ],
     "trustIndicators": [
-      "Agentes de IA y skills reutilizables",
-      "MCP y automatización de flujos",
       "Go · TypeScript · React",
       "Docente de ML y Deep Learning"
     ]

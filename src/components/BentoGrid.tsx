@@ -17,22 +17,19 @@ const BentoCard = ({ children, className, title, icon: Icon, delay = 0, variant 
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay }}
-                className={`h-full flex flex-col relative rounded-[2rem] p-5 sm:p-8 overflow-hidden group transition-all duration-300 hover:-translate-y-1 ${
+                className={`h-full flex flex-col relative group transition-all duration-300 hover:-translate-y-1 ${
                     isNeon
-                        ? 'bg-neon text-dark-900'
-                        : 'glass-surface hover:border-white/25'
+                        ? 'folder-panel folder-neon text-dark-900'
+                        : 'border-t border-white/20 px-2 py-6 sm:py-8 hover:border-neon/40'
                 }`}
             >
-                <div className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100">
+                {isNeon&&<span className="folder-tab">{lang==='en'?'Engineering focus':'Enfoque técnico'}</span>}
+                <div style={{clipPath:isNeon?'var(--folder-cut)':undefined}} className="pointer-events-none absolute inset-0 overflow-hidden opacity-0 transition-opacity duration-500 group-hover:opacity-100">
                     <div className="absolute -left-1/3 top-0 h-full w-1/3 rotate-12 bg-gradient-to-r from-transparent via-white/10 to-transparent blur-sm transition-transform duration-700 group-hover:translate-x-[420%]" />
                 </div>
                 {/* Icon container */}
                 {Icon && (
-                    <div className={`mb-4 sm:mb-6 w-10 h-10 sm:w-11 sm:h-11 rounded-2xl flex items-center justify-center shrink-0 transition-all duration-300 ${
-                        isNeon
-                            ? 'bg-dark-900/10 border border-dark-900/10'
-                            : 'glass-chip group-hover:bg-neon/10 group-hover:border-neon/25'
-                    }`}>
+                    <div className="mb-4 sm:mb-6 h-8 flex items-center shrink-0">
                         <Icon className={`w-5 h-5 ${isNeon ? 'text-dark-900' : 'text-neon'}`} strokeWidth={1.75} />
                     </div>
                 )}

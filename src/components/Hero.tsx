@@ -200,25 +200,14 @@ export default function Hero({initialLanguage = 'en'}: {initialLanguage?: 'en' |
                         </a>
                     </div>
 
-                    <div className="mt-8 flex flex-wrap gap-2.5">
-                        {hero.hiringSignals.map((signal) => (
-                            <span
-                                key={signal}
-                                className="glass-chip rounded-full px-3 py-1.5 text-[11px] font-mono uppercase tracking-[0.16em] text-white/70"
-                            >
-                                {signal}
-                            </span>
-                        ))}
-                    </div>
-
                     <motion.div
                         style={{ y: yTags }}
-                        className="mt-16 grid max-w-xl grid-cols-1 gap-x-8 gap-y-3 sm:grid-cols-2"
+                        className="mt-10 flex max-w-xl flex-wrap gap-x-6 gap-y-3 border-t border-white/10 pt-5"
                     >
                         {hero.trustIndicators.map((brand) => (
                             <span
                                 key={brand}
-                                className="border-t border-white/10 pt-3 text-xs font-medium text-gray-400 sm:text-sm"
+                                className="text-xs text-gray-400 sm:text-sm"
                             >
                                 {brand}
                             </span>
