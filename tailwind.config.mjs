@@ -16,6 +16,8 @@ export default {
 				gray: palette.gray,
 				accent: palette.accent,
 				'accent-light': palette.accentLight,
+				action: palette.link,
+				'action-hover': palette.linkHover,
 				neon: palette.accent,
 				cyan: palette.slate,
 				coral: palette.rose,

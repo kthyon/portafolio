@@ -47,7 +47,7 @@ export default function Navbar({initialLanguage = 'en', pagePath = ''}: {initial
                             </svg>
                             <span className="sr-only">{logoInitials}</span>
                         </div>
-                        <span className="text-white font-display font-bold text-xs sm:text-lg tracking-[0.1em] sm:tracking-[0.18em] group-hover:text-neon transition-colors">
+                        <span className="text-white font-display font-bold text-xs sm:text-lg tracking-[0.1em] sm:tracking-[0.18em] group-hover:text-action transition-colors">
                             {logoText}
                         </span>
                     </a>
@@ -58,10 +58,10 @@ export default function Navbar({initialLanguage = 'en', pagePath = ''}: {initial
                             <a
                                 key={link.name}
                                 href={resolveNavHref(link.href,lang)}
-                                className="text-sm font-medium text-gray-300 hover:text-white transition-colors relative group"
+                                className="text-sm font-medium text-gray-300 hover:text-action transition-colors relative group"
                             >
                                 {link.name}
-                                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-neon transition-all group-hover:w-full" />
+                                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-action transition-all group-hover:w-full" />
                             </a>
                         ))}
                     </nav>
@@ -72,22 +72,22 @@ export default function Navbar({initialLanguage = 'en', pagePath = ''}: {initial
                             href={github}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="text-gray-400 hover:text-white transition-colors"
+                            className="text-gray-400 hover:text-action transition-colors"
                             aria-label="GitHub" title="GitHub Profile"
                         >
                             <Github className="w-5 h-5" />
                         </a>
                         <a href={languageSwitchHref} hrefLang={lang === 'en' ? 'es' : 'en'} 
-                            className="flex items-center gap-2 text-gray-400 hover:text-neon transition-colors"
+                            className="flex items-center gap-2 text-gray-400 hover:text-action transition-colors"
                             aria-label={lang === 'en' ? 'Cambiar a español' : 'Switch to English'} title="Translate / Traducir"
                         >
                             <Globe className="w-5 h-5" />
                             <span className="text-sm font-bold uppercase">{lang === 'es' ? 'EN' : 'ES'}</span>
                         </a>
-                        <a href="https://www.linkedin.com/in/crisalvarado-ingeniero/" target="_blank" rel="noopener noreferrer" className="group/cta relative inline-flex items-center gap-3 overflow-hidden rounded-full border border-white/15 bg-white/[0.035] px-5 py-2.5 text-sm font-bold text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.08),0_14px_35px_rgba(0,0,0,0.28)] backdrop-blur-xl transition-all duration-300 hover:border-neon/45 hover:bg-white/[0.06]">
-                            <span className="absolute inset-y-0 left-0 w-px bg-neon/70" />
+                        <a href="https://www.linkedin.com/in/crisalvarado-ingeniero/" target="_blank" rel="noopener noreferrer" className="group/cta relative inline-flex items-center gap-3 overflow-hidden rounded-full border border-white/15 bg-white/[0.035] px-5 py-2.5 text-sm font-bold text-action shadow-[inset_0_1px_0_rgba(255,255,255,0.08),0_14px_35px_rgba(0,0,0,0.28)] backdrop-blur-xl transition-all duration-300 hover:border-action/45 hover:bg-white/[0.06]">
+                            <span className="absolute inset-y-0 left-0 w-px bg-action/70" />
                             <span>{ctaText}</span>
-                            <ArrowRight className="h-4 w-4 text-neon transition-transform group-hover/cta:translate-x-1" />
+                            <ArrowRight className="h-4 w-4 text-action transition-transform group-hover/cta:translate-x-1" />
                         </a>
                     </div>
 
@@ -97,11 +97,11 @@ export default function Navbar({initialLanguage = 'en', pagePath = ''}: {initial
                             href={github}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="text-gray-400 hover:text-white transition-colors" aria-label="GitHub"
+                            className="text-gray-400 hover:text-action transition-colors" aria-label="GitHub"
                         >
                             <Github className="w-5 h-5" />
                         </a>
-                        <a href={languageSwitchHref} hrefLang={lang === 'en' ? 'es' : 'en'} aria-label={lang === 'en' ? 'Cambiar a español' : 'Switch to English'} className="text-gray-400 hover:text-neon">
+                        <a href={languageSwitchHref} hrefLang={lang === 'en' ? 'es' : 'en'} aria-label={lang === 'en' ? 'Cambiar a español' : 'Switch to English'} className="text-gray-400 hover:text-action">
                             <span className="text-sm font-bold uppercase">{lang === 'es' ? 'EN' : 'ES'}</span>
                         </a>
                         <button aria-label={isOpen ? (lang === 'en' ? 'Close navigation' : 'Cerrar navegación') : (lang === 'en' ? 'Open navigation' : 'Abrir navegación')} aria-expanded={isOpen} aria-controls="mobile-navigation" onClick={() => setIsOpen(!isOpen)}>
@@ -125,16 +125,16 @@ export default function Navbar({initialLanguage = 'en', pagePath = ''}: {initial
                                 <a
                                     key={link.name}
                                     href={resolveNavHref(link.href,lang)}
-                                    className="block text-gray-300 hover:text-neon transition-colors"
+                                    className="block text-gray-300 hover:text-action transition-colors"
                                     onClick={() => setIsOpen(false)}
                                 >
                                     {link.name}
                                 </a>
                             ))}
-                            <a href="https://www.linkedin.com/in/crisalvarado-ingeniero/" target="_blank" rel="noopener noreferrer" className="relative flex w-full items-center justify-center gap-2 overflow-hidden rounded-full border border-white/15 bg-white/[0.035] px-5 py-3 text-sm font-bold text-white">
-                                <span className="absolute inset-y-0 left-0 w-px bg-neon/70" />
+                            <a href="https://www.linkedin.com/in/crisalvarado-ingeniero/" target="_blank" rel="noopener noreferrer" className="relative flex w-full items-center justify-center gap-2 overflow-hidden rounded-full border border-white/15 bg-white/[0.035] px-5 py-3 text-sm font-bold text-action">
+                                <span className="absolute inset-y-0 left-0 w-px bg-action/70" />
                                 {ctaText}
-                                <ArrowRight className="h-4 w-4 text-neon" />
+                                <ArrowRight className="h-4 w-4 text-action" />
                             </a>
                         </div>
                     </motion.div>

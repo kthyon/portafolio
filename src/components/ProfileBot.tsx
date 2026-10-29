@@ -280,7 +280,7 @@ function renderMessage(content: string) {
                     href={part}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="font-bold text-neon underline underline-offset-4"
+                    className="font-bold text-action hover:text-action-hover underline underline-offset-4"
                 >
                     WhatsApp
                 </a>

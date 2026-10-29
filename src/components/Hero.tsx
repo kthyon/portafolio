@@ -186,7 +186,7 @@ export default function Hero({initialLanguage = 'en'}: {initialLanguage?: 'en' |
                     <div className="flex flex-wrap items-center gap-4">
                         <a
                             href="#work"
-                            className="group inline-flex items-center justify-center gap-2 border-b border-neon py-2 font-bold text-white"
+                            className="group inline-flex items-center justify-center gap-2 border-b border-action/50 py-2 font-bold text-action hover:text-action-hover"
                         >
                             {hero.primaryCta}
                             <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
@@ -194,7 +194,7 @@ export default function Hero({initialLanguage = 'en'}: {initialLanguage?: 'en' |
 
                         <a
                             href={`${baseUrl}CV_Cris_Alvarado.pdf`} download
-                            className="inline-block border-b border-white/15 py-2 font-medium text-white/65 transition-all hover:border-white/40 hover:text-white"
+                            className="inline-block border-b border-action/30 py-2 font-medium text-action transition-all hover:border-action hover:text-action-hover"
                         >
                             {hero.secondaryCta}
                         </a>

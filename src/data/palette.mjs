@@ -1,9 +1,10 @@
 /** Neutral art direction informed by Temper Studio (Framer Best Visual Design 2025),
  * bohdan.design and basement.studio. Shared by the site, canvas and social preview. */
 export const palette=Object.freeze({
- background:'#111111',deep:'#0B0B0B',surface:'#1C1C1C',raised:'#2A2A2A',
+ background:'#090909',deep:'#040404',surface:'#1C1C1C',raised:'#2A2A2A',
  ink:'#F2F1EF',accent:'#D3D7DA',accentLight:'#F2F1EF',slate:'#909AA4',
  slateLight:'#C4CDD4',sage:'#AAB5BB',rose:'#B29B9D',
+ link:'#2997FF',linkHover:'#64B5FF',button:'#0071E3',buttonHover:'#0077ED',
  gray:Object.freeze({50:'#F8F8F7',100:'#F2F1EF',200:'#E6E6E6',300:'#C4C4C4',400:'#ADADAD',500:'#949494',600:'#787878',700:'#555555',800:'#303030',900:'#202020',950:'#151515'}),
 });
 /** @param {string} hex */

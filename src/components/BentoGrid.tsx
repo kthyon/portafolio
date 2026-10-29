@@ -34,7 +34,7 @@ const BentoCard = ({ children, className, title, icon: Icon, delay = 0, variant 
                 {/* Title + description */}
                 <a href={href} className="sm:flex-1">
                     <h3 className={`font-display font-bold mb-3 leading-tight ${
-                        isNeon ? 'text-dark-900 text-xl' : 'text-white text-lg'
+                        isNeon ? 'text-dark-900 text-xl' : 'text-white group-hover:text-action text-lg'
                     }`}>
                         {title}
                     </h3>
@@ -47,7 +47,7 @@ const BentoCard = ({ children, className, title, icon: Icon, delay = 0, variant 
 
                 {/* Bottom arrow */}
                 {!isNeon && (
-                    <div className="mt-4 sm:mt-6 hidden sm:flex items-center gap-1 text-neon text-[10px] font-bold tracking-[0.2em] uppercase opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+                    <div className="mt-4 sm:mt-6 hidden sm:flex items-center gap-1 text-action text-[10px] font-bold tracking-[0.2em] uppercase opacity-0 group-hover:opacity-100 transition-opacity duration-200">
                         {lang === 'en' ? 'Explore' : 'Explorar'} <ArrowUpRight className="w-3 h-3" />
                     </div>
                 )}
