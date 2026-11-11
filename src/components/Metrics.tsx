@@ -1,12 +1,11 @@
 import ScrollReveal from './ScrollReveal';
 import React from 'react';
-import { motion } from 'framer-motion';
 import { useSiteConfig } from '../data/site';
-import { Globe2, Workflow, GraduationCap, Code2 } from 'lucide-react';
-const icons = [Globe2, GraduationCap, Code2, Workflow];
+import { Globe2, Workflow, GraduationCap, Users } from 'lucide-react';
+const icons = [Users, Globe2, GraduationCap, Workflow];
 
 const AdvantageItem = ({ value, label, sublabel, icon: Icon, index }: any) => (
-    <ScrollReveal preset="rise" delay={index*.065}
+    <ScrollReveal preset="rise" delay={index*.08}
         className="flex min-h-[240px] flex-col justify-between border-t border-white/20 pt-6 pb-4 px-2 hover:border-neon transition-colors relative group"
     >
         <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/25 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />

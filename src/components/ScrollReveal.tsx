@@ -1,33 +1,44 @@
-import React,{useEffect,useRef,useState,type RefObject} from 'react';
-import {motion,useInView,useMotionTemplate,useReducedMotion,useScroll,useSpring,useTransform,type HTMLMotionProps,type MotionStyle} from 'framer-motion';
+import React,{useEffect,useLayoutEffect,useRef,useState,type RefObject} from 'react';
+import {motion,useInView,useReducedMotion,type HTMLMotionProps} from 'framer-motion';
 
 type Preset='rise'|'title'|'depth'|'slide'|'product';
+type Phase='static'|'hidden'|'shown';
 
-export function useScrollScene(ref:RefObject<HTMLElement>,preset:Preset='rise',delay=0){
- const [ready,setReady]=useState(false);const [narrow,setNarrow]=useState(false);const reduced=useReducedMotion();
- const near=useInView(ref,{margin:'200px 0px 200px 0px'});
- const {scrollYProgress}=useScroll({target:ref,offset:['start .98','start .4']});
- const progress=useSpring(scrollYProgress,{stiffness:95,damping:28,mass:.65,restDelta:.001});
- const start=Math.min(delay,.22),end=Math.min(.82+start,1);
- const reveal=useTransform(progress,[start,end],[0,1]);
- const dimensional=preset==='depth'||preset==='product';
- const y=useTransform(reveal,[0,1],[dimensional?105:preset==='title'?64:preset==='slide'?28:78,0]);
- const x=useTransform(reveal,[0,1],[preset==='slide'?(narrow?16:58):0,0]);
- const scale=useTransform(reveal,[0,1],[dimensional?.9:preset==='title'?.97:.98,1]);
- const rotateX=useTransform(reveal,[0,1],[preset==='depth'?9:0,0]);
- const opacity=useTransform(reveal,[0,.55,1],[.04,.86,1]);
- const blur=useTransform(reveal,[0,.7,1],[preset==='title'?5:dimensional?1.5:2,0,0]);
- const filter=useMotionTemplate`blur(${blur}px)`;
- useEffect(()=>{const media=window.matchMedia('(max-width:639px)');const update=()=>setNarrow(media.matches);update();setReady(true);media.addEventListener('change',update);return()=>media.removeEventListener('change',update);},[]);
- const active=ready&&!reduced;
- // The initial server render remains fully readable; movement starts after hydration.
- const style:MotionStyle=active?{x,y,scale,rotateX,opacity,filter,transformPerspective:1100,transformOrigin:'50% 70%',willChange:near?'transform, opacity':undefined}:{x:0,y:0,scale:1,rotateX:0,opacity:1,filter:'blur(0px)'};
- return {style,active};
+const useIsoLayoutEffect=typeof window==='undefined'?useEffect:useLayoutEffect;
+const ease=[.2,.65,.3,1] as const;
+const from:Record<Preset,{x?:number;y?:number;scale?:number}>={
+ rise:{y:28},
+ title:{y:18},
+ depth:{y:36,scale:.97},
+ product:{y:36,scale:.97},
+ slide:{x:28},
+};
+const rest={opacity:1,x:0,y:0,scale:1};
+
+// One-shot reveal. Server render and anything already on screen at hydration stay
+// fully readable ('static'); only content still below the fold is hidden, then
+// plays a single time-based entrance when it enters the viewport.
+export function useReveal(ref:RefObject<HTMLElement>,preset:Preset='rise',delay=0){
+ const reduced=useReducedMotion();
+ const [phase,setPhase]=useState<Phase>('static');
+ const inView=useInView(ref,{once:true,margin:'0px 0px -8% 0px'});
+ useIsoLayoutEffect(()=>{
+  const el=ref.current;if(!el||reduced)return;
+  if(el.getBoundingClientRect().top>window.innerHeight*.92)setPhase('hidden');
+ },[reduced]);
+ useEffect(()=>{if(phase==='hidden'&&inView)setPhase('shown');},[phase,inView]);
+ const hidden=phase==='hidden'&&!reduced;
+ return {
+  phase,
+  animate:hidden?{opacity:0,x:0,y:0,scale:1,...from[preset]}:rest,
+  transition:phase==='shown'?{duration:preset==='title'?.55:.7,delay:Math.min(delay,.4),ease}:{duration:0},
+ };
 }
 
 type Props=HTMLMotionProps<'div'>&{as?:'div'|'section'|'article'|'figure';preset?:Preset;delay?:number};
-export default function ScrollReveal({as='div',preset='rise',delay=0,children,className='',style,...props}:Props){
- const ref=useRef<HTMLDivElement>(null);const scene=useScrollScene(ref,preset,delay);
+export default function ScrollReveal({as='div',preset='rise',delay=0,children,className='',transition,...props}:Props){
+ const ref=useRef<HTMLDivElement>(null);const reveal=useReveal(ref,preset,delay);
  const Component=motion[as] as typeof motion.div;
- return <Component {...props} ref={ref} initial={false} className={`scroll-scene ${className}`} style={{...style,...scene.style}} data-scroll-scene={preset} data-motion-ready={scene.active?'true':'false'}>{children}</Component>;
+ // A caller-supplied transition only applies once the entrance has finished (e.g. hover).
+ return <Component {...props} ref={ref} initial={false} animate={reveal.animate} transition={reveal.phase==='static'&&transition?transition:reveal.transition} className={`scroll-scene ${className}`} data-scroll-scene={preset} data-reveal={reveal.phase}>{children}</Component>;
 }

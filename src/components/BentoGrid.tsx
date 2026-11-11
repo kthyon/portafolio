@@ -1,20 +1,19 @@
 import ScrollReveal from './ScrollReveal';
-import React, { useRef } from 'react';
-import { motion, useScroll, useTransform } from 'framer-motion';
+import React from 'react';
+import { useReducedMotion } from 'framer-motion';
 import { ArrowUpRight, Cpu, Bot, GitMerge, Database, Shield } from 'lucide-react';
 import {localHref} from './links';
 const icons = [Cpu, Bot, GitMerge, Database, Shield];
 import { useSiteConfig } from '../data/site';
 
-const BentoCard = ({ children, className, title, icon: Icon, delay = 0, variant = "default", scrollYProgress, index, href, lang }: any) => {
+const BentoCard = ({ children, className, title, icon: Icon, variant = "default", index, href, lang }: any) => {
     const isNeon = variant === 'neon';
-    const yOffsets = [0, -30, -60];
-    const y = useTransform(scrollYProgress, [0, 1], [0, yOffsets[index % 3] || 0]);
+    const reduced = useReducedMotion();
 
     return (
-        <motion.div style={{ y }} className={`${className} min-h-0 sm:min-h-[260px]`}>
-            <ScrollReveal preset="depth" delay={index*.055}
-                className={`h-full flex flex-col relative group transition-all duration-300 hover:-translate-y-1 ${
+        <div className={`${className} min-h-0 sm:min-h-[260px]`}>
+            <ScrollReveal preset="depth" delay={index*.07} whileHover={reduced ? {} : { y: -4 }} transition={{ duration: .3 }}
+                className={`h-full flex flex-col relative group transition-colors duration-300 ${
                     isNeon
                         ? 'folder-panel folder-neon text-dark-900'
                         : 'border-t border-white/20 px-2 py-6 sm:py-8 hover:border-neon/40'
@@ -58,21 +57,16 @@ const BentoCard = ({ children, className, title, icon: Icon, delay = 0, variant 
                 )}
 
             </ScrollReveal>
-        </motion.div>
+        </div>
     );
 };
 
 export default function BentoGrid({initialLanguage = 'en'}: {initialLanguage?: 'en' | 'es'}) {
     const { config, lang } = useSiteConfig(initialLanguage);
     const { title, subtitle, cards } = config.bentoGrid;
-    const ref = useRef(null);
-    const { scrollYProgress } = useScroll({
-        target: ref,
-        offset: ["start end", "end start"]
-    });
 
     return (
-        <section ref={ref} className="py-20 sm:py-28 lg:py-32 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto" id="services">
+        <section className="py-20 sm:py-28 lg:py-32 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto" id="services">
             <ScrollReveal preset="title" className="mb-10 sm:mb-16">
                 <div className="flex items-center gap-3 mb-6">
                     <div className="h-px bg-neon w-10" />
@@ -88,12 +82,10 @@ export default function BentoGrid({initialLanguage = 'en'}: {initialLanguage?: '
                         index={index}
                         href={localHref(card.href,lang)}
                         lang={lang}
-                        scrollYProgress={scrollYProgress}
                         title={card.title}
                         icon={icons[index]}
                         className={card.colSpan}
                         variant={card.variant}
-                        delay={card.delay}
                     >
                         {card.description}
                     </BentoCard>

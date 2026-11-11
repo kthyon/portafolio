@@ -113,7 +113,7 @@ const en = {
         "title": "Connecting internal user onboarding across LATAM",
         "problem": "Onboarding specific users into internal applications required connecting requests, communication and application access.",
         "contribution": "I built an automation that connects Jira requests, Slack and internal application onboarding for users across Latin America.",
-        "result": "A connected operational flow for handling those user provisioning requests across the tools involved.",
+        "result": "A request opened in Jira now carries through to Slack communication and access in the internal application as a single automated flow.",
         "flow": [
           "Jira requests",
           "Workflow automation",
@@ -133,7 +133,7 @@ const en = {
         "title": "Web experiences for Mercado Pago and Developers",
         "problem": "Product and developer audiences need clear web entry points into a regional payments ecosystem.",
         "contribution": "I collaborated with the team on Mercado Pago landing pages and Developers sites, contributing to their web implementation.",
-        "result": "Contributions to the web experiences delivered by the team for product and developer audiences.",
+        "result": "Published pages: Mercado Pago landings and Developers site sections that include my implementation work.",
         "flow": [
           "Product + engineering collaboration",
           "Web implementation",
@@ -177,7 +177,7 @@ const en = {
         "role": "Software Engineer",
         "company": "Mercado Libre · Mercado Pago",
         "period": "Dec 2023 – Present",
-        "description": "Build and scale software and automation for Mercado Pago across Latin America.",
+        "description": "Build software, AI tooling and automation for Mercado Pago, a fintech platform with 93M monthly active users (company-reported, Q3 2026), across six Latin American markets.",
         "achievements": [
           "Build AI agents, MCP servers, reusable skills and workflows integrated with engineering tools and services.",
           "Created user onboarding automation connecting Jira, Slack and internal applications for users across Latin America.",
@@ -193,7 +193,7 @@ const en = {
         "achievements": [
           "Created Nexo, an interactive teaching tool connecting visual explanations, practical Python/Colab exercises and learning progress.",
           "Connect regression, classification, clustering, dimensionality reduction and computer vision with practical examples.",
-          "The Nexo case study documents the problem, architecture and teaching interface."
+          "Run the classes on Nexo: each topic moves from an interactive explanation to a Colab notebook that students complete on their own copy."
         ]
       },
       {
@@ -228,11 +228,11 @@ const en = {
   },
   "bentoGrid": {
     "title": "Engineering focus",
-    "subtitle": "Capabilities connected to real work",
+    "subtitle": "How I approach the work",
     "cards": [
       {
         "title": "Applied AI & developer productivity",
-        "description": "Agents, MCP servers and reusable skills integrated with real engineering workflows.",
+        "description": "I wire agents, MCP servers and reusable skills into the tools engineers already use, so automation runs inside the workflow instead of beside it.",
         "href": "/#ai-tooling",
         "colSpan": "md:col-span-2",
         "variant": "neon",
@@ -240,7 +240,7 @@ const en = {
       },
       {
         "title": "Enterprise integrations",
-        "description": "Jira, Slack and internal application onboarding connected in a regional workflow.",
+        "description": "Connect the systems a request already passes through (Jira, Slack, internal applications) into one flow.",
         "href": "/about/#user-onboarding",
         "colSpan": "md:col-span-1",
         "variant": "default",
@@ -248,7 +248,7 @@ const en = {
       },
       {
         "title": "Product engineering",
-        "description": "Backend development and collaborative web delivery for Mercado Pago and Developers.",
+        "description": "Go, Node.js and Java services with React and TypeScript interfaces, delivered as part of a product team.",
         "href": "/about/#developer-experiences",
         "colSpan": "md:col-span-1",
         "variant": "default",
@@ -256,7 +256,7 @@ const en = {
       },
       {
         "title": "State & persistence",
-        "description": "Nexo connects authenticated records, relational data and pending local changes.",
+        "description": "Server-side authorization, relational data and explicit handling of failed syncs, as built in Nexo.",
         "href": "/work/nexo/",
         "colSpan": "md:col-span-1",
         "variant": "default",
@@ -264,7 +264,7 @@ const en = {
       },
       {
         "title": "Technical communication",
-        "description": "ML and Deep Learning teaching supported by interactive tools and Python notebooks.",
+        "description": "Teaching ML and Deep Learning demands precision: models, trade-offs and limits explained with working examples.",
         "href": "/about/#education",
         "colSpan": "md:col-span-1",
         "variant": "default",
@@ -273,27 +273,27 @@ const en = {
     ]
   },
   "metrics": {
-    "title": "Scope you can inspect",
+    "title": "Scope, in facts",
     "items": [
+      {
+        "value": "93M",
+        "label": "Monthly active users on Mercado Pago",
+        "sublabel": "Reported by Mercado Libre for Q3 2026. The scale of the platform I build for, not a personal metric."
+      },
       {
         "value": "6 markets",
         "label": "Regional engineering",
         "sublabel": "Brazil, Mexico, Argentina, Colombia, Chile and Peru."
       },
       {
-        "value": "ML + DL",
-        "label": "Applied AI education",
-        "sublabel": "Technical teaching supported by interactive explanations and practical model evaluation."
+        "value": "2 editions",
+        "label": "ML & Deep Learning at UTP",
+        "sublabel": "Instructor in the 2025 and 2026 editions of the Data Science diploma, supported by Nexo."
       },
       {
-        "value": "Nexo",
-        "label": "Teaching tool I created",
-        "sublabel": "Architecture and demonstration screenshots in the case study."
-      },
-      {
-        "value": "Jira + Slack",
-        "label": "Operational automation",
-        "sublabel": "Connected user onboarding for internal applications in Latin America."
+        "value": "3 systems",
+        "label": "One onboarding flow",
+        "sublabel": "Jira, Slack and internal applications connected in a single user provisioning automation."
       }
     ]
   },
@@ -334,7 +334,7 @@ const en = {
         "category": "Enterprise integrations",
         "title": "Cross-system user provisioning",
         "summary": "Automation connecting Jira requests, Slack communication and internal application onboarding across Latin America.",
-        "scope": "A connected operational flow for handling those user provisioning requests across the tools involved.",
+        "scope": "One automated flow from the Jira request to Slack communication and access in the internal application.",
         "contribution": [
           "I built an automation that connects Jira requests, Slack and internal application onboarding for users across Latin America."
         ],
@@ -356,7 +356,7 @@ const en = {
         "category": "Backend · Developer experience",
         "title": "Fintech product engineering",
         "summary": "Backend and interface development, including collaborative work on Mercado Pago and Developers web experiences.",
-        "scope": "Contributions to the web experiences delivered by the team for product and developer audiences.",
+        "scope": "Backend services and web implementation for Mercado Pago product pages and the Developers site.",
         "contribution": [
           "I collaborated with the team on Mercado Pago landing pages and Developers sites, contributing to their web implementation."
         ],
@@ -624,7 +624,7 @@ const es = {
         "title": "Altas de usuarios internos conectadas en LATAM",
         "problem": "Dar de alta usuarios específicos en aplicaciones internas requería conectar solicitudes, comunicación y acceso a las aplicaciones.",
         "contribution": "Construí una automatización que conecta solicitudes de Jira, Slack y las altas en aplicaciones internas para usuarios de Latinoamérica.",
-        "result": "Un flujo operativo conectado para gestionar estas solicitudes de alta entre las herramientas involucradas.",
+        "result": "Una solicitud abierta en Jira llega hasta la comunicación en Slack y el alta en la aplicación interna como un solo flujo automatizado.",
         "flow": [
           "Solicitudes de Jira",
           "Automatización del flujo",
@@ -644,7 +644,7 @@ const es = {
         "title": "Experiencias web para Mercado Pago y Developers",
         "problem": "Los públicos de producto y de desarrollo necesitan puntos de entrada claros al ecosistema regional de pagos.",
         "contribution": "Colaboré con el equipo en las landing pages y los sitios de Developers de Mercado Pago, contribuyendo a su implementación web.",
-        "result": "Aportes a las experiencias web entregadas por el equipo para los públicos de producto y de desarrollo.",
+        "result": "Páginas publicadas: landings de Mercado Pago y secciones del sitio de Developers que incluyen mi trabajo de implementación.",
         "flow": [
           "Colaboración de producto e ingeniería",
           "Implementación web",
@@ -688,7 +688,7 @@ const es = {
         "role": "Software Engineer",
         "company": "Mercado Libre · Mercado Pago",
         "period": "Dic 2023 – Actualidad",
-        "description": "Desarrollo y escalo software y automatizaciones para Mercado Pago en Latinoamérica.",
+        "description": "Desarrollo software, herramientas de IA y automatizaciones para Mercado Pago, una plataforma fintech con 93 millones de usuarios activos mensuales (cifra de la compañía, Q3 2026), en seis mercados de Latinoamérica.",
         "achievements": [
           "Construyo agentes de IA, servidores MCP, skills reutilizables y flujos integrados con herramientas y servicios de ingeniería.",
           "Creé una automatización de altas de usuarios que conecta Jira, Slack y aplicaciones internas para Latinoamérica.",
@@ -704,7 +704,7 @@ const es = {
         "achievements": [
           "Creé Nexo, una herramienta docente que conecta explicaciones visuales, ejercicios prácticos en Python y Colab y seguimiento del aprendizaje.",
           "Conecto regresión, clasificación, clustering, reducción de dimensionalidad y visión por computador con ejemplos prácticos.",
-          "El caso de Nexo documenta el problema, la arquitectura y la interfaz de aprendizaje."
+          "Dicto las clases sobre Nexo: cada tema va de una explicación interactiva a un notebook en Colab que cada estudiante resuelve en su propia copia."
         ]
       },
       {
@@ -739,11 +739,11 @@ const es = {
   },
   "bentoGrid": {
     "title": "Enfoque técnico",
-    "subtitle": "Capacidades conectadas con trabajo real",
+    "subtitle": "Cómo abordo el trabajo",
     "cards": [
       {
         "title": "IA aplicada y productividad de ingeniería",
-        "description": "Agentes, servidores MCP y skills reutilizables integrados con flujos reales de ingeniería.",
+        "description": "Integro agentes, servidores MCP y skills reutilizables en las herramientas que el equipo ya usa: la automatización corre dentro del flujo, no al lado.",
         "href": "/#ai-tooling",
         "colSpan": "md:col-span-2",
         "variant": "neon",
@@ -751,7 +751,7 @@ const es = {
       },
       {
         "title": "Integraciones empresariales",
-        "description": "Jira, Slack y altas en aplicaciones internas conectados en un flujo regional.",
+        "description": "Conecto los sistemas por los que ya pasa una solicitud (Jira, Slack, aplicaciones internas) en un solo flujo.",
         "href": "/about/#user-onboarding",
         "colSpan": "md:col-span-1",
         "variant": "default",
@@ -759,7 +759,7 @@ const es = {
       },
       {
         "title": "Ingeniería de producto",
-        "description": "Backend y desarrollo web colaborativo para Mercado Pago y Developers.",
+        "description": "Servicios en Go, Node.js y Java con interfaces en React y TypeScript, entregados como parte de un equipo de producto.",
         "href": "/about/#developer-experiences",
         "colSpan": "md:col-span-1",
         "variant": "default",
@@ -767,7 +767,7 @@ const es = {
       },
       {
         "title": "Estado y persistencia",
-        "description": "Nexo conecta registros autenticados, datos relacionales y cambios locales pendientes.",
+        "description": "Autorización en el servidor, datos relacionales y manejo explícito de fallos de sincronización, como en Nexo.",
         "href": "/work/nexo/",
         "colSpan": "md:col-span-1",
         "variant": "default",
@@ -775,7 +775,7 @@ const es = {
       },
       {
         "title": "Comunicación técnica",
-        "description": "Docencia de ML y Deep Learning con herramientas interactivas y notebooks en Python.",
+        "description": "Enseñar ML y Deep Learning exige precisión: modelos, compromisos y límites explicados con ejemplos que funcionan.",
         "href": "/about/#education",
         "colSpan": "md:col-span-1",
         "variant": "default",
@@ -784,27 +784,27 @@ const es = {
     ]
   },
   "metrics": {
-    "title": "Alcance que puedes explorar",
+    "title": "Alcance, en hechos",
     "items": [
+      {
+        "value": "93 M",
+        "label": "Usuarios activos mensuales de Mercado Pago",
+        "sublabel": "Cifra reportada por Mercado Libre para el Q3 2026. Es la escala de la plataforma para la que construyo, no una métrica personal."
+      },
       {
         "value": "6 mercados",
         "label": "Ingeniería regional",
         "sublabel": "Brasil, México, Argentina, Colombia, Chile y Perú."
       },
       {
-        "value": "ML + DL",
-        "label": "Formación en IA aplicada",
-        "sublabel": "Docencia técnica con explicaciones interactivas y evaluación práctica de modelos."
+        "value": "2 ediciones",
+        "label": "ML y Deep Learning en la UTP",
+        "sublabel": "Docente en las ediciones 2025 y 2026 del Diplomado en Ciencia de Datos, con apoyo de Nexo."
       },
       {
-        "value": "Nexo",
-        "label": "Herramienta docente que creé",
-        "sublabel": "Arquitectura y capturas de demostración en el caso del proyecto."
-      },
-      {
-        "value": "Jira + Slack",
-        "label": "Automatización operativa",
-        "sublabel": "Altas de usuarios conectadas para aplicaciones internas de Latinoamérica."
+        "value": "3 sistemas",
+        "label": "Un solo flujo de altas",
+        "sublabel": "Jira, Slack y aplicaciones internas conectados en una única automatización de altas de usuarios."
       }
     ]
   },
@@ -845,7 +845,7 @@ const es = {
         "category": "Integraciones empresariales",
         "title": "Orquestación de altas internas",
         "summary": "Automatización que conecta solicitudes en Jira, comunicación en Slack y altas en aplicaciones internas para Latinoamérica.",
-        "scope": "Un flujo operativo conectado para gestionar estas solicitudes de alta entre las herramientas involucradas.",
+        "scope": "Un solo flujo automatizado desde la solicitud en Jira hasta la comunicación en Slack y el alta en la aplicación interna.",
         "contribution": [
           "Construí una automatización que conecta solicitudes de Jira, Slack y las altas en aplicaciones internas para usuarios de Latinoamérica."
         ],
@@ -867,7 +867,7 @@ const es = {
         "category": "Backend · Developer experience",
         "title": "Ingeniería de producto en fintech",
         "summary": "Desarrollo de backend e interfaces, con colaboración en las experiencias web de Mercado Pago y Developers.",
-        "scope": "Aportes a las experiencias web entregadas por el equipo para los públicos de producto y de desarrollo.",
+        "scope": "Servicios backend e implementación web para las páginas de producto de Mercado Pago y el sitio de Developers.",
         "contribution": [
           "Colaboré con el equipo en las landing pages y los sitios de Developers de Mercado Pago, contribuyendo a su implementación web."
         ],

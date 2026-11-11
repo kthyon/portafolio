@@ -12,7 +12,7 @@ Pereira, Colombia · Remote from Colombia. Spanish · English B2 (upper-intermed
 ## Professional experience
 ### Software Engineer — Mercado Libre · Mercado Pago
 Dec 2023 – Present
-Build and scale software and automation for Mercado Pago across Latin America.
+Build software, AI tooling and automation for Mercado Pago, a fintech platform with 93M monthly active users (company-reported, Q3 2026), across six Latin American markets.
 - Build AI agents, MCP servers, reusable skills and workflows integrated with engineering tools and services.
 - Created user onboarding automation connecting Jira, Slack and internal applications for users across Latin America.
 - Collaborated on Mercado Pago landing pages and Developers sites as part of the engineering team.
@@ -23,7 +23,7 @@ Sep 2026 – Present
 Teach the Machine Learning and Deep Learning modules of the Data Science diploma program for agribusiness.
 - Created Nexo, an interactive teaching tool connecting visual explanations, practical Python/Colab exercises and learning progress.
 - Connect regression, classification, clustering, dimensionality reduction and computer vision with practical examples.
-- The Nexo case study documents the problem, architecture and teaching interface.
+- Run the classes on Nexo: each topic moves from an interactive explanation to a Colab notebook that students complete on their own copy.
 
 ### Machine Learning & Deep Learning Instructor — Universidad Tecnológica de Pereira (UTP)
 Sep – Oct 2025
@@ -46,7 +46,7 @@ Developed and supported institutional software and academic systems.
 Context: Mercado Pago · Workflow automation
 Problem: Onboarding specific users into internal applications required connecting requests, communication and application access.
 My contribution: I built an automation that connects Jira requests, Slack and internal application onboarding for users across Latin America.
-Result: A connected operational flow for handling those user provisioning requests across the tools involved.
+Result: A request opened in Jira now carries through to Slack communication and access in the internal application as a single automated flow.
 Architecture / workflow: Jira requests → Workflow automation → Slack + internal applications
 Case: https://kthyon.github.io/portafolio/about/#user-onboarding
 
@@ -54,7 +54,7 @@ Case: https://kthyon.github.io/portafolio/about/#user-onboarding
 Context: Mercado Pago · Collaborative delivery
 Problem: Product and developer audiences need clear web entry points into a regional payments ecosystem.
 My contribution: I collaborated with the team on Mercado Pago landing pages and Developers sites, contributing to their web implementation.
-Result: Contributions to the web experiences delivered by the team for product and developer audiences.
+Result: Published pages: Mercado Pago landings and Developers site sections that include my implementation work.
 Architecture / workflow: Product + engineering collaboration → Web implementation → Product & developer experiences
 Case: https://kthyon.github.io/portafolio/about/#developer-experiences
 
