@@ -9,6 +9,11 @@ export default function ParticleField({initialLanguage='en'}:{initialLanguage?:'
   const reduced=matchMedia('(prefers-reduced-motion: reduce)');
   const points=Array.from({length:145},(_,i)=>{const y=1-2*(i+.5)/145;const r=Math.sqrt(1-y*y);const t=i*Math.PI*(3-Math.sqrt(5));const warp=1+.12*Math.sin(t*3+y*4);return {x:Math.cos(t)*r*warp,y:y*warp,z:Math.sin(t)*r*warp};});
   const edges:number[][]=[];for(let i=0;i<points.length;i++)for(let j=i+1;j<points.length;j++){const a=points[i],b=points[j];if(Math.hypot(a.x-b.x,a.y-b.y,a.z-b.z)<.43)edges.push([i,j]);}
+  // Signals hop node to node along existing edges, so the mesh reads as a live network.
+  const neighbours:number[][]=points.map(()=>[]);for(const [i,j] of edges){neighbours[i].push(j);neighbours[j].push(i);}
+  const pick=(from:number,avoid:number)=>{const options=neighbours[from].filter(n=>n!==avoid);const list=options.length?options:neighbours[from];return list.length?list[Math.floor(Math.random()*list.length)]:from;};
+  const signals=Array.from({length:8},(_,i)=>{const a=(i*19+7)%points.length;return {a,b:pick(a,-1),t:Math.random(),speed:.0011+Math.random()*.0009};});
+  function advance(ms:number){for(const sig of signals){sig.t+=ms*sig.speed;if(sig.t>=1){const from=sig.a;sig.a=sig.b;sig.b=pick(sig.a,from);sig.t=0;}}}
   let width=0,height=0,frame=0,visible=true,phase=0,last=0,px=0,py=0;
   function draw(){
    if(!ctx)return;ctx.clearRect(0,0,width,height);const radius=Math.min(width,height)*.34;
@@ -17,9 +22,14 @@ export default function ParticleField({initialLanguage='en'}:{initialLanguage?:'
    const projected=points.map(p=>{const x=p.x*c-p.z*s,z=p.x*s+p.z*c,y=p.y*ct-z*st,depth=p.y*st+z*ct,scale=3/(3+depth);return {x:width*.5+x*radius*scale,y:height*.49+y*radius*scale,z:depth,scale};});
    ctx.lineWidth=.65;
    for(const [i,j] of edges){const a=projected[i],b=projected[j];const depth=(a.z+b.z)*.5;ctx.strokeStyle=`rgba(${rgbChannels(palette.slate)},${.05+(1.5-depth)*.075})`;ctx.beginPath();ctx.moveTo(a.x,a.y);ctx.lineTo(b.x,b.y);ctx.stroke();}
+   for(const sig of signals){const a=projected[sig.a],b=projected[sig.b];const x=a.x+(b.x-a.x)*sig.t,y=a.y+(b.y-a.y)*sig.t,z=a.z+(b.z-a.z)*sig.t,near=Math.max(.15,Math.min(1,(1.5-z)/2.2));const tail=Math.max(0,sig.t-.45),tx=a.x+(b.x-a.x)*tail,ty=a.y+(b.y-a.y)*tail;
+    const trail=ctx.createLinearGradient(tx,ty,x,y);trail.addColorStop(0,'rgba(140,200,255,0)');trail.addColorStop(1,`rgba(190,225,255,${.7*near})`);ctx.strokeStyle=trail;ctx.lineWidth=1.2;ctx.beginPath();ctx.moveTo(tx,ty);ctx.lineTo(x,y);ctx.stroke();
+    const halo=ctx.createRadialGradient(x,y,0,x,y,9);halo.addColorStop(0,`rgba(140,200,255,${.4*near})`);halo.addColorStop(1,'rgba(140,200,255,0)');ctx.fillStyle=halo;ctx.beginPath();ctx.arc(x,y,9,0,Math.PI*2);ctx.fill();
+    ctx.fillStyle=`rgba(255,255,255,${.95*near})`;ctx.beginPath();ctx.arc(x,y,1.5,0,Math.PI*2);ctx.fill();}
+   ctx.lineWidth=.65;
    projected.sort((a,b)=>b.z-a.z).forEach((p,i)=>{const bright=i%13===0;ctx.beginPath();ctx.arc(p.x,p.y,(bright?2.2:1.25)*p.scale,0,Math.PI*2);ctx.fillStyle=bright?rgba(palette.accentLight,.95):rgba(palette.slateLight,.28+(1.4-p.z)*.22);ctx.fill();if(bright){ctx.beginPath();ctx.arc(p.x,p.y,5.5*p.scale,0,Math.PI*2);ctx.fillStyle=rgba(palette.accent,.045);ctx.fill();}});
   }
-  function tick(time:number){frame=0;if(!visible||document.hidden||reduced.matches)return;if(last)phase+=Math.min(time-last,50);last=time;draw();frame=requestAnimationFrame(tick);}
+  function tick(time:number){frame=0;if(!visible||document.hidden||reduced.matches)return;if(last){const step=Math.min(time-last,50);phase+=step;advance(step);}last=time;draw();frame=requestAnimationFrame(tick);}
   function resume(){cancelAnimationFrame(frame);frame=0;last=0;draw();if(visible&&!document.hidden&&!reduced.matches)frame=requestAnimationFrame(tick);}
   const resize=new ResizeObserver(()=>{if(!host||!element||!ctx)return;const box=host.getBoundingClientRect();width=box.width;height=box.height;const ratio=Math.min(devicePixelRatio||1,2);element.width=Math.round(width*ratio);element.height=Math.round(height*ratio);ctx.setTransform(ratio,0,0,ratio,0,0);draw();});resize.observe(host);
   const observer=new IntersectionObserver(([entry])=>{visible=entry.isIntersecting;resume();});observer.observe(host);
